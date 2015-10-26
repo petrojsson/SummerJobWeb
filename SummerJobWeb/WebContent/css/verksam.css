@@ -1,0 +1,97 @@
+.panel-question .panel-heading h3{
+	display:inline-block;
+}
+
+.panel-question .panel-heading a{
+	display: inline-block;
+}
+
+.glyphicon.glyphicon-ok{
+	color:forestgreen;
+	margin-left:1em;
+}
+
+.glyphicon.glyphicon-remove{
+	color:red;
+	margin-left:1em;
+
+}
+
+.glyphicon.glyphicon-ok.collapse.in{
+	display: inline-block;
+}
+
+.glyphicon.glyphicon-remove.collapse.in{
+	display: inline-block;
+}
+
+
+.panel-dev-area .panel-heading h3{
+	display:inline-block;
+}
+
+
+#view-survey{
+	margin-bottom: 5em;
+}
+
+.add-section-container,.box-wrapper{
+	border-style: solid;
+	border-width: 1px;
+    border-color: #ddd;
+  	padding: 0px 15px 15px;
+}
+
+#admin-section-table{
+	margin-top: 5em;
+}
+
+#navBar{
+	background-color: #5B1F78;
+	
+}
+
+#navbar ul li.active{
+	background-color:#F08A00; 
+} 
+
+#navbar li a{
+	color: #fff;	
+}
+
+#navbar li ul{
+	background-color: #F08A00;	
+}
+
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #F08A00;
+    
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #F08A00;
+}
+
+.navbar-brand{
+	color:#fff;
+}
+
+
+.panel-default>.panel-heading{
+	background-image: linear-gradient(to bottom,#9260A0 0,#D2C5DF 100%);
+	border-color: #D2C5DF;
+}
+
+.panel-heading h3{
+	color: #fff;
+}
+
+.panel-default {
+    border-color: #D2C5DF;
+}
+.btn-default{
+	    background-image: linear-gradient(to bottom,#fff 0,#5B1F78 100%);
+	    color:#fff;
+}

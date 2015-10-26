@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>SummerJobWeb</name>
+	<name>sommarjobb.sundsvall.se</name>
 	<comment></comment>
 	<projects>
+		<project>SummerJob</project>
+		<project>OpenHierarchy</project>
+		<project>EmailUtils</project>
+		<project>StandardUtils</project>
+		<project>WebUtils</project>
+		<project>Log4j</project>
+		<project>Log4jUtils</project>
+		<project>FileUploadUtils</project>
+		<project>CommonsFileUpload</project>
+		<project>MinimalUser</project>
+		<project>JavaMail</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
