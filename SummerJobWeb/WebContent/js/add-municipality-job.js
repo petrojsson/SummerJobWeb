@@ -11,7 +11,21 @@ $(document).ready(function(){
 			e.preventDefault();
 			appendMentor();
 		});
-	}	
+	}
+	
+	$('input[name*=hasDriversLicense]').click(function(e) {
+			$('#driverslicense_select').fadeToggle('slow');
+	});
+	
+//	$('input[name*=hasDriversLicense]').click(function(e) {
+//		if ($('input[name*=hasDriversLicense]').is(':checked')) {
+//			$('#driverslicense_select').show();
+//		} else {
+//			$('#driverslicense_select').hide();
+//		}
+//	});
+	
+	
 });
 
 function appendMentor(){
