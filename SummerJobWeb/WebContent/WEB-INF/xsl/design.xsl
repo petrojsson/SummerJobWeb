@@ -53,13 +53,13 @@
 				        </div>
 				        <div id="navbar" class="navbar-collapse collapse">
 				          <ul class="nav navbar-nav"> 				        
-				            <li class=""><a href="{/document/requestinfo/contextpath}/survey">ansök om sommarjobb</a></li>				           
+				            <li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job-application">ansök om kommunalt sommarjobb</a></li>				           
 				            <xsl:if test="user">
 				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job">Lägg till kommunalt sommarjobb</a></li>
 				            </xsl:if>
 				            <xsl:if test="user/admin = 'true'">
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/admin-workplaces">Arbetsplatser</a></li>
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/admin-applications">Ansökningar</a></li>
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/summerjobs-overview">Överblick</a></li>
+				            	
 					            <li class="dropdown">
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin menu <span class="caret"></span></a>
 					              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
@@ -73,7 +73,7 @@
 				            <li>
 				            	<xsl:if test="not(user)">
 									<a href="{/document/requestinfo/contextpath}/login">login</a>
-								</xsl:if>
+								</xsl:if>	
 								<xsl:if test="user">
 									<a href="{/document/requestinfo/contextpath}/logout">logout</a>
 								</xsl:if>

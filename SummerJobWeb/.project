@@ -14,6 +14,7 @@
 		<project>CommonsFileUpload</project>
 		<project>MinimalUser</project>
 		<project>JavaMail</project>
+		<project>OpenETown-Smex</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
