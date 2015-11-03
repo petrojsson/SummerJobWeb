@@ -84,6 +84,7 @@ function saveNewBusinessSectorJob() {
 		    	$('#save-succeeded .message').html(data.message);
 		    	$('#save-succeeded').show();
 		    	$('#business-sector-add-job-form').trigger("reset");
+		    	$('#driverslicense_select').hide();
 		    } else {		        		
 		    	$('#save-failed .message').html(data.message);
 		    	$('#save-failed').show();
@@ -110,6 +111,7 @@ function saveNewMunicipalityJob() {
 				$('#save-succeeded .message').html(data.message);
 				$('#save-succeeded').show();
 				$('#municipality-job-form').trigger("reset");
+				$('#driverslicense_select').hide();
 			} else {		        		
 				$('#save-failed .message').html(data.message);
 				$('#save-failed').show();
