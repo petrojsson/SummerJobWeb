@@ -104,3 +104,11 @@
 	display: none;
 	margin-bottom: 8px;
 }
+
+#save-failed, #save-succeeded {
+	display: none;
+}
+
+.message {
+	margin-left: 4px;
+}

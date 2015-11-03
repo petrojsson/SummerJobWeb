@@ -24,13 +24,23 @@ $(document).ready(function(){
 		  }
 	});
 	
-//	$('#submit-business-sector-job').click(function(e) {
-//		e.preventDefault();
-////		console.log(e);
-////		console.log($('#business-sector-add-job-form').serializeArray());
-//		saveNewBusinessSectorJob();
-//	}); 
-	
+	$('#municipality-job-form').validator().on('submit', function (e) {
+		if (!e.isDefaultPrevented()) {
+			e.preventDefault();
+			
+			var periodsChecked = 0;
+			$('#period-table').find('input[type="checkbox"]:checked').each(function () {
+				periodsChecked++;
+			});
+			
+			if (periodsChecked > 0) {
+				$('#period-errors').hide();
+				saveNewMunicipalityJob();
+			} else {
+				$('#period-errors').show();
+			}
+		} 
+	});
 });
 
 function appendMentor(){
@@ -62,20 +72,54 @@ function generateUUID() {
 
 function saveNewBusinessSectorJob() {
 	
+	$('#save-succeeded').hide();
+	$('#save-failed').hide();
+	
 	$.ajax({
 		url: url + '/add/businesssectorsummerjob.json',
 		type: "POST",
 		data: $('#business-sector-add-job-form').serializeArray(),
 		success: function(data, textStatus, jqXHR) {
-			console.log(data);
 		    if(data.status === 'success') {
-		    	console.log("SUCCESS!");
+		    	$('#save-succeeded .message').html(data.message);
+		    	$('#save-succeeded').show();
+		    	$('#business-sector-add-job-form').trigger("reset");
+		    	$('#driverslicense_select').hide();
 		    } else {		        		
-		    	console.log("NOOOO, FAIL PÅ NÅGOT SÄTT");
+		    	$('#save-failed .message').html(data.message);
+		    	$('#save-failed').show();
 		    }
 		 },
 		 error: function(jqXHR, textStatus, errorThrown) {
-			 console.log(textStatus);  
+			 $('#save-failed .message').html(jqXHR.responseText);
+		     $('#save-failed').show();
 		 }
+	});
+}
+
+function saveNewMunicipalityJob() {
+	
+	$('#save-succeeded').hide();
+	$('#save-failed').hide();
+	
+	$.ajax({
+		url: url + '/add/municipalitysummerjob.json',
+		type: "POST",
+		data: $('#municipality-job-form').serializeArray(),
+		success: function(data, textStatus, jqXHR) {
+			if(data.status === 'success') {
+				$('#save-succeeded .message').html(data.message);
+				$('#save-succeeded').show();
+				$('#municipality-job-form').trigger("reset");
+				$('#driverslicense_select').hide();
+			} else {		        		
+				$('#save-failed .message').html(data.message);
+				$('#save-failed').show();
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			$('#save-failed .message').html(jqXHR.responseText);
+			$('#save-failed').show();
+		}
 	});
 }
