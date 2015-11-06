@@ -112,3 +112,27 @@
 .message {
 	margin-left: 4px;
 }
+
+.mgn-lft4px {
+	margin-left: 4px;
+}
+
+.mgn-lft8px {
+	margin-left: 8px;
+} 
+
+.mgn-rgt8px {
+	margin-right: 8px;
+}
+
+.mgn-top8px {
+	margin-top: 8px;
+}
+
+.float-rgt {
+	float: right;
+}
+
+th.overview {
+	font-size: 90%;
+}
