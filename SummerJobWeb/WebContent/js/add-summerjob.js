@@ -13,6 +13,21 @@ $(document).ready(function(){
 		});
 	}
 	
+	$('.remove-mentor').click(function (e) {
+		var mentorRow = $(this).parent().parent();
+		mentorRow.hide();
+		mentorRow.find('#mentor-firstname').val("");
+		mentorRow.find('#mentor-lastname').val("");
+		mentorRow.find('#mentor-phone').val("");
+		mentorRow.find('#mentor-email').val("");
+	});
+	
+	if ($('input[name*=hasDriversLicense]').is(':checked')) {
+		$('#driverslicense_select').show();
+	} else {
+		$('#driverslicense_select').hide();
+	}
+	
 	$('input[name*=hasDriversLicense]').click(function(e) {
 		$('#driverslicense_select').fadeToggle('slow');
 	});
@@ -37,6 +52,16 @@ $(document).ready(function(){
 			  e.preventDefault();
 			  saveNewBusinessSectorJob();
 		  }
+	});
+	
+	$('input.period-checkbox').click(function(e) {
+		var checkbox = $(this);
+		var tableRow = checkbox.parent().parent();
+		if (checkbox.is(':checked')) {
+			tableRow.find('.numberOfWorkersField').attr("required", true);
+		} else {
+			tableRow.find('.numberOfWorkersField').attr("required", false);
+		}
 	});
 	
 	$('#municipality-job-form').validator().on('submit', function (e) {
@@ -99,7 +124,14 @@ function saveNewBusinessSectorJob() {
 		    	$('#save-succeeded .message').html(data.message);
 		    	$('#save-succeeded').show();
 		    	$('#business-sector-add-job-form').trigger("reset");
-		    	$('#driverslicense_select').hide();
+		    	
+		    	if ($('input[name*=hasDriversLicense]').is(':checked')) {
+		    		$('#driverslicense_select').show();
+		    	} else {
+		    		$('#driverslicense_select').hide();
+		    	}
+		    	
+//		    	$('#driverslicense_select').hide();
 		    } else {		        		
 		    	$('#save-failed .message').html(data.message);
 		    	$('#save-failed').show();
@@ -126,7 +158,13 @@ function saveNewMunicipalityJob() {
 				$('#save-succeeded .message').html(data.message);
 				$('#save-succeeded').show();
 				$('#municipality-job-form').trigger("reset");
-				$('#driverslicense_select').hide();
+//				$('#driverslicense_select').hide();
+				
+				if ($('input[name*=hasDriversLicense]').is(':checked')) {
+					$('#driverslicense_select').show();
+				} else {
+					$('#driverslicense_select').hide();
+				}
 			} else {		        		
 				$('#save-failed .message').html(data.message);
 				$('#save-failed').show();
