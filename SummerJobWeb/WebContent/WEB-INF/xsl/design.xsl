@@ -53,13 +53,17 @@
 				        </div>
 				        <div id="navbar" class="navbar-collapse collapse">
 				          <ul class="nav navbar-nav"> 				        
-				            <li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job-application">ansÃ¶k om kommunalt sommarjobb</a></li>				           
+				            <li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job-application">ansök kommunalt</a></li>
+				            				           <li class=""><a href="{/document/requestinfo/contextpath}/business-sector-job">ansök näringsliv</a></li>
 				            <xsl:if test="user">
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job">LÃ¤gg till kommunalt sommarjobb</a></li>
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job">Add kommunalt</a></li>
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-business-sector-job">Add näringsliv</a></li>
+				            	
 				            </xsl:if>
 				            <xsl:if test="user/admin = 'true'">
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/summerjobs-overview">Ã–verblick</a></li>
-				            	
+				            
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/summerjobs-overview">Överblick</a></li>
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/matchjobs">Matcha</a></li>
 					            <li class="dropdown">
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin menu <span class="caret"></span></a>
 					              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
