@@ -128,7 +128,9 @@
 	margin-top: 8px;
 }
 
-.mgn-top4px
+.mgn-top4px {
+	margin-top: 4px;
+}
 
 .float-rgt {
 	float: right;
