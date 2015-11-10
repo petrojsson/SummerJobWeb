@@ -5,6 +5,9 @@
 
 
 $(document).ready(function(){
+	var geoAreaId = $('select#geoArea').val();
+	$('#geoarea-description_' + geoAreaId).show();
+	
 	if($('.add-mentor-btn')){
 		appendMentor();
 		$('.add-mentor-btn').click(function(e){
@@ -20,6 +23,12 @@ $(document).ready(function(){
 		mentorRow.find('#mentor-lastname').val("");
 		mentorRow.find('#mentor-phone').val("");
 		mentorRow.find('#mentor-email').val("");
+	});
+	
+	$('select#geoArea').change(function () {
+		var id = $(this).val();
+		$('[id^=geoarea-description_]').hide();
+		$('#geoarea-description_' + id).show();
 	});
 	
 	if ($('input[name*=hasDriversLicense]').is(':checked')) {
