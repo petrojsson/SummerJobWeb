@@ -37,8 +37,22 @@ $(document).ready(function(){
 		$('#driverslicense_select').hide();
 	}
 	
+	$('input[name*=noPreferedArea').click(function(e) {
+		if ($(this).is(':checked')) {
+			$('[id^=preferedArea]').attr("required", false);
+		} else {
+			$('[id^=preferedArea]').attr("required", true);
+		}
+	});
+	
 	$('input[name*=hasDriversLicense]').click(function(e) {
 		$('#driverslicense_select').fadeToggle('slow');
+		
+		if($('input[name*=hasDriversLicense]').is(':checked')) {
+			$('select[name*=driversLicenseType]').attr("required", true);
+		} else {
+			$('select[name*=driversLicenseType').attr("required", false);
+		}
 	});
 	
 	$('#approve-job-button').click(function(e) {
@@ -61,6 +75,13 @@ $(document).ready(function(){
 			  e.preventDefault();
 			  saveNewBusinessSectorJob();
 		  }
+	});
+	
+	$('#business-job-application-form').validator().on('submit', function (e) {
+		if (!e.isDefaultPrevented()) {
+			e.preventDefault();
+			saveBusinessJobApplication();
+		} 
 	});
 	
 	$('input.period-checkbox').click(function(e) {
@@ -88,6 +109,13 @@ $(document).ready(function(){
 			} else {
 				$('#period-errors').show();
 			}
+		} 
+	});
+	
+	$('#municipality-job-application-form').validator().on('submit', function (e) {
+		if (!e.isDefaultPrevented()) {
+			e.preventDefault();
+			saveMunicipalityJobApplication();
 		} 
 	});
 });
@@ -149,6 +177,29 @@ function saveNewBusinessSectorJob() {
 	});
 }
 
+function saveBusinessJobApplication() {
+	$('#save-succeeded').hide();
+	$('#save-failed').hide();
+	
+	$.ajax({
+		url: url + '/save/businessapplication.json',
+		type: "POST",
+		data: $('#business-job-application-form').serializeArray(),
+		success: function(data, textStatus, jqXHR) {
+		    if(data.status === 'success') {
+		    	window.location.href = "success?municipalityJobApplication=false";
+		    } else {		        		
+		    	$('#save-failed .message').html(data.message);
+		    	$('#save-failed').show();
+		    }
+		 },
+		 error: function(jqXHR, textStatus, errorThrown) {
+			 $('#save-failed .message').html(jqXHR.responseText);
+		     $('#save-failed').show();
+		 }
+	});
+}
+
 function saveNewMunicipalityJob() {
 	
 	$('#save-succeeded').hide();
@@ -166,6 +217,35 @@ function saveNewMunicipalityJob() {
 					$('#save-succeeded').show();
 				} else {
 					window.location.href = "success?municipalityJob=true";
+				}
+			} else {		        		
+				$('#save-failed .message').html(data.message);
+				$('#save-failed').show();
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			$('#save-failed .message').html(jqXHR.responseText);
+			$('#save-failed').show();
+		}
+	});
+}
+
+function saveMunicipalityJobApplication() {
+	$('#save-succeeded').hide();
+	$('#save-failed').hide();
+	
+	$.ajax({
+		url: url + '/save/municipalityapplication.json',
+		type: "POST",
+		data: $('#municipality-job-application-form').serializeArray(),
+		success: function(data, textStatus, jqXHR) {
+			if(data.status === 'success') {
+				var jobId = $('input[name*=jobId]').val();
+				if (jobId) {
+					$('#save-succeeded .message').html(data.message);
+					$('#save-succeeded').show();
+				} else {
+					window.location.href = "success?municipalityJobApplication=true";
 				}
 			} else {		        		
 				$('#save-failed .message').html(data.message);
