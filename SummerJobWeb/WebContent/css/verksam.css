@@ -136,3 +136,24 @@
 th.overview {
 	font-size: 90%;
 }
+
+.tr {
+    font-weight: bold;
+}
+
+.tr, .tt, .tq {
+    float: left;
+    width: 25%;
+    font-size: 14px;
+    line-height: 25px;
+    overflow: hidden;
+    min-height: 25px;
+}
+
+.break {
+	clear:both;	
+}
+
+.bold{
+	font-weight: bold;
+}

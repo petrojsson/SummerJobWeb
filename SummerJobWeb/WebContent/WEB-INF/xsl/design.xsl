@@ -152,6 +152,7 @@
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/jquery.ui.datepicker.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/jquery.ui.datepicker-sv.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/validator.min.js"></script>
+			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/match-summerjob.js"></script>
 		</body>			
 	<xsl:text disable-output-escaping="yes"><![CDATA[</html>]]></xsl:text>
 	</xsl:template>
