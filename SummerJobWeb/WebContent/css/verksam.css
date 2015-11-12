@@ -160,3 +160,8 @@ th.overview {
 .bold{
 	font-weight: bold;
 }
+
+table#periods-table {
+	border-collapse: separate;
+    border-spacing: 4px;
+}

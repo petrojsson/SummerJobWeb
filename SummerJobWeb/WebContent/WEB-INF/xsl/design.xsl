@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-	<xsl:output method="html" indent="yes" encoding="ISO-8859-1"/>
+	<xsl:output method="html" indent="yes" encoding="UTF-8"/>
 	
 	<xsl:include href="classpath://se/unlogic/hierarchy/core/xsl/CommonCoreTemplates.xsl" />
 	<xsl:include href="classpath://se/unlogic/hierarchy/core/xsl/Errors.en.xsl" />
@@ -53,16 +53,16 @@
 				        </div>
 				        <div id="navbar" class="navbar-collapse collapse">
 				          <ul class="nav navbar-nav"> 				        
-				            <li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job-application">ansök kommunalt</a></li>
-				            				           <li class=""><a href="{/document/requestinfo/contextpath}/business-sector-job">ansök näringsliv</a></li>
+				            <li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job-application">ansÃ¶k kommunalt</a></li>
+				            				           <li class=""><a href="{/document/requestinfo/contextpath}/business-sector-job">ansÃ¶k nÃ¤ringsliv</a></li>
 				            <xsl:if test="user">
 				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job">Add kommunalt</a></li>
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-business-sector-job">Add näringsliv</a></li>
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-business-sector-job">Add nÃ¤ringsliv</a></li>
 				            	
 				            </xsl:if>
 				            <xsl:if test="user/admin = 'true'">
 				            
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/summerjobs-overview">Överblick</a></li>
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/summerjobs-overview">Ã–verblick</a></li>
 				            	<li class=""><a href="{/document/requestinfo/contextpath}/matchjobs">Matcha</a></li>
 					            <li class="dropdown">
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin menu <span class="caret"></span></a>
@@ -153,6 +153,7 @@
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/jquery.ui.datepicker-sv.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/validator.min.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/match-summerjob.js"></script>
+			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/periodsadmin.js"></script>
 		</body>			
 	<xsl:text disable-output-escaping="yes"><![CDATA[</html>]]></xsl:text>
 	</xsl:template>
