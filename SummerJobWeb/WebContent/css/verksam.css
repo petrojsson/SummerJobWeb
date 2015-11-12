@@ -101,7 +101,6 @@
 
 
 #driverslicense_select {
-	display: none;
 	margin-bottom: 8px;
 }
 
@@ -127,6 +126,10 @@
 
 .mgn-top8px {
 	margin-top: 8px;
+}
+
+.mgn-top4px {
+	margin-top: 4px;
 }
 
 .float-rgt {

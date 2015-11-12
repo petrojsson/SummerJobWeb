@@ -5,6 +5,9 @@
 
 
 $(document).ready(function(){
+	var geoAreaId = $('select#geoArea').val();
+	$('#geoarea-description_' + geoAreaId).show();
+	
 	if($('.add-mentor-btn')){
 		appendMentor();
 		$('.add-mentor-btn').click(function(e){
@@ -13,23 +16,58 @@ $(document).ready(function(){
 		});
 	}
 	
+	$('.remove-mentor').click(function (e) {
+		var mentorRow = $(this).parent().parent();
+		mentorRow.hide();
+		mentorRow.find('#mentor-firstname').val("");
+		mentorRow.find('#mentor-lastname').val("");
+		mentorRow.find('#mentor-phone').val("");
+		mentorRow.find('#mentor-email').val("");
+	});
+	
+	$('select#geoArea').change(function () {
+		var id = $(this).val();
+		$('[id^=geoarea-description_]').hide();
+		$('#geoarea-description_' + id).show();
+	});
+	
+	if ($('input[name*=hasDriversLicense]').is(':checked')) {
+		$('#driverslicense_select').show();
+	} else {
+		$('#driverslicense_select').hide();
+	}
+	
+	$('input[name*=noPreferedArea').click(function(e) {
+		if ($(this).is(':checked')) {
+			$('[id^=preferedArea]').attr("required", false);
+		} else {
+			$('[id^=preferedArea]').attr("required", true);
+		}
+	});
+	
 	$('input[name*=hasDriversLicense]').click(function(e) {
 		$('#driverslicense_select').fadeToggle('slow');
+		
+		if($('input[name*=hasDriversLicense]').is(':checked')) {
+			$('select[name*=driversLicenseType]').attr("required", true);
+		} else {
+			$('select[name*=driversLicenseType').attr("required", false);
+		}
 	});
 	
-	$('#approve-businessjob-button').click(function(e) {
+	$('#approve-job-button').click(function(e) {
 		e.preventDefault();
-		manageBusinessJob('/approvesummerjob.json');
+		manageJob('/approvesummerjob.json');
 	});
 	
-	$('#disapprove-businessjob-button').click(function(e) {
+	$('#disapprove-job-button').click(function(e) {
 		e.preventDefault();
-		manageBusinessJob('/disapprovesummerjob.json');
+		manageJob('/disapprovesummerjob.json');
 	});
 	
-	$('#mark-businessjob-as-initiated-button').click(function(e) {
+	$('#mark-job-as-initiated-button').click(function(e) {
 		e.preventDefault();
-		manageBusinessJob('/initiatesummerjob.json');
+		manageJob('/initiatesummerjob.json');
 	});
 	
 	$('#business-sector-add-job-form').validator().on('submit', function (e) {
@@ -37,6 +75,23 @@ $(document).ready(function(){
 			  e.preventDefault();
 			  saveNewBusinessSectorJob();
 		  }
+	});
+	
+	$('#business-job-application-form').validator().on('submit', function (e) {
+		if (!e.isDefaultPrevented()) {
+			e.preventDefault();
+			saveBusinessJobApplication();
+		} 
+	});
+	
+	$('input.period-checkbox').click(function(e) {
+		var checkbox = $(this);
+		var tableRow = checkbox.parent().parent();
+		if (checkbox.is(':checked')) {
+			tableRow.find('.numberOfWorkersField').attr("required", true);
+		} else {
+			tableRow.find('.numberOfWorkersField').attr("required", false);
+		}
 	});
 	
 	$('#municipality-job-form').validator().on('submit', function (e) {
@@ -54,6 +109,13 @@ $(document).ready(function(){
 			} else {
 				$('#period-errors').show();
 			}
+		} 
+	});
+	
+	$('#municipality-job-application-form').validator().on('submit', function (e) {
+		if (!e.isDefaultPrevented()) {
+			e.preventDefault();
+			saveMunicipalityJobApplication();
 		} 
 	});
 });
@@ -96,10 +158,36 @@ function saveNewBusinessSectorJob() {
 		data: $('#business-sector-add-job-form').serializeArray(),
 		success: function(data, textStatus, jqXHR) {
 		    if(data.status === 'success') {
-		    	$('#save-succeeded .message').html(data.message);
-		    	$('#save-succeeded').show();
-		    	$('#business-sector-add-job-form').trigger("reset");
-		    	$('#driverslicense_select').hide();
+		    	var jobId = $('input[name*=jobId]').val();
+		    	if (jobId) {
+					$('#save-succeeded .message').html(data.message);
+					$('#save-succeeded').show();
+				} else {
+					window.location.href = "success?municipalityJob=false";
+				}
+		    } else {		        		
+		    	$('#save-failed .message').html(data.message);
+		    	$('#save-failed').show();
+		    }
+		 },
+		 error: function(jqXHR, textStatus, errorThrown) {
+			 $('#save-failed .message').html(jqXHR.responseText);
+		     $('#save-failed').show();
+		 }
+	});
+}
+
+function saveBusinessJobApplication() {
+	$('#save-succeeded').hide();
+	$('#save-failed').hide();
+	
+	$.ajax({
+		url: url + '/save/businessapplication.json',
+		type: "POST",
+		data: $('#business-job-application-form').serializeArray(),
+		success: function(data, textStatus, jqXHR) {
+		    if(data.status === 'success') {
+		    	window.location.href = "success?municipalityJobApplication=false";
 		    } else {		        		
 		    	$('#save-failed .message').html(data.message);
 		    	$('#save-failed').show();
@@ -123,10 +211,13 @@ function saveNewMunicipalityJob() {
 		data: $('#municipality-job-form').serializeArray(),
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
-				$('#save-succeeded .message').html(data.message);
-				$('#save-succeeded').show();
-				$('#municipality-job-form').trigger("reset");
-				$('#driverslicense_select').hide();
+				var jobId = $('input[name*=jobId]').val();
+				if (jobId) {
+					$('#save-succeeded .message').html(data.message);
+					$('#save-succeeded').show();
+				} else {
+					window.location.href = "success?municipalityJob=true";
+				}
 			} else {		        		
 				$('#save-failed .message').html(data.message);
 				$('#save-failed').show();
@@ -139,7 +230,36 @@ function saveNewMunicipalityJob() {
 	});
 }
 
-function manageBusinessJob(urlPart) {
+function saveMunicipalityJobApplication() {
+	$('#save-succeeded').hide();
+	$('#save-failed').hide();
+	
+	$.ajax({
+		url: url + '/save/municipalityapplication.json',
+		type: "POST",
+		data: $('#municipality-job-application-form').serializeArray(),
+		success: function(data, textStatus, jqXHR) {
+			if(data.status === 'success') {
+				var jobId = $('input[name*=jobId]').val();
+				if (jobId) {
+					$('#save-succeeded .message').html(data.message);
+					$('#save-succeeded').show();
+				} else {
+					window.location.href = "success?municipalityJobApplication=true";
+				}
+			} else {		        		
+				$('#save-failed .message').html(data.message);
+				$('#save-failed').show();
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			$('#save-failed .message').html(jqXHR.responseText);
+			$('#save-failed').show();
+		}
+	});
+}
+
+function manageJob(urlPart, message) {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
@@ -151,7 +271,7 @@ function manageBusinessJob(urlPart) {
 			if(data.status === 'success') {
 				$('#save-succeeded .message').html(data.message);
 				$('#save-succeeded').show();
-				manageBusinessJobButtons(urlPart);
+				manageJobButtons(urlPart);
 			} else {		 
 				$('#save-failed .message').html(data.message);
 				$('#save-failed').show();
@@ -164,16 +284,16 @@ function manageBusinessJob(urlPart) {
 	});
 }
 
-function manageBusinessJobButtons(urlPart) {
+function manageJobButtons(urlPart) {
 	switch (urlPart) {
 	case '/approvesummerjob.json':
-		$('#disapprove-businessjob-button').attr("disabled", false);
-		$('#approve-businessjob-button').attr("disabled", true);
+		$('#disapprove-job-button').attr("disabled", false);
+		$('#approve-job-button').attr("disabled", true);
 		break;
 
 	case '/disapprovesummerjob.json':
-		$('#approve-businessjob-button').attr("disabled", false);
-		$('#disapprove-businessjob-button').attr("disabled", true);
+		$('#approve-job-button').attr("disabled", false);
+		$('#disapprove-job-button').attr("disabled", true);
 		break;
 	}
 }
