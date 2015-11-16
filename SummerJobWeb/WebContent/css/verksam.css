@@ -165,3 +165,14 @@ table#periods-table {
 	border-collapse: separate;
     border-spacing: 4px;
 }
+
+.application-row {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.application-row:hover {
+	background-color: #e8e8e8; 
+/* 	opacity: 0.8; */
+	cursor: pointer;
+}

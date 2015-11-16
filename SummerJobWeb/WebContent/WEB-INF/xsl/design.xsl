@@ -154,6 +154,7 @@
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/validator.min.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/match-summerjob.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/periodsadmin.js"></script>
+			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/applications.js"></script>
 		</body>			
 	<xsl:text disable-output-escaping="yes"><![CDATA[</html>]]></xsl:text>
 	</xsl:template>
