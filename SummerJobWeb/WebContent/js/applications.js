@@ -93,12 +93,18 @@ function saveBusinessJobApplication() {
 		type: "POST",
 		data: $('#business-job-application-form').serializeArray(),
 		success: function(data, textStatus, jqXHR) {
-		    if(data.status === 'success') {
-		    	window.location.href = "success?municipalityJobApplication=false";
-		    } else {		        		
-		    	$('#save-failed .message').html(data.message);
-		    	$('#save-failed').show();
-		    }
+			if(data.status === 'success') {
+				var appId = $('input[name*=appId]').val();
+				if (appId) {
+					$('#save-succeeded .message').html(data.message);
+					$('#save-succeeded').show();
+				} else {
+					window.location.href = "success?municipalityJobApplication=false";
+				}
+			} else {		        		
+				$('#save-failed .message').html(data.message);
+				$('#save-failed').show();
+			}
 		 },
 		 error: function(jqXHR, textStatus, errorThrown) {
 			 $('#save-failed .message').html(jqXHR.responseText);
