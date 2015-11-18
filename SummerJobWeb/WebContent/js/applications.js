@@ -120,7 +120,8 @@ function manageApplication(urlPart, message) {
 	$.ajax({
 		url: url + urlPart,
 		type: "POST",
-		data: { appId : $('#appIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val() },
+		data: { appId : $('#appIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val(), 
+			ranking : $("select[name='ranking']").val() },
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
 				$('#save-succeeded .message').html(data.message);
