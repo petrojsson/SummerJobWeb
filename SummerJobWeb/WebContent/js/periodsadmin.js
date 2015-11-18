@@ -12,7 +12,63 @@ $(document).ready(function() {
 		console.log( $('#periods-list-form').serializeArray());
 		saveChanges();
 	});
+	
+	$(document).on('submit','#salary-list-form', function(e) {
+		e.preventDefault();
+		console.log(e);
+		saveSalary();
+	});
+	
+	$(document).on('submit','#place-for-information-form', function(e) {
+		e.preventDefault();
+		console.log(e);
+		savePlaceForInformation();
+	});
 });
+
+function saveSalary() {
+	$.ajax({
+		url : url + '/save/salary.json',
+		type: "POST",
+		data: $('#salary-list-form').serialize(),
+		success: function(data, textStatus, jqXHR) {
+		    if(data.status === 'success') {
+		    	$('#save-salary-failed').hide();
+		    	$('#save-salary-succeeded .message').html(data.message);
+				$('#save-salary-succeeded').show();
+		    } else {
+		    	$('#save-salary-succeeded').hide();
+		    	$('#save-salary-failed .message').html(data.message);
+				$('#save-salary-failed').show();
+		    }
+		 },
+		 error: function(jqXHR, textStatus, errorThrown) {
+			 console.log(textStatus);  
+		 }
+	});
+}
+
+function savePlaceForInformation() {
+	$.ajax({
+		url : url + '/save/placeforinformation.json',
+		type: "POST",
+		data: $('#place-for-information-form').serialize(),
+		success: function(data, textStatus, jqXHR) {
+		    if(data.status === 'success') {
+		    	$('#save-place-failed').hide();
+		    	$('#save-place-succeeded .message').html(data.message);
+				$('#save-place-succeeded').show();
+		    } else {
+		    	$('#save-place-succeeded').hide();
+		    	$('#save-place-failed .message').html(data.message);
+				$('#save-place-failed').show();
+		    }
+		 },
+		 error: function(jqXHR, textStatus, errorThrown) {
+			 console.log(textStatus);  
+		 }
+	});
+}
 
 function saveChanges() {
 	$.ajax({
@@ -20,11 +76,15 @@ function saveChanges() {
 		type: "POST",
 		data: $('#periods-list-form').serialize(),
 		success: function(data, textStatus, jqXHR) {
-		    if(data.status === 'success') {
-		    	
-		    } else {		        		
-		        alert(data);
-		    }
+			 if(data.status === 'success') {
+			    $('#save-period-failed').hide();
+			    $('#save-period-succeeded .message').html(data.message);
+				$('#save-period-succeeded').show();
+			 } else {
+			    $('#save-period-succeeded').hide();
+			    $('#save-period-failed .message').html(data.message);
+				$('#save-period-failed').show();
+			 }
 		 },
 		 error: function(jqXHR, textStatus, errorThrown) {
 			 console.log(textStatus);  

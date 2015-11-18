@@ -176,3 +176,24 @@ table#periods-table {
 /* 	opacity: 0.8; */
 	cursor: pointer;
 }
+
+table#salary-table {
+	border-collapse: separate;
+    border-spacing: 4px;
+}
+
+#save-period-failed, #save-period-succeeded {
+	display: none;
+	margin-top: 16px;
+}
+
+#save-place-failed, #save-place-succeeded {
+	display: none;
+	margin-top: 16px;
+}
+
+#save-salary-failed, #save-salary-succeeded {
+	display: none;
+	margin-left: 16px;
+	margin-right: 16px;
+}
