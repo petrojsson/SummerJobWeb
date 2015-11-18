@@ -49,47 +49,16 @@ $(document).ready(function(){
 	        }
 	    });
 	});
-	
-	/*$(document).on("submit",'#remove-workers-form',function(e){
-		event.preventDefault();
-		console.log("Removing application assigned to job");
-		console.log(this);
-		
-		console.log($(this).serialize());
-		 
-		 var removeApp =$(this).closest('.assigned-application'); 
-	    $.ajax(
-	    {
-	        url : url+'/remove-worker.json',
-	        type: "POST",
-	        data :  $(this).serialize(),
-	        success:function(data, textStatus, jqXHR) 
-	        {
-	        	console.log(data);
-	        	if(data.status==='success'){
-	        		console.log('application assignments was removed');
-	        		location.reload(true);
-	        	}else{
-	        		console.log(data);
-	        		alert(data.message);
-	        	}
-	        },
-	        error: function(jqXHR, textStatus, errorThrown) 
-	        {
-	            console.log(textStatus);  
-	        }
-	    });
-	});*/
-	
+
 	$('a[name="show-more"]').click(function(){
-		console.log('click');
+
 		$(this).closest('.candidate').find('.collapse').collapse('show');
 		$(this).hide();
 		$(this).parent().find('a[name="show-less"]').show();
 	});
 	
 	$('a[name="show-less"]').click(function(){
-		console.log('click');
+		
 		$(this).closest('.candidate').find('.collapse').collapse('hide');
 		$(this).hide();
 		$(this).parent().find('a[name="show-more"]').show();
