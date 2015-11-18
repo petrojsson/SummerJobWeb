@@ -145,8 +145,10 @@
 		</div>
 
 
-			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<!-- 			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> -->
+<!-- 			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script> -->
+			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/jquery-2.1.4.min.js"></script>
+			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/jquery-ui.min.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/bootstrap.min.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/add-summerjob.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/jquery.ui.datepicker.js"></script>
@@ -155,6 +157,7 @@
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/match-summerjob.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/periodsadmin.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/applications.js"></script>
+			
 		</body>			
 	<xsl:text disable-output-escaping="yes"><![CDATA[</html>]]></xsl:text>
 	</xsl:template>
