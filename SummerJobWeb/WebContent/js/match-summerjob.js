@@ -85,14 +85,14 @@ $(document).ready(function(){
 		console.log('click');
 		$(this).closest('.candidate').find('.collapse').collapse('show');
 		$(this).hide();
-		$('a[name="show-less"]').show();
+		$(this).parent().find('a[name="show-less"]').show();
 	});
 	
 	$('a[name="show-less"]').click(function(){
 		console.log('click');
 		$(this).closest('.candidate').find('.collapse').collapse('hide');
 		$(this).hide();
-		$('a[name="show-more"]').show();
+		$(this).parent().find('a[name="show-more"]').show();
 	});
 	
 	
