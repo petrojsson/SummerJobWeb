@@ -213,7 +213,8 @@ function manageJob(urlPart, message) {
 	$.ajax({
 		url: url + urlPart,
 		type: "POST",
-		data: { jobId : $('#jobIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val() },
+		data: { jobId : $('#jobIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val(), 
+			descriptionForEmploymentPapers : $("textarea[name='description-employment-papers']").val() },
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
 				$('#save-succeeded .message').html(data.message);
