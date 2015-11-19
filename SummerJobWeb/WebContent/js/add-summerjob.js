@@ -8,13 +8,27 @@ $(document).ready(function(){
 	var geoAreaId = $('select#geoArea').val();
 	$('#geoarea-description_' + geoAreaId).show();
 	
-	if($('.add-mentor-btn')){
-		appendMentor();
-		$('.add-mentor-btn').click(function(e){
-			e.preventDefault();
-			appendMentor();
-		});
-	}
+//	if($('.add-mentor-btn')){
+//		appendMentor(periodDiv);
+//		$('.add-mentor-btn').click(function(e){
+//			var periodDiv = $(this).parent();
+//			e.preventDefault();
+//			appendMentor(periodDiv);
+//		});
+//	}
+	
+	$('.add-municipality-mentor-btn').click(function(e){
+		e.preventDefault();
+		var periodId = $(this).parent().parent().attr('id');
+		var id = periodId.split('_')[1];
+		var mentorDiv = $(this).parent();
+		appendMunicipalityMentor(mentorDiv, id);
+	});
+	
+	$('.add-business-mentor-btn').click(function(e){
+		e.preventDefault();
+		appendBusinessMentor();
+	});
 	
 	$("input.numberValidation").keydown(function (e) {
         // Allow: backspace, delete, tab, escape, enter and .
@@ -38,11 +52,13 @@ $(document).ready(function(){
 	
 	$('.remove-mentor').click(function (e) {
 		var mentorRow = $(this).parent().parent();
+//		mentorRow.remove();
+//		$(mentorRow).hide();
 		mentorRow.hide();
-		mentorRow.find('#mentor-firstname').val("");
-		mentorRow.find('#mentor-lastname').val("");
-		mentorRow.find('#mentor-phone').val("");
-		mentorRow.find('#mentor-email').val("");
+//		mentorRow.find('#mentor-firstname').val("");
+//		mentorRow.find('#mentor-lastname').val("");
+//		mentorRow.find('#mentor-phone').val("");
+//		mentorRow.find('#mentor-email').val("");
 	});
 	
 	$('select#geoArea').change(function () {
@@ -91,22 +107,28 @@ $(document).ready(function(){
 	
 	$('input.period-checkbox').click(function(e) {
 		var checkbox = $(this);
-		var tableRow = checkbox.parent().parent();
+		var row = checkbox.parent().parent();
 		if (checkbox.is(':checked')) {
-			tableRow.find('.numberOfWorkersField').attr("required", true);
+			$(row).find('.numberOfWorkersField').attr("required", true);
+			$(row).find('.numberOfWorkersField').attr("disabled", false);
 		} else {
-			tableRow.find('.numberOfWorkersField').attr("required", false);
+			$(row).find('.numberOfWorkersField').attr("required", false);
+			$(row).find('.numberOfWorkersField').attr("disabled", true);
 		}
+		$(row).parent().find('.add-mentor-div').toggleClass('hidden');
 	});
 	
 	$('#municipality-job-form').validator().on('submit', function (e) {
+		console.log("$('#municipality-job-form').validator()");
 		if (!e.isDefaultPrevented()) {
 			e.preventDefault();
 			
 			var periodsChecked = 0;
-			$('#period-table').find('input[type="checkbox"]:checked').each(function () {
+			$('#periods-group').find('input[type="checkbox"]:checked').each(function () {
 				periodsChecked++;
 			});
+			
+			console.log("periodsChecked: " + periodsChecked);
 			
 			if (periodsChecked > 0) {
 				$('#period-errors').hide();
@@ -119,12 +141,25 @@ $(document).ready(function(){
 	
 });
 
-function appendMentor(){
-	var mentorTemplate = $('#mentor-template').clone();			
+function appendMunicipalityMentor(parent, periodId){
+	var mentorTemplate = $('#mentor-template').clone();	
 	var uuid = generateUUID();
 	mentorTemplate.find('input').each(function(){
 		var newName = $(this).attr('name');
-		newName=newName+'_'+uuid;
+		newName=newName + '_' + uuid + '_' + periodId;
+		console.log(newName);
+		$(this).attr('name', newName);
+	});
+	mentorTemplate.find('.collapse').addClass('in');
+	$(parent).find('#mentors-wrapper').append($(mentorTemplate).html());
+}
+
+function appendBusinessMentor(){
+	var mentorTemplate = $('#mentor-template').clone();	
+	var uuid = generateUUID();
+	mentorTemplate.find('input').each(function(){
+		var newName = $(this).attr('name');
+		newName=newName + '_' + uuid;
 		$(this).attr('name', newName);
 	});
 	mentorTemplate.find('.collapse').addClass('in');
@@ -177,7 +212,7 @@ function saveNewBusinessSectorJob() {
 }
 
 function saveNewMunicipalityJob() {
-	
+	console.log("saveNewMunicipalityJob");
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	

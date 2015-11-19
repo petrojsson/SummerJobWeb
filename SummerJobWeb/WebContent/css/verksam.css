@@ -197,3 +197,11 @@ table#salary-table {
 	margin-left: 16px;
 	margin-right: 16px;
 }
+
+.period-div {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 8px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
