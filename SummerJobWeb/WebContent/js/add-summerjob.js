@@ -50,15 +50,14 @@ $(document).ready(function(){
         }
     });
 	
-	$('.remove-mentor').click(function (e) {
-		var mentorRow = $(this).parent().parent();
-//		mentorRow.remove();
-//		$(mentorRow).hide();
+	$('div.remove-mentor').click(function (e) {
+		console.log("Försöker ta bort en handledare..");
+		var mentorRow = $(this).parent();
+		mentorRow.find('#mentor-firstname').val("");
+		mentorRow.find('#mentor-lastname').val("");
+		mentorRow.find('#mentor-phone').val("");
+		mentorRow.find('#mentor-email').val("");
 		mentorRow.hide();
-//		mentorRow.find('#mentor-firstname').val("");
-//		mentorRow.find('#mentor-lastname').val("");
-//		mentorRow.find('#mentor-phone').val("");
-//		mentorRow.find('#mentor-email').val("");
 	});
 	
 	$('select#geoArea').change(function () {
@@ -103,6 +102,12 @@ $(document).ready(function(){
 			  e.preventDefault();
 			  saveNewBusinessSectorJob();
 		  }
+	});
+	
+	$('input.period-checkbox:checked').each(function() {
+		var checkbox = $(this);
+		var row = checkbox.parent().parent();
+		$(row).parent().find('.add-mentor-div').removeClass('hidden');
 	});
 	
 	$('input.period-checkbox').click(function(e) {
