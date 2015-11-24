@@ -182,6 +182,11 @@ table#salary-table {
     border-spacing: 4px;
 }
 
+table#accounting-entries-table {
+	border-collapse: separate;
+    border-spacing: 4px;
+}
+
 #save-period-failed, #save-period-succeeded {
 	display: none;
 	margin-top: 16px;
@@ -193,6 +198,12 @@ table#salary-table {
 }
 
 #save-salary-failed, #save-salary-succeeded {
+	display: none;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+
+#save-accounting-failed, #save-accounting-succeeded {
 	display: none;
 	margin-left: 16px;
 	margin-right: 16px;

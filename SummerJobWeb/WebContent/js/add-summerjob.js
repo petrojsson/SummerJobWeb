@@ -254,7 +254,8 @@ function manageJob(urlPart, message) {
 		url: url + urlPart,
 		type: "POST",
 		data: { jobId : $('#jobIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val(), 
-			descriptionForEmploymentPapers : $("textarea[name='description-employment-papers']").val() },
+			descriptionForEmploymentPapers : $("textarea[name='description-employment-papers']").val(),
+			descriptionForCallPapers : $("textarea[name='description-call-papers']").val() },
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
 				$('#save-succeeded .message').html(data.message);

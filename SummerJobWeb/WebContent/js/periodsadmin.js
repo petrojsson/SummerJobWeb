@@ -19,6 +19,12 @@ $(document).ready(function() {
 		saveSalary();
 	});
 	
+	$(document).on('submit','#accounting-entries-list-form', function(e) {
+		e.preventDefault();
+		console.log(e);
+		saveAccountingEntries();
+	});
+	
 	$(document).on('submit','#place-for-information-form', function(e) {
 		e.preventDefault();
 		console.log(e);
@@ -40,6 +46,28 @@ function saveSalary() {
 		    	$('#save-salary-succeeded').hide();
 		    	$('#save-salary-failed .message').html(data.message);
 				$('#save-salary-failed').show();
+		    }
+		 },
+		 error: function(jqXHR, textStatus, errorThrown) {
+			 console.log(textStatus);  
+		 }
+	});
+}
+
+function saveAccountingEntries() {
+	$.ajax({
+		url : url + '/save/accountingentries.json',
+		type: "POST",
+		data: $('#accounting-entries-list-form').serialize(),
+		success: function(data, textStatus, jqXHR) {
+		    if(data.status === 'success') {
+		    	$('#save-accounting-failed').hide();
+		    	$('#save-accounting-succeeded .message').html(data.message);
+				$('#save-accounting-succeeded').show();
+		    } else {
+		    	$('#save-accounting-succeeded').hide();
+		    	$('#save-accounting-failed .message').html(data.message);
+				$('#save-accounting-failed').show();
 		    }
 		 },
 		 error: function(jqXHR, textStatus, errorThrown) {
