@@ -17,6 +17,27 @@ $(document).ready(function(){
 //		});
 //	}
 	
+	$( "input[name*='startDate']" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			$("input[name*='endDate']").datepicker("option", "minDate", selected);
+			$("input[name*='lastApplicationDay']").datepicker("option", "maxDate", selected);
+		},
+	});
+	
+	$( "input[name*='endDate']" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			$("input[name*='startDate']").datepicker("option", "maxDate", selected);
+		},
+	});
+	
+	$( "input[name*='lastApplicationDay']" ).datepicker({
+		minDate: new Date(),
+	});			
+	
 	$('.add-municipality-mentor-btn').click(function(e){
 		e.preventDefault();
 		var periodId = $(this).parent().parent().attr('id');

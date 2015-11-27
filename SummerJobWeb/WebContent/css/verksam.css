@@ -216,3 +216,10 @@ table#accounting-entries-table {
 	margin-top: 4px;
 	margin-bottom: 4px;
 }
+
+.matched-application {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 4px 8px 4px 8px;
+	margin-top: 8px;
+}

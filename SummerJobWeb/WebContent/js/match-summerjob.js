@@ -4,8 +4,31 @@
 
 $(document).ready(function(){
 	
-	$(document).on("submit",'form[name="match-worker"]',function(e){
-		event.preventDefault();
+	$('.timeForInfo').datetimepicker({
+		currentText: 'Nu',
+		closeText: 'OK',
+		timeText: 'Tid',
+		controlType: 'select',
+		oneLine: true,
+		minDate: new Date(),
+		stepMinute: 5,
+	});
+
+	
+	$('button.save-personal-mentor').click(function(e) {
+		e.preventDefault();
+		var jobId = $('#job-id').val();
+		var applicationId = $(this).attr('id');
+		var mentorId = $('#personal-mentor_' + applicationId).val();
+		savePersonalMentor(jobId, applicationId, mentorId);
+	});
+	
+	if ($('#availableSlotsToMatch').html() == '0') {
+		$('.set-matched-btn').attr('disabled', true);
+	}
+	
+	$(document).on("submit", 'form[name="match-worker"]', function(e){
+		e.preventDefault();
 		
 		console.log("Adding application to job");
 		
@@ -15,8 +38,7 @@ $(document).ready(function(){
 		console.log(jobId);
 		console.log(applicationId);
 		
-		var candidate =$(this).closest('.candidate');
-		
+//		var candidate = $(this).closest('.candidate');
 		
 	    $.ajax(
 	    {
@@ -29,14 +51,14 @@ $(document).ready(function(){
 	        	if(data.status==='success'){
 	        		console.log('application matching was successful');	        		
 	        		
-	        		var temp = $('#matched-application-template').find('.matched-application').clone();
-	        		console.log($(candidate).find('.name').text());
-	        		$(temp).find('.name').text($(candidate).find('.name').text());
-	        		$(temp).find('.social-number').text($(candidate).find('.social-number').text());	        		
-	        		$(temp).find('input[name="application-id"]').val(applicationId);
-	        		$('#matched-applications-container').append(temp);
-	        		candidate.fadeOut('slow');
-	        		candidate.remove();
+//	        		var temp = $('#matched-application-template').find('.matched-application').clone();
+//	        		console.log($(candidate).find('.name').text());
+//	        		$(temp).find('.name').text($(candidate).find('.name').text());
+//	        		$(temp).find('.social-number').text($(candidate).find('.social-number').text());	        		
+//	        		$(temp).find('input[name="application-id"]').val(applicationId);
+//	        		$('#matched-applications-container').append(temp);
+//	        		candidate.remove();
+	        		location.reload(true);
 	        		
 	        	}else{
 	        		console.log(data);
@@ -63,7 +85,6 @@ $(document).ready(function(){
 		$(this).hide();
 		$(this).parent().find('a[name="show-more"]').show();
 	});
-	
 	
 	$(document).on("click",'.remove-workers-btn',function(e){
 		event.preventDefault();
@@ -164,3 +185,24 @@ $(document).ready(function(){
 	    });
 	});
 });
+
+function savePersonalMentor(jobId, applicationId, mentorId) {
+	 $.ajax({
+    	url : url + '/save/personalmentor.json',
+        type: "POST",
+        data: { jobId : jobId, appId : applicationId, mentorId : mentorId },
+        success: function(data, textStatus, jqXHR) {
+        	console.log(data);
+        	if(data.status === 'success'){
+        		console.log('Saved personal mentor.');
+        		location.reload(true);
+        	}else{
+        		console.log(data);
+        		alert(data.message);
+        	}
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);  
+        }
+    });
+}

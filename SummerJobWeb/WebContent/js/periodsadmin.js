@@ -1,4 +1,39 @@
 $(document).ready(function() {
+	
+	$( "input[name*='new-period-startdate']" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			$("input[name*='new-period-enddate']").datepicker("option", "minDate", selected);
+		},
+	});
+	
+	$( "input[name*='new-period-enddate']" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			$("input[name*='new-period-startdate']").datepicker("option", "maxDate", selected);
+		},
+	});		
+	
+	$( "input.period_startdate" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			var endDate = $(this).parent().parent().find('input.period_enddate');
+			$(endDate).datepicker("option", "minDate", selected);
+		},
+	});
+	
+	$( "input.period_enddate" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			var startDate = $(this).parent().parent().find('input.period_startdate');
+			$(startDate).datepicker("option", "maxDate", selected);
+		},
+	});		
+	
 	$(document).on('submit','#new-period-form', function(e) {
 		e.preventDefault();
 		console.log(e);

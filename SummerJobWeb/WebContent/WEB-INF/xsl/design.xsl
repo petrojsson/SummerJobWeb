@@ -28,6 +28,9 @@
 				<link rel="stylesheet" href="{/document/requestinfo/contextpath}/css/bootstrap.min.css"/>
 				<link rel="stylesheet" href="{/document/requestinfo/contextpath}/css/bootstrap-theme.min.css"/>
 		    	<link rel="stylesheet" href="{/document/requestinfo/contextpath}/css/verksam.css"/>
+		    	<link rel="stylesheet" href="{/document/requestinfo/contextpath}/css/jquery-ui-1.8.7.custom.css"/>
+		    	<link rel="stylesheet" href="{/document/requestinfo/contextpath}/css/jquery-ui-timepicker-addon.css"/>
+		    	
 		    	
 				<xsl:apply-templates select="scripts/script[src != '/static/global/jquery/jquery.js' and  src != '/static/global/jquery/jquery-ui.js']"/>		 
 			    <xsl:apply-templates select="links/link"/>
@@ -157,6 +160,7 @@
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/match-summerjob.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/periodsadmin.js"></script>
 			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/applications.js"></script>
+			<script type="text/javascript" src="{/document/requestinfo/contextpath}/js/jquery-ui-timepicker-addon.js"></script>
 			
 		</body>			
 	<xsl:text disable-output-escaping="yes"><![CDATA[</html>]]></xsl:text>
