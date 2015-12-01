@@ -13,14 +13,40 @@ $(document).ready(function(){
 		minDate: new Date(),
 		stepMinute: 5,
 	});
-
 	
-	$('button.save-personal-mentor').click(function(e) {
+	$('button.generate-workplace-document-button').click(function(e) {
+		e.preventDefault();
+		var jobId = $('#job-id').val();
+		generateWorkplaceDocuments(jobId);
+	});
+
+	$('button.save-application-options').click(function(e) {
 		e.preventDefault();
 		var jobId = $('#job-id').val();
 		var applicationId = $(this).attr('id');
 		var mentorId = $('#personal-mentor_' + applicationId).val();
-		savePersonalMentor(jobId, applicationId, mentorId);
+		var timeForInfo = $('#timeForInfo_' + applicationId).val();
+		var callStatus = $('#call-status_' + applicationId).val();
+		saveApplicationOptions(jobId, applicationId, mentorId, timeForInfo, callStatus);
+	});
+	
+	$('select.generate-document-select').change(function() {
+		var id = $(this).attr('id').split("_")[1];
+		var value = $(this).val();
+		
+		if (value.length == 0) {
+			$('#generate-document_' + id).attr('disabled', true);
+		} else {
+			$('#generate-document_' + id).attr('disabled', false);
+		}
+	});
+	
+	$('button.generate-document-button').click(function(e) {
+		e.preventDefault();
+		var jobId = $('#job-id').val();
+		var appId = $(this).attr('id').split("_")[1];
+		var selectValue = $('#generate-document-select_' + appId).val();
+		generateEmployeeDocument(jobId, appId, selectValue);
 	});
 	
 	if ($('#availableSlotsToMatch').html() == '0') {
@@ -186,17 +212,17 @@ $(document).ready(function(){
 	});
 });
 
-function savePersonalMentor(jobId, applicationId, mentorId) {
+function saveApplicationOptions(jobId, applicationId, mentorId, timeForInfo, callStatus) {
 	 $.ajax({
-    	url : url + '/save/personalmentor.json',
+    	url : url + '/save/applicationoptions.json',
         type: "POST",
-        data: { jobId : jobId, appId : applicationId, mentorId : mentorId },
+        data: { jobId : jobId, appId : applicationId, mentorId : mentorId, timeForInfo : timeForInfo, callStatus : callStatus },
         success: function(data, textStatus, jqXHR) {
         	console.log(data);
         	if(data.status === 'success'){
-        		console.log('Saved personal mentor.');
+        		console.log('Saved application options');
         		location.reload(true);
-        	}else{
+        	} else {
         		console.log(data);
         		alert(data.message);
         	}
@@ -205,4 +231,42 @@ function savePersonalMentor(jobId, applicationId, mentorId) {
             console.log(textStatus);  
         }
     });
+}
+
+function generateWorkplaceDocuments(jobId) {
+	 $.ajax({
+	    	url : url + '/generateworkplacedocuments.json',
+	        type: "POST",
+	        data: { jobId: jobId },
+	        success: function(data, textStatus, jqXHR) {
+	        	console.log(data);
+	        	if(data.status === 'success'){
+	        		console.log('Generated documents');
+	        	} else {
+	        		console.log(data);
+	        	}
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            console.log(textStatus);  
+	        }
+	 });
+}
+
+function generateEmployeeDocument(jobId, applicationId, selectValue) {
+	 $.ajax({
+	    	url : url + '/generateemployeedocument.json',
+	        type: "POST",
+	        data: { jobId: jobId, appId : applicationId, selectedDocument : selectValue },
+	        success: function(data, textStatus, jqXHR) {
+	        	console.log(data);
+	        	if(data.status === 'success'){
+	        		console.log('Generated document');
+	        	} else {
+	        		console.log(data);
+	        	}
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            console.log(textStatus);  
+	        }
+	 });
 }

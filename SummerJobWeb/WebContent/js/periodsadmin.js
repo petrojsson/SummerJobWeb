@@ -37,15 +37,13 @@ $(document).ready(function() {
 	$(document).on('submit','#new-period-form', function(e) {
 		e.preventDefault();
 		console.log(e);
-		console.log( $('#new-period-form').serializeArray());
-		saveNew();
+		saveNewPeriod();
 	});
 	
 	$(document).on('submit','#periods-list-form', function(e) {
 		e.preventDefault();
 		console.log(e);
-		console.log( $('#periods-list-form').serializeArray());
-		saveChanges();
+		savePeriodChanges();
 	});
 	
 	$(document).on('submit','#salary-list-form', function(e) {
@@ -64,6 +62,12 @@ $(document).ready(function() {
 		e.preventDefault();
 		console.log(e);
 		savePlaceForInformation();
+	});
+	
+	$(document).on('submit','#contact-person-form', function(e) {
+		e.preventDefault();
+		console.log(e);
+		saveContactPerson();
 	});
 });
 
@@ -133,7 +137,29 @@ function savePlaceForInformation() {
 	});
 }
 
-function saveChanges() {
+function saveContactPerson() {
+	$.ajax({
+		url : url + '/save/contactperson.json',
+		type: "POST",
+		data: $('#contact-person-form').serialize(),
+		success: function(data, textStatus, jqXHR) {
+		    if(data.status === 'success') {
+		    	$('#save-contact-failed').hide();
+		    	$('#save-contact-succeeded .message').html(data.message);
+				$('#save-contact-succeeded').show();
+		    } else {
+		    	$('#save-contact-succeeded').hide();
+		    	$('#save-contact-failed .message').html(data.message);
+				$('#save-contact-failed').show();
+		    }
+		 },
+		 error: function(jqXHR, textStatus, errorThrown) {
+			 console.log(textStatus);  
+		 }
+	});
+}
+
+function savePeriodChanges() {
 	$.ajax({
 		url : url + '/update/periods.json',
 		type: "POST",
@@ -155,7 +181,7 @@ function saveChanges() {
 	});
 }
 
-function saveNew() {
+function saveNewPeriod() {
 	$.ajax({
 		url : url + '/add/period.json',
 		type: "POST",
@@ -164,16 +190,6 @@ function saveNew() {
 			console.log(data);
 		    if(data.status === 'success') {
 		    	location.reload(true);
-//		        var alternativeID = data.data.alternativeID;
-//		        var name = data.data.name;
-//		        var fromdate = data.data.fromDate;
-//		        var todate = data.data.toDate;
-//		        var tableRow ='<tr id="periodId_' + alternativeID + '"><td id=period_name_' + alternativeID + '"><input id="period_name_' + alternativeID + '" type="text" value="' + name + '" name="period_name_' + alternativeID + '"></input></td><td><input id="period_fromdate_' + alternativeID + '" type="text" value="' + fromdate + '" name="period_fromdate_' + alternativeID + '"></input></td><td><input id="period_todate_' + alternativeID + '" type="text" value="' + todate + '" name="period_todate_' + alternativeID + '"></input></td>';
-//		        $('#periods-table tbody').append(tableRow);
-//		        
-//		        $("input[name*='new-period-name']").val('');
-//		        $("input[name*='new-period-fromdate']").val('');
-//		        $("input[name*='new-period-todate']").val('');
 		    } else {		        		
 		        alert(data);
 		    }

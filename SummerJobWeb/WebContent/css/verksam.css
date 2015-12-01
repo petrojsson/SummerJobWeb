@@ -132,6 +132,10 @@
 	margin-top: 4px;
 }
 
+.mgn-top16px {
+	margin-top: 16px;
+}
+
 .float-rgt {
 	float: right;
 }
@@ -187,6 +191,11 @@ table#accounting-entries-table {
     border-spacing: 4px;
 }
 
+table#contact-person-table {
+	border-collapse: separate;
+    border-spacing: 4px;
+}
+
 #save-period-failed, #save-period-succeeded {
 	display: none;
 	margin-top: 16px;
@@ -209,6 +218,12 @@ table#accounting-entries-table {
 	margin-right: 16px;
 }
 
+#save-contact-failed, #save-contact-succeeded {
+	display: none;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+
 .period-div {
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -222,4 +237,10 @@ table#accounting-entries-table {
 	border-radius: 8px;
 	padding: 4px 8px 4px 8px;
 	margin-top: 8px;
+}
+
+#manage-job-box {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 4px 8px 4px 8px;
 }
