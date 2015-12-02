@@ -244,3 +244,7 @@ table#contact-person-table {
 	border-radius: 8px;
 	padding: 4px 8px 4px 8px;
 }
+
+#period_unique {
+	display: none;
+}

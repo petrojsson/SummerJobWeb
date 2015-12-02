@@ -5,17 +5,45 @@
 
 
 $(document).ready(function(){
+	
+//	if (isAdmin) {
+//		$('#period_unique').show();
+//	}
+	
+	if ($('#period_unique')) {
+		if (isAdmin) {
+			$('#period_unique').show();
+		}
+	}
+	
 	var geoAreaId = $('select#geoArea').val();
 	$('#geoarea-description_' + geoAreaId).show();
 	
-//	if($('.add-mentor-btn')){
-//		appendMentor(periodDiv);
-//		$('.add-mentor-btn').click(function(e){
-//			var periodDiv = $(this).parent();
-//			e.preventDefault();
-//			appendMentor(periodDiv);
-//		});
-//	}
+	$( "input[name*='unique-period-startdate']" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			$("input[name*='unique-period-enddate']").datepicker("option", "minDate", selected);
+		},
+	});
+	
+	$( "input[name*='unique-period-enddate']" ).datepicker({
+		minDate: new Date(),
+		onSelect : function(selected) {
+			$(this).focus();
+			$("input[name*='unique-period-startdate']").datepicker("option", "maxDate", selected);
+		},
+	});	
+	
+	$('input[name="period_unique_checkbox"]').change(function() {
+		if ($(this).is(':checked')) {
+			$('input[name*="unique-period-"]').attr('disabled', false);
+			$('input[name*="unique-period-"]').attr('required', true);
+		} else {
+			$('input[name*="unique-period-"]').attr('disabled', true);
+			$('input[name*="unique-period-"]').attr('required', false);
+		}
+	});
 	
 	$( "input[name*='startDate']" ).datepicker({
 		minDate: new Date(),
@@ -212,6 +240,7 @@ function saveNewBusinessSectorJob() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
+	
 	$.ajax({
 		url: url + '/add/businesssectorsummerjob.json',
 		type: "POST",
@@ -242,8 +271,11 @@ function saveNewMunicipalityJob() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
+	var nonCachedURL = url + '/add/municipalitysummerjob.json?rand=' + Math.random();
+	console.log(nonCachedURL);
+	
 	$.ajax({
-		url: url + '/add/municipalitysummerjob.json',
+		url: nonCachedURL,
 		type: "POST",
 		data: $('#municipality-job-form').serializeArray(),
 		success: function(data, textStatus, jqXHR) {
