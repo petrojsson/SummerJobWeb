@@ -1,36 +1,47 @@
 $(document).ready(function() {
-	 $('.business-application-row').click(function(e) {
+	
+	$('button#clear-search-button').click(function(e) {
+		e.preventDefault();
+		var form = $(this).parents('form:first');
+		$(form).each(function() {
+			$(this).find(':input').val("");
+		});
+		
+		$(form).submit();
+	});
+
+	$('.business-application-row').click(function(e) {
 		var moreInfo = $(this).parent().find(".more-information");
 		$(moreInfo).toggleClass('hidden');
 		$(this).find('.more-information-arrow').find('.arrow-down').toggleClass('hidden');
 		$(this).find('.more-information-arrow').find('.arrow-up').toggleClass('hidden');
-	 });
+	});
 	 
-	 $('.municipality-application-row').click(function(e) {
+	$('.municipality-application-row').click(function(e) {
 		var url = $(this).find('input[type=hidden]').val();
 		window.location.href = url;
-	 });
-	 
-	 $('#approve-application-button').click(function(e) {
-		 e.preventDefault();
-		 manageApplication('/approveapplication.json');
-	 });
-		
-	 $('#disapprove-application-button').click(function(e) {
-		 e.preventDefault();
-		 manageApplication('/disapproveapplication.json');
-	 });
-	 
-	 // If the checkbox has an initial value, we don't want some stuff to be required.
-	 if ($('input[name*=noPreferedArea').is(':checked')) {
-		 $('[id^=preferedArea]').attr("required", false);
-		 $('[id^=preferedArea]').attr("disabled", true);
-	 } else {
-		 $('[id^=preferedArea]').attr("required", true);
-		 $('[id^=preferedArea]').attr("disabled", false);
-	 }
-	 
-	 $('input[name*=noPreferedArea').click(function(e) {
+	});
+
+	$('#approve-application-button').click(function(e) {
+		e.preventDefault();
+		manageApplication('/approveapplication.json');
+	});
+
+	$('#disapprove-application-button').click(function(e) {
+		e.preventDefault();
+		manageApplication('/disapproveapplication.json');
+	});
+
+	// If the checkbox has an initial value, we don't want some stuff to be required.
+	if ($('input[name*=noPreferedArea').is(':checked')) {
+		$('[id^=preferedArea]').attr("required", false);
+		$('[id^=preferedArea]').attr("disabled", true);
+	} else {
+		$('[id^=preferedArea]').attr("required", true);
+		$('[id^=preferedArea]').attr("disabled", false);
+	}
+
+	$('input[name*=noPreferedArea').click(function(e) {
 		if ($(this).is(':checked')) {
 			$('[id^=preferedArea]').attr("required", false);
 			$('[id^=preferedArea]').attr("disabled", true);
@@ -38,15 +49,15 @@ $(document).ready(function() {
 			$('[id^=preferedArea]').attr("required", true);
 			$('[id^=preferedArea]').attr("disabled", false);
 		}
-	 });
+	});
 	
-	 $('#municipality-job-application-form').validator().on('submit', function (e) {
+	$('#municipality-job-application-form').validator().on('submit', function (e) {
 		if (!e.isDefaultPrevented()) {
 			e.preventDefault();
 			saveMunicipalityJobApplication();
 		} 
-	 });
-	 
+	});
+
 	$('#business-job-application-form').validator().on('submit', function (e) {
 		if (!e.isDefaultPrevented()) {
 			e.preventDefault();

@@ -3,6 +3,8 @@
  * New node file
  */
 
+// För sidor där vi inte returnerar en isAdmin-variabel (de flesta ställena).
+var isAdmin = false;
 
 $(document).ready(function(){
 	

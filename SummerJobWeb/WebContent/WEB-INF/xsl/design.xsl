@@ -56,17 +56,61 @@
 				        </div>
 				        <div id="navbar" class="navbar-collapse collapse">
 				          <ul class="nav navbar-nav"> 				        
-				            <li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job-application">ansök kommunalt</a></li>
-				            				           <li class=""><a href="{/document/requestinfo/contextpath}/business-sector-job">ansök näringsliv</a></li>
-				            <xsl:if test="user">
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job">Add kommunalt</a></li>
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-business-sector-job">Add näringsliv</a></li>
+<!-- 				            <li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job-application">Ansök kommunalt sommarjobb</a></li> -->
+<!-- 				            				           <li class=""><a href="{/document/requestinfo/contextpath}/business-sector-job">Ansök näringslivssommarjobb</a></li> -->
+								<li class="dropdown">
+					            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ansök om sommarjobb<span class="caret"></span></a>
+					              	<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			    						<li role="presentation">
+			    							<a role="menuitem" tabindex="1" href="{/document/requestinfo/contextpath}/add-municipality-job-application">Inom kommunal verksamhet</a>
+			    						</li>
+			    						<li role="presentation">
+			    							<a role="menuitem" tabindex="2" href="{/document/requestinfo/contextpath}/business-sector-job">Inom näringslivet</a>
+			    						</li>
+			    					</ul>
+					            </li>
+								
+<!-- 				            <xsl:if test="user"> -->
+							<xsl:if test="user/admin = 'true'">
+<!-- 				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job">Lägg till kommunalt sommarjobb</a></li> -->
+<!-- 				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-business-sector-job">Lägg till sommarjobb i näringslivet</a></li> -->
+				            	<li class="dropdown">
+					            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lägg till sommarjobb<span class="caret"></span></a>
+					              	<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			    						<li role="presentation">
+			    							<a role="menuitem" tabindex="1" href="{/document/requestinfo/contextpath}/add-municipality-job">Inom kommunal verksamhet</a>
+			    						</li>
+			    						<li role="presentation">
+			    							<a role="menuitem" tabindex="2" href="{/document/requestinfo/contextpath}/add-business-sector-job">Inom näringslivet</a>
+			    						</li>
+			    					</ul>
+					            </li>
+				            	
 				            	
 				            </xsl:if>
 				            <xsl:if test="user/admin = 'true'">
 				            
 				            	<li class=""><a href="{/document/requestinfo/contextpath}/summerjobs-overview">Överblick</a></li>
-				            	<li class=""><a href="{/document/requestinfo/contextpath}/matchjobs">Matcha</a></li>
+				            	
+				            	
+				            	<li class="dropdown">
+					            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lista<span class="caret"></span></a>
+					              	<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					              		<li role="presentation">
+			    							<a role="menuitem" tabindex="1" href="{/document/requestinfo/contextpath}/list-applications">Ansökningar</a>
+			    						</li>
+			    						<li role="presentation">
+			    							<a role="menuitem" tabindex="2" href="{/document/requestinfo/contextpath}/list-summerjobs?showMunicipalityJobs=true">Kommunala sommarjobb</a>
+			    						</li>
+			    						<li role="presentation">
+			    							<a role="menuitem" tabindex="3" href="{/document/requestinfo/contextpath}/list-summerjobs">Sommarjobb i näringslivet</a>
+			    						</li>
+			    					</ul>
+					            </li>
+				            	
+				            	<li class=""><a href="{/document/requestinfo/contextpath}/admin-manage">Administrera</a></li>
+				            	
+<!-- 				            	<li class=""><a href="{/document/requestinfo/contextpath}/matchjobs">Matcha</a></li> -->
 					            <li class="dropdown">
 					              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin menu <span class="caret"></span></a>
 					              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
@@ -79,10 +123,10 @@
 				            </xsl:if>
 				            <li>
 				            	<xsl:if test="not(user)">
-									<a href="{/document/requestinfo/contextpath}/login">login</a>
+									<a href="{/document/requestinfo/contextpath}/login">Logga in</a>
 								</xsl:if>	
 								<xsl:if test="user">
-									<a href="{/document/requestinfo/contextpath}/logout">logout</a>
+									<a href="{/document/requestinfo/contextpath}/logout">Logga ut</a>
 								</xsl:if>
 				            </li> 
 				          </ul>

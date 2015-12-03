@@ -234,39 +234,53 @@ function saveApplicationOptions(jobId, applicationId, mentorId, timeForInfo, cal
 }
 
 function generateWorkplaceDocuments(jobId) {
-	 $.ajax({
-	    	url : url + '/generateworkplacedocuments.json',
-	        type: "POST",
-	        data: { jobId: jobId },
-	        success: function(data, textStatus, jqXHR) {
-	        	console.log(data);
-	        	if(data.status === 'success'){
-	        		console.log('Generated documents');
-	        	} else {
-	        		console.log(data);
-	        	}
-	        },
-	        error: function(jqXHR, textStatus, errorThrown) {
-	            console.log(textStatus);  
-	        }
-	 });
+	var form = document.createElement("form");
+	form.method = "post";
+	form.action = url + "?jobId=" + jobId + "&generateWorkDocument=true";
+	document.body.appendChild(form);
+	form.submit();
+	document.body.removeChild(form);
+//	 $.ajax({
+//	    	url : url + '/generateworkplacedocuments.json',
+//	        type: "POST",
+//	        data: { jobId: jobId },
+//	        success: function(data, textStatus, jqXHR) {
+//	        	console.log(data);
+//	        	if(data.status === 'success'){
+//	        		console.log('Generated documents');
+//	        	} else {
+//	        		console.log(data);
+//	        	}
+//	        },
+//	        error: function(jqXHR, textStatus, errorThrown) {
+//	            console.log(textStatus);  
+//	        }
+//	 });
 }
 
 function generateEmployeeDocument(jobId, applicationId, selectValue) {
-	 $.ajax({
-	    	url : url + '/generateemployeedocument.json',
-	        type: "POST",
-	        data: { jobId: jobId, appId : applicationId, selectedDocument : selectValue },
-	        success: function(data, textStatus, jqXHR) {
-	        	console.log(data);
-	        	if(data.status === 'success'){
-	        		console.log('Generated document');
-	        	} else {
-	        		console.log(data);
-	        	}
-	        },
-	        error: function(jqXHR, textStatus, errorThrown) {
-	            console.log(textStatus);  
-	        }
-	 });
+	var form = document.createElement("form");
+	form.method = "post";
+	form.action = url + "?jobId=" + jobId + "&appId=" + applicationId + "&selectValue=" + selectValue;
+	document.body.appendChild(form);
+	form.submit();
+	document.body.removeChild(form);
+	
+	
+//	 $.ajax({
+//	    	url : url + '/generateemployeedocument.json',
+//	        type: "POST",
+//	        data: { jobId: jobId, appId : applicationId, selectedDocument : selectValue },
+//	        success: function(data, textStatus, jqXHR) {
+////	        	console.log(data);
+////	        	if(data.status === 'success'){
+////	        		console.log('Generated document');
+////	        	} else {
+////	        		console.log(data);
+////	        	}
+//	        },
+//	        error: function(jqXHR, textStatus, errorThrown) {
+//	            console.log(textStatus);  
+//	        }
+//	 });
 }
