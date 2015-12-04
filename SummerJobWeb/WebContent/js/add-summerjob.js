@@ -60,7 +60,7 @@ $(document).ready(function(){
 		minDate: new Date(),
 		onSelect : function(selected) {
 			$(this).focus();
-			$("input[name*='startDate']").datepicker("option", "maxDate", selected);
+//			$("input[name*='startDate']").datepicker("option", "maxDate", selected);
 		},
 	});
 	
@@ -133,6 +133,38 @@ $(document).ready(function(){
 		}
 	});
 	
+//	$('button#preview-business-sector-job').click(function(e) {
+//		e.preventDefault();
+//		
+//		$('#preview-workTitle').html($('#profession').html());
+//		$('#preview-workdescription').html();
+//		$('#preview-numberNeeded').html();
+//		$('#preview-startDate').html();
+//		$('#preview-endDate').html();
+//		$('#preview-lastApplicationDay').html();
+//		
+//		
+//		// Här ska handledarna läggas in.
+//		
+//		$('#preview-corporate-number').html();
+//		$('#preview-company').html();
+//		$('#preview-streetAddress').html();
+//		$('#preview-zipcode').html();
+//		$('#preview-city').html();
+//		$('#preview-manager-firstname').html();
+//		$('#preview-manager-lastname').html();
+//		$('#preview-manager-phonenumber').html();
+//		$('#preview-manager-email').html();
+//		$('#preview-driverslicense').html();
+//		$('#preview-age').html();
+//		$('#preview-otherrequirements').html();
+//		
+//		$('form#business-sector-add-job-form').slideToggle("slow", "linear", function() {
+//			$('#preview-template').slideToggle("slow", "linear");
+//		});
+////		$('#preview-template').slideToggle();
+//	});
+	
 	$('#approve-job-button').click(function(e) {
 		e.preventDefault();
 		manageJob('/approvesummerjob.json');
@@ -151,9 +183,26 @@ $(document).ready(function(){
 	$('#business-sector-add-job-form').validator().on('submit', function (e) {
 		  if (!e.isDefaultPrevented()) {
 			  e.preventDefault();
-			  saveNewBusinessSectorJob();
+//			  saveNewBusinessSectorJob();
+			  previewBusinessSectorJob();
 		  }
 	});
+	
+	$('#cancel-preview-business-sector-job').click(function(e) {
+		$('#preview-template').hide();
+		$('.preview-mentor-showing').remove();
+		$('.createJobHeadline').show();
+		$('form#business-sector-add-job-form').show();
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+	});
+	
+	$('#submit-business-sector-job').click(function(e) {
+		saveNewBusinessSectorJob();
+	});
+	
+//	business-sector-add-job-form
+//	submit-business-sector-job
+//	cancel-preview-business-sector-job
 	
 	$('input.period-checkbox:checked').each(function() {
 		var checkbox = $(this);
@@ -241,7 +290,6 @@ function saveNewBusinessSectorJob() {
 	
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
-	
 	
 	$.ajax({
 		url: url + '/add/businesssectorsummerjob.json',
@@ -340,4 +388,60 @@ function manageJobButtons(urlPart) {
 		$('#disapprove-job-button').attr("disabled", true);
 		break;
 	}
+}
+
+function previewBusinessSectorJob() {
+	$('#preview-worktitle').html($('#profession').val());
+	$('#preview-workdescription').html($('#work-description').val());
+	$('#preview-numberNeeded').html($('#numberOfWorkersNeeded').val());
+	$('#preview-startDate').html($('#startDate').val());
+	$('#preview-endDate').html($('#endDate').val());
+	$('#preview-lastApplicationDay').html($('#lastApplicationDay').val());
+	
+	$('form').find('[id^=mentor-firstname]').each(function() {
+		var mentorId = $(this).attr('name').split("_")[1];
+		var mentorFirstname = $('input[name="mentor-firstname_' + mentorId + '"]').val();
+		var mentorLastname = $('input[name="mentor-lastname_' + mentorId + '"]').val();
+		var mentorPhone = $('input[name="mentor-phone_' + mentorId + '"]').val();
+		var mentorEmail = $('input[name="mentor-email_' + mentorId + '"]').val();
+		
+		var mentorRow = $('#preview-mentor-row').clone();
+		mentorRow.find('#preview-mentor-firstname').html(mentorFirstname);
+		mentorRow.find('#preview-mentor-lastname').html(mentorLastname);
+		mentorRow.find('#preview-mentor-phonenumber').html(mentorPhone);
+		mentorRow.find('#preview-mentor-email').html(mentorEmail);
+		
+		$(mentorRow).addClass('preview-mentor-showing');
+		$(mentorRow).show();
+		$(mentorRow).appendTo($('#preview-mentor-body'));
+	});
+	
+	$('#preview-corporate-number').html($('#corporate-number').val());
+	$('#preview-company').html($('#company').val());
+	$('#preview-streetAddress').html($('#street').val());
+	$('#preview-zipcode').html($('#postalcode').val());
+	$('#preview-city').html($('#postalarea').val());
+	$('#preview-manager-firstname').html($('#manager-firstname').val());
+	$('#preview-manager-lastname').html($('#manager-lastname').val());
+	$('#preview-manager-phonenumber').html($('#manager-phone').val());
+	$('#preview-manager-email').html($('#manager-email').val());
+	
+	if ($('#hasDriversLicense').is(':checked')) {
+		$('#preview-driverslicense').text($('#driversLicenseNeededText').val() + $('#driversLicenseType :selected').html());
+	} else {
+		$('#preview-driverslicense').text($('#driversLicenseNotNeededText').val()); 
+	}
+	
+	if ($('#isOverEighteen').is(':checked')) {
+		$('#preview-age').text($('#overEighteenNeededText').val());
+	} else {
+		$('#preview-age').text($('#overEighteenNotNeededText').val());
+	}
+	
+	$('#preview-otherrequirements').html($('#other-requirements').val());
+	
+	$('form#business-sector-add-job-form').hide();
+	$('.createJobHeadline').hide();
+	$('#preview-template').show();
+	$("html, body").animate({ scrollTop: 0 }, "slow");
 }
