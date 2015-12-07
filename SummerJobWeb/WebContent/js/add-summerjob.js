@@ -60,7 +60,6 @@ $(document).ready(function(){
 		minDate: new Date(),
 		onSelect : function(selected) {
 			$(this).focus();
-//			$("input[name*='startDate']").datepicker("option", "maxDate", selected);
 		},
 	});
 	
@@ -133,38 +132,6 @@ $(document).ready(function(){
 		}
 	});
 	
-//	$('button#preview-business-sector-job').click(function(e) {
-//		e.preventDefault();
-//		
-//		$('#preview-workTitle').html($('#profession').html());
-//		$('#preview-workdescription').html();
-//		$('#preview-numberNeeded').html();
-//		$('#preview-startDate').html();
-//		$('#preview-endDate').html();
-//		$('#preview-lastApplicationDay').html();
-//		
-//		
-//		// Här ska handledarna läggas in.
-//		
-//		$('#preview-corporate-number').html();
-//		$('#preview-company').html();
-//		$('#preview-streetAddress').html();
-//		$('#preview-zipcode').html();
-//		$('#preview-city').html();
-//		$('#preview-manager-firstname').html();
-//		$('#preview-manager-lastname').html();
-//		$('#preview-manager-phonenumber').html();
-//		$('#preview-manager-email').html();
-//		$('#preview-driverslicense').html();
-//		$('#preview-age').html();
-//		$('#preview-otherrequirements').html();
-//		
-//		$('form#business-sector-add-job-form').slideToggle("slow", "linear", function() {
-//			$('#preview-template').slideToggle("slow", "linear");
-//		});
-////		$('#preview-template').slideToggle();
-//	});
-	
 	$('#approve-job-button').click(function(e) {
 		e.preventDefault();
 		manageJob('/approvesummerjob.json');
@@ -196,13 +163,21 @@ $(document).ready(function(){
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 	});
 	
+	$('#cancel-preview-municipality-job').click(function(e) {
+		$('#preview-template').hide();
+		$('.preview-period-showing').remove();
+		$('.createJobHeadline').show();
+		$('form#municipality-job-form').show();
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+	});
+	
 	$('#submit-business-sector-job').click(function(e) {
 		saveNewBusinessSectorJob();
 	});
 	
-//	business-sector-add-job-form
-//	submit-business-sector-job
-//	cancel-preview-business-sector-job
+	$('#submit-municipality-job').click(function(e) {
+		saveNewMunicipalityJob();
+	});
 	
 	$('input.period-checkbox:checked').each(function() {
 		var checkbox = $(this);
@@ -237,7 +212,8 @@ $(document).ready(function(){
 			
 			if (periodsChecked > 0) {
 				$('#period-errors').hide();
-				saveNewMunicipalityJob();
+//				saveNewMunicipalityJob();
+				previewMunicipalityJob();
 			} else {
 				$('#period-errors').show();
 			}
@@ -291,6 +267,11 @@ function saveNewBusinessSectorJob() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
+	$('#preview-template').hide();
+	$('.createJobHeadline').show();
+	$('form#business-sector-add-job-form').show();
+	$("html, body").animate({ scrollTop: $(document).height() }, "slow");
+	
 	$.ajax({
 		url: url + '/add/businesssectorsummerjob.json',
 		type: "POST",
@@ -320,6 +301,11 @@ function saveNewMunicipalityJob() {
 	console.log("saveNewMunicipalityJob");
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
+	
+	$('#preview-template').hide();
+	$('.createJobHeadline').show();
+	$('form#municipality-job-form').show();
+	$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 	
 	var nonCachedURL = url + '/add/municipalitysummerjob.json?rand=' + Math.random();
 	console.log(nonCachedURL);
@@ -399,7 +385,17 @@ function previewBusinessSectorJob() {
 	$('#preview-lastApplicationDay').html($('#lastApplicationDay').val());
 	
 	$('form').find('[id^=mentor-firstname]').each(function() {
-		var mentorId = $(this).attr('name').split("_")[1];
+		var nameArray = $(this).attr('name').split("_");
+		var mentorId;
+		if (nameArray.length == 3) {
+			mentorId = nameArray[1] + "_" + nameArray[2];
+		} else {
+			mentorId = nameArray[1];
+		}
+		
+//		var mentorId = $(this).attr('name').split("_")[1] + $(this).attr('name').split("_")[2];
+		
+		
 		var mentorFirstname = $('input[name="mentor-firstname_' + mentorId + '"]').val();
 		var mentorLastname = $('input[name="mentor-lastname_' + mentorId + '"]').val();
 		var mentorPhone = $('input[name="mentor-phone_' + mentorId + '"]').val();
@@ -441,6 +437,115 @@ function previewBusinessSectorJob() {
 	$('#preview-otherrequirements').html($('#other-requirements').val());
 	
 	$('form#business-sector-add-job-form').hide();
+	$('.createJobHeadline').hide();
+	$('#preview-template').show();
+	$("html, body").animate({ scrollTop: 0 }, "slow");
+}
+
+function previewMunicipalityJob() {
+	$('#preview-organisation').html($('#organisation').val());
+	$('#preview-administration').html($('#administration').val());
+	$('#preview-location').html($('#administration').val());
+	$('#preview-area').html($('#area').val());
+	$('#preview-street').html($('#street').val());
+	$('#preview-zipcode').html($('#postalcode').val());
+	$('#preview-city').html($('#postalarea').val());
+	$('#preview-department').html($('#department').val());
+	$('#preview-geoarea').html($('#geoArea').val());
+	$('#preview-area').html($('#area').val());
+	$('#preview-area').html($('#area').val());
+	$('#preview-worktitle').html($('#work-title').val());
+	$('#preview-workdescription').html($('#work-description').val());
+	
+	$('#preview-manager-firstname').html($('#manager-firstname').val());
+	$('#preview-manager-lastname').html($('#manager-lastname').val());
+	$('#preview-manager-phoneNumber').html($('#manager-phone').val());
+	$('#preview-manager-email').html($('#manager-email').val());
+	
+	$('form').find('.period-div').each(function() {
+		var periodNr = $(this).attr('id').split("_")[1];
+		var currentPeriod = $(this);
+		
+		if ($(currentPeriod).find('input[type="checkbox"]').is(':checked')) {
+			var periodTemplate = $('#preview-period-template').clone();
+			
+			var periodName;
+			var periodStartDate;
+			var periodEndDate;
+			
+			if (periodNr == "1337") {
+				periodName = $(currentPeriod).find('.periodName').val();
+				periodStartDate = $(currentPeriod).find('.periodStartDate').val();
+				periodEndDate = $(currentPeriod).find('.periodEndDate').val();
+			} else {
+				periodName = $(currentPeriod).find('.periodName').html();
+				periodStartDate = $(currentPeriod).find('.periodStartDate').html();
+				periodEndDate = $(currentPeriod).find('.periodEndDate').html();
+			}
+			
+			
+			console.log("periodName: " + periodName);
+			console.log("periodStartDate: " + periodStartDate);
+			console.log("periodEndDate: " + periodEndDate);
+			
+			$(periodTemplate).find('#preview-period-name').text(periodName);
+			$(periodTemplate).find('#preview-period-startdate').text(periodStartDate);
+			$(periodTemplate).find('#preview-period-enddate').text(periodEndDate);
+			$(periodTemplate).find('#preview-period-numberOfWorkers').html($(currentPeriod).find('.numberOfWorkersField').val());
+			
+			var numberOfMentors = 0;
+			
+			$(currentPeriod).find('[id^=mentor-firstname]').each(function() {
+				numberOfMentors++;
+				
+				var nameArray = $(this).attr('name').split("_");
+				var mentorId;
+				if (nameArray.length == 3) {
+					mentorId = nameArray[1] + "_" + nameArray[2];
+					console.log("Längden är tre: " + nameArray);
+				} else {
+					mentorId = nameArray[1];
+					console.log("Längen är INTE tre: " + nameArray);
+				}
+				
+				var mentorFirstname = $('input[name*="mentor-firstname_' + mentorId + '"]').val();
+				var mentorLastname = $('input[name*="mentor-lastname_' + mentorId + '"]').val();
+				var mentorPhone = $('input[name*="mentor-phone_' + mentorId + '"]').val();
+				var mentorEmail = $('input[name*="mentor-email_' + mentorId + '"]').val();
+		
+				var mentorRow = $(periodTemplate).find('#preview-mentor-row').clone();
+				mentorRow.find('#preview-mentor-firstname').html(mentorFirstname);
+				mentorRow.find('#preview-mentor-lastname').html(mentorLastname);
+				mentorRow.find('#preview-mentor-phonenumber').html(mentorPhone);
+				mentorRow.find('#preview-mentor-email').html(mentorEmail);
+				$(mentorRow).removeAttr('id');
+				$(mentorRow).show();
+				$(mentorRow).appendTo($(periodTemplate).find('#preview-mentor-body'));
+			});
+			
+			console.log("numberOfMentors: " + numberOfMentors);
+			
+			$(periodTemplate).addClass('preview-period-showing');
+			$(periodTemplate).show();
+			$(periodTemplate).appendTo('#preview-period-div');
+		}
+	});
+
+	if ($('#hasDriversLicense').is(':checked')) {
+		$('#preview-driverslicense').text($('#driversLicenseNeededText').val() + $('#driversLicenseType :selected').html());
+	} else {
+		$('#preview-driverslicense').text($('#driversLicenseNotNeededText').val()); 
+	}
+
+	if ($('#isOverEighteen').is(':checked')) {
+		$('#preview-age').text($('#overEighteenNeededText').val());
+	} else {
+		$('#preview-age').text($('#overEighteenNotNeededText').val());
+	}
+
+	$('#preview-otherrequirements').html($('#other-requirements').val());
+
+	$('form#municipality-job-form').hide();
 	$('.createJobHeadline').hide();
 	$('#preview-template').show();
 	$("html, body").animate({ scrollTop: 0 }, "slow");

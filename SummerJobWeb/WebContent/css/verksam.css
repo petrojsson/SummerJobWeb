@@ -260,3 +260,11 @@ table#contact-person-table {
 #preview-template {
 	display: none;
 }
+
+#preview-period-template {
+	display: none;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 4px 8px 4px 8px;
+	margin: 4px 8px 4px 8px;
+}
