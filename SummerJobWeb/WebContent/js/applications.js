@@ -102,11 +102,16 @@ function saveMunicipalityJobApplication() {
 function saveBusinessJobApplication() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
+	console.log($('#business-job-application-form')[0]);
+	var data = new FormData($('#business-job-application-form')[0]);
+	console.log(data);
 	
 	$.ajax({
 		url: url + '/save/businessapplication.json',
 		type: "POST",
-		data: $('#business-job-application-form').serializeArray(),
+		data: data,
+		contentType: false,
+		processData: false,
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
 				var appId = $('input[name*=appId]').val();
