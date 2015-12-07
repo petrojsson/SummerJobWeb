@@ -69,11 +69,15 @@ $(document).ready(function() {
 function saveMunicipalityJobApplication() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
-	
+	console.log($('#municipality-job-application-form')[0]);
+	var data = new FormData($('#municipality-job-application-form')[0]);
+	console.log(data);
 	$.ajax({
 		url: url + '/save/municipalityapplication.json',
 		type: "POST",
-		data: $('#municipality-job-application-form').serializeArray(),
+		data: data,
+		contentType: false,
+		processData: false,
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
 				var appId = $('input[name*=appId]').val();
