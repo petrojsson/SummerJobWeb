@@ -136,6 +136,10 @@
 	margin-top: 16px;
 }
 
+.mgn-btm8px {
+	margin-bottom: 8px;
+}
+
 .float-rgt {
 	float: right;
 }
@@ -247,4 +251,20 @@ table#contact-person-table {
 
 #period_unique {
 	display: none;
+}
+
+.prio {
+	color: red;
+}
+
+#preview-template {
+	display: none;
+}
+
+#preview-period-template {
+	display: none;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 4px 8px 4px 8px;
+	margin: 4px 8px 4px 8px;
 }
