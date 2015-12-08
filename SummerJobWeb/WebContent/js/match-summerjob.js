@@ -97,6 +97,13 @@ $(document).ready(function(){
 	        }
 	    });
 	});
+	
+	$('button.save-ranking-btn').click(function(e) {
+		e.preventDefault();
+		var appId = $(this).closest('.matched-application').find('input[name="applicationId"]').val();
+		var rankingValue = $(this).closest('.matched-application').find('.ranking-input').val();
+		updateApplicationRanking(appId, rankingValue);
+	});
 
 	$('a[name="show-more"]').click(function(){
 
@@ -240,22 +247,6 @@ function generateWorkplaceDocuments(jobId) {
 	document.body.appendChild(form);
 	form.submit();
 	document.body.removeChild(form);
-//	 $.ajax({
-//	    	url : url + '/generateworkplacedocuments.json',
-//	        type: "POST",
-//	        data: { jobId: jobId },
-//	        success: function(data, textStatus, jqXHR) {
-//	        	console.log(data);
-//	        	if(data.status === 'success'){
-//	        		console.log('Generated documents');
-//	        	} else {
-//	        		console.log(data);
-//	        	}
-//	        },
-//	        error: function(jqXHR, textStatus, errorThrown) {
-//	            console.log(textStatus);  
-//	        }
-//	 });
 }
 
 function generateEmployeeDocument(jobId, applicationId, selectValue) {
@@ -265,22 +256,23 @@ function generateEmployeeDocument(jobId, applicationId, selectValue) {
 	document.body.appendChild(form);
 	form.submit();
 	document.body.removeChild(form);
-	
-	
-//	 $.ajax({
-//	    	url : url + '/generateemployeedocument.json',
-//	        type: "POST",
-//	        data: { jobId: jobId, appId : applicationId, selectedDocument : selectValue },
-//	        success: function(data, textStatus, jqXHR) {
-////	        	console.log(data);
-////	        	if(data.status === 'success'){
-////	        		console.log('Generated document');
-////	        	} else {
-////	        		console.log(data);
-////	        	}
-//	        },
-//	        error: function(jqXHR, textStatus, errorThrown) {
-//	            console.log(textStatus);  
-//	        }
-//	 });
+}
+
+function updateApplicationRanking(applicationId, rankingValue) {
+	 $.ajax({
+		url : url + '/save/applicationranking.json',
+	    type: "POST",
+	    data: { appId : applicationId, ranking : rankingValue },
+	    success: function(data, textStatus, jqXHR) {
+	    	console.log(data);
+	    	if(data.status === 'success'){
+	    		location.reload(true);
+	    	} else {
+	    		console.log(data);
+	    	}
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        console.log(textStatus);  
+	    }
+	});
 }
