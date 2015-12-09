@@ -107,6 +107,9 @@ function saveMunicipalityJobApplication() {
 				if (appId) {
 					$('#save-succeeded .message').html(data.message);
 					$('#save-succeeded').show();
+					$('#preview-template').hide();
+					$('#municipality-job-application-form').show();
+					$('body').scrollTo('#save-succeeded', 'slow');
 				} else {
 					window.location.href = "success?municipalityJobApplication=true";
 				}
@@ -141,6 +144,9 @@ function saveBusinessJobApplication() {
 				if (appId) {
 					$('#save-succeeded .message').html(data.message);
 					$('#save-succeeded').show();
+					$('#preview-template').hide();
+					$('#business-job-application-form').show();
+					$('body').scrollTo('#save-succeeded', 'slow');
 				} else {
 					window.location.href = "success?municipalityJobApplication=false";
 				}
@@ -207,8 +213,17 @@ function previewBusinessJobApplication() {
 	$('#preview-city').html($('#postalarea').val());
 	
 	$('#preview-personalletter').html($('#personal-letter').val());
-	var cvFilenameArray = $('#cvInputFile').val().split("\\"); // För att ta bort den fakeade sökvägen. Vill endast visa filnamnet.
-	$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
+	
+//	currentCV
+	if ($('#cvInputFile').val().length === 0) {
+		$('#preview-cv').html($('#currentCV').html());
+	} else {
+		var cvFilenameArray = $('#cvInputFile').val().split("\\"); // För att ta bort den fakeade sökvägen. Vill endast visa filnamnet.
+		$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
+	}
+	
+//	var cvFilenameArray = $('#cvInputFile').val().split("\\"); // För att ta bort den fakeade sökvägen. Vill endast visa filnamnet.
+//	$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
 	
 	if ($('input[name="hasDriversLicense"]').is(':checked')) {
 		$('#preview-driverslicense').html($('#hasDriversLicenseText').val() + $('#driversLicenseType :selected').html());
