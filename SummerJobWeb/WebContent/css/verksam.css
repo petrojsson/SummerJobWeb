@@ -236,14 +236,14 @@ table#contact-person-table {
 	margin-bottom: 4px;
 }
 
-.matched-application {
+.matched-application, #jobinfo-contact {
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	padding: 4px 8px 4px 8px;
 	margin-top: 8px;
 }
 
-.candidate, .denied-application{
+.candidate, .denied-application {
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	padding: 8px 8px 8px 8px;

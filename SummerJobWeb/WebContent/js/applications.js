@@ -247,8 +247,16 @@ function previewMunicipalityJobApplication() {
 	$('#preview-city').html($('#postalarea').val());
 	
 	$('#preview-personalletter').html($('#personal-letter').val());
-	var cvFilenameArray = $('#cvInputFile').val().split("\\"); // För att ta bort den fakeade sökvägen. Vill endast visa filnamnet.
-	$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
+	
+	if ($('#cvInputFile').val().length === 0) {
+		$('#preview-cv').html($('#currentCV').html());
+	} else {
+		var cvFilenameArray = $('#cvInputFile').val().split("\\"); // För att ta bort den fakeade sökvägen. Vill endast visa filnamnet.
+		$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
+	}
+	
+//	var cvFilenameArray = $('#cvInputFile').val().split("\\"); // För att ta bort den fakeade sökvägen. Vill endast visa filnamnet.
+//	$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
 	
 	if ($('#noPreferedArea').is(':checked')) {
 		$('#preview-nopreferedarea').show();
