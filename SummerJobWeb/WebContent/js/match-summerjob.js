@@ -186,11 +186,9 @@ $(document).ready(function(){
 		event.preventDefault();
 		console.log("Denying applications");
 		
-		var jobId = $('#job-id').val();
-		var applicationId= $('#denied-workers-form').find('input[name="application-id"]').val();
-		console.log(applicationId);
-		var form = $('#denied-workers-form');
-		form['job-id']=jobId;
+		var jobId = $('#job-id').val();		
+		var form = $('#denied-workers-form').find("input:checkbox[name=application-id]:checked");
+		
 		
 		console.log(form);
 		
@@ -199,7 +197,7 @@ $(document).ready(function(){
 	    {
 	    	url : url+'/match-worker.json',
 	        type: "POST",
-	        data : {'application-id':applicationId,'job-id':jobId},
+	        data : form.serialize()+'&job-id='+jobId,
 	        success:function(data, textStatus, jqXHR) 
 	        {
 	        	console.log(data);
