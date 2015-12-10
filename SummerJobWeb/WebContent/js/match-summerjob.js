@@ -4,6 +4,16 @@
 
 $(document).ready(function(){
 	
+	$('.close-job-button').click(function(e) {
+		var jobId = $('#job-id').val();
+		adjustJobStatus(jobId, false);
+	});
+	
+	$('.open-job-button').click(function(e) {
+		var jobId = $('#job-id').val();
+		adjustJobStatus(jobId, true);
+	});
+	
 	$('.timeForInfo').datetimepicker({
 		currentText: 'Nu',
 		closeText: 'OK',
@@ -51,6 +61,10 @@ $(document).ready(function(){
 	
 	if ($('#availableSlotsToMatch').html() == '0') {
 		$('.set-matched-btn').attr('disabled', true);
+	}
+	
+	if ($('#jobIsOpenStatus').val() == 'false') {
+		$('.common-button').attr('disabled', true);
 	}
 	
 	$(document).on("submit", 'form[name="match-worker"]', function(e){
@@ -261,6 +275,25 @@ function updateApplicationRanking(applicationId, rankingValue) {
 		url : url + '/save/applicationranking.json',
 	    type: "POST",
 	    data: { appId : applicationId, ranking : rankingValue },
+	    success: function(data, textStatus, jqXHR) {
+	    	console.log(data);
+	    	if(data.status === 'success'){
+	    		location.reload(true);
+	    	} else {
+	    		console.log(data);
+	    	}
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        console.log(textStatus);  
+	    }
+	});
+}
+
+function adjustJobStatus(jobId, newIsOpenStatus) {
+	 $.ajax({
+		url : url + '/adjustjobstatus.json',
+	    type: "POST",
+	    data: { jobId : jobId, newStatus : newIsOpenStatus },
 	    success: function(data, textStatus, jqXHR) {
 	    	console.log(data);
 	    	if(data.status === 'success'){

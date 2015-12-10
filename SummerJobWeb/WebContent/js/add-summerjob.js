@@ -434,6 +434,12 @@ function previewBusinessSectorJob() {
 		$('#preview-age').text($('#overEighteenNotNeededText').val());
 	}
 	
+	if ($('#inChargeOfInterviews').is(':checked')) {
+		$('#preview-inChargeOfInterviews').html($('#inChargeOfInterviewsText').val());
+	} else {
+		$('#preview-inChargeOfInterviews').html($('#notInChargeOfInterviewsText').val());
+	}
+	
 	$('#preview-otherrequirements').html($('#other-requirements').val());
 	
 	$('form#business-sector-add-job-form').hide();
