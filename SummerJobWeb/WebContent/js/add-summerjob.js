@@ -116,21 +116,7 @@ $(document).ready(function(){
 		$('#geoarea-description_' + id).show();
 	});
 	
-	if ($('input[name*=hasDriversLicense]').is(':checked')) {
-		$('#driverslicense_select').show();
-	} else {
-		$('#driverslicense_select').hide();
-	}
 	
-	$('input[name*=hasDriversLicense]').click(function(e) {
-		$('#driverslicense_select').fadeToggle('slow');
-		
-		if($('input[name*=hasDriversLicense]').is(':checked')) {
-			$('select[name*=driversLicenseType]').attr("required", true);
-		} else {
-			$('select[name*=driversLicenseType').attr("required", false);
-		}
-	});
 	
 	$('#approve-job-button').click(function(e) {
 		e.preventDefault();
@@ -422,13 +408,11 @@ function previewBusinessSectorJob() {
 	$('#preview-manager-phonenumber').html($('#manager-phone').val());
 	$('#preview-manager-email').html($('#manager-email').val());
 	
-	if ($('#hasDriversLicense').is(':checked')) {
-		$('#preview-driverslicense').text($('#driversLicenseNeededText').val() + $('#driversLicenseType :selected').html());
-	} else {
-		$('#preview-driverslicense').text($('#driversLicenseNotNeededText').val()); 
-	}
 	
-	if ($('#isOverEighteen').is(':checked')) {
+	$('#preview-driverslicense').text($('#driversLicenseType :selected').html());
+	
+	
+	if ($('#mustBeOverEighteen').is(':checked')) {
 		$('#preview-age').text($('#overEighteenNeededText').val());
 	} else {
 		$('#preview-age').text($('#overEighteenNotNeededText').val());
@@ -449,6 +433,7 @@ function previewBusinessSectorJob() {
 	$("html, body").animate({ scrollTop: 0 }, "slow");
 }
 
+//TODO same same som i ovan.
 function previewMunicipalityJob() {
 	$('#preview-organisation').html($('#organisation').val());
 	$('#preview-administration').html($('#administration').val());
@@ -539,13 +524,11 @@ function previewMunicipalityJob() {
 		}
 	});
 
-	if ($('#hasDriversLicense').is(':checked')) {
-		$('#preview-driverslicense').text($('#driversLicenseNeededText').val() + $('#driversLicenseType :selected').html());
-	} else {
-		$('#preview-driverslicense').text($('#driversLicenseNotNeededText').val()); 
-	}
 
-	if ($('#isOverEighteen').is(':checked')) {
+	$('#preview-driverslicense').text($('#driversLicenseType :selected').html());
+	
+
+	if ($('#mustBeOverEighteen').is(':checked')) {
 		$('#preview-age').text($('#overEighteenNeededText').val());
 	} else {
 		$('#preview-age').text($('#overEighteenNotNeededText').val());
