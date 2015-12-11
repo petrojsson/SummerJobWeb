@@ -444,6 +444,7 @@ function previewBusinessSectorJob() {
 	}
 	
 	$('#preview-otherrequirements').html($('#other-requirements').val());
+	$('#preview-freetext').html($('#freetext').val());
 	
 	$('form#business-sector-add-job-form').hide();
 	$('.createJobHeadline').hide();
@@ -470,6 +471,7 @@ function previewMunicipalityJob() {
 	$('#preview-manager-lastname').html($('#manager-lastname').val());
 	$('#preview-manager-phoneNumber').html($('#manager-phone').val());
 	$('#preview-manager-email').html($('#manager-email').val());
+	
 	
 	$('form').find('.period-div').each(function() {
 		var periodNr = $(this).attr('id').split("_")[1];
@@ -553,6 +555,7 @@ function previewMunicipalityJob() {
 	}
 
 	$('#preview-otherrequirements').html($('#other-requirements').val());
+	$('#preview-freetext').html($('#freetext').val());
 
 	$('form#municipality-job-form').hide();
 	$('.createJobHeadline').hide();
