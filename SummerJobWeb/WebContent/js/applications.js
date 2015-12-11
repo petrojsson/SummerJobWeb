@@ -56,7 +56,9 @@ $(document).ready(function() {
 			e.preventDefault();
 //			saveMunicipalityJobApplication();
 			previewMunicipalityJobApplication();
-		} 
+		} else {
+			$('body').scrollTo($('body').find('.has-error').first().offset().top - 56, 'slow');
+		}
 	});
 	
 	$('#submit-municipality-job-application').click(function(e) {
@@ -85,7 +87,9 @@ $(document).ready(function() {
 			e.preventDefault();
 //			saveBusinessJobApplication();
 			previewBusinessJobApplication();
-		} 
+		} else {
+			$('body').scrollTo($('body').find('.has-error').first().offset().top - 56, 'slow');
+		}
 	});
 });
 
@@ -255,8 +259,7 @@ function previewMunicipalityJobApplication() {
 		$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
 	}
 	
-//	var cvFilenameArray = $('#cvInputFile').val().split("\\"); // För att ta bort den fakeade sökvägen. Vill endast visa filnamnet.
-//	$('#preview-cv').html(cvFilenameArray[cvFilenameArray.length - 1]);
+	$('#preview-preferedPeriod').html($('select[name="preferedPeriod"] :selected').html());
 	
 	if ($('#noPreferedArea').is(':checked')) {
 		$('#preview-nopreferedarea').show();
