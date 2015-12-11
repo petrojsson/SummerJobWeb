@@ -116,16 +116,9 @@ $(document).ready(function(){
 		$('#geoarea-description_' + id).show();
 	});
 	
-	
-	
-	$('#approve-job-button').click(function(e) {
+	$('#save-job-options').click(function(e) {
 		e.preventDefault();
-		manageJob('/approvesummerjob.json');
-	});
-	
-	$('#disapprove-job-button').click(function(e) {
-		e.preventDefault();
-		manageJob('/disapprovesummerjob.json');
+		manageJob('/savejoboptions.json');
 	});
 	
 	$('#mark-job-as-initiated-button').click(function(e) {
@@ -324,7 +317,7 @@ function saveNewMunicipalityJob() {
 	});
 }
 
-function manageJob(urlPart, message) {
+function manageJob(urlPart) {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
@@ -333,12 +326,12 @@ function manageJob(urlPart, message) {
 		type: "POST",
 		data: { jobId : $('#jobIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val(), 
 			descriptionForEmploymentPapers : $("textarea[name='description-employment-papers']").val(),
-			descriptionForCallPapers : $("textarea[name='description-call-papers']").val() },
+			descriptionForCallPapers : $("textarea[name='description-call-papers']").val(),
+			statusApprove : $('select[name="job-status-select"]').val() },
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
 				$('#save-succeeded .message').html(data.message);
 				$('#save-succeeded').show();
-				manageJobButtons(urlPart);
 			} else {		 
 				$('#save-failed .message').html(data.message);
 				$('#save-failed').show();
@@ -349,20 +342,6 @@ function manageJob(urlPart, message) {
 			$('#save-failed').show();
 		}
 	});
-}
-
-function manageJobButtons(urlPart) {
-	switch (urlPart) {
-	case '/approvesummerjob.json':
-		$('#disapprove-job-button').attr("disabled", false);
-		$('#approve-job-button').attr("disabled", true);
-		break;
-
-	case '/disapprovesummerjob.json':
-		$('#approve-job-button').attr("disabled", false);
-		$('#disapprove-job-button').attr("disabled", true);
-		break;
-	}
 }
 
 function previewBusinessSectorJob() {
