@@ -80,7 +80,9 @@ $(document).ready(function(){
 		appendBusinessMentor();
 	});
 	
-	$("input.numberValidation").keydown(function (e) {
+	$(document).on('keydown', 'input.numberValidation', function(e) {
+		console.log("numberValidation - keydown");
+		
         // Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
              // Allow: Ctrl+A
@@ -98,9 +100,9 @@ $(document).ready(function(){
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
-    });
+	});
 	
-	$('div.remove-mentor').click(function (e) {
+	$(document).on('click', 'div.remove-mentor', function(e) {
 		console.log("Försöker ta bort en handledare..");
 		var mentorRow = $(this).parent();
 		mentorRow.find('#mentor-firstname').val("");
@@ -109,6 +111,16 @@ $(document).ready(function(){
 		mentorRow.find('#mentor-email').val("");
 		mentorRow.hide();
 	});
+	
+//	$('div.remove-mentor').click(function (e) {
+//		console.log("Försöker ta bort en handledare..");
+//		var mentorRow = $(this).parent();
+//		mentorRow.find('#mentor-firstname').val("");
+//		mentorRow.find('#mentor-lastname').val("");
+//		mentorRow.find('#mentor-phone').val("");
+//		mentorRow.find('#mentor-email').val("");
+//		mentorRow.hide();
+//	});
 	
 	$('select#geoArea').change(function () {
 		var id = $(this).val();
@@ -249,10 +261,10 @@ function saveNewBusinessSectorJob() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
-	$('#preview-template').hide();
-	$('.createJobHeadline').show();
-	$('form#business-sector-add-job-form').show();
-	$("html, body").animate({ scrollTop: $(document).height() }, "slow");
+//	$('#preview-template').hide();
+//	$('.createJobHeadline').show();
+//	$('form#business-sector-add-job-form').show();
+//	$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 	
 	$.ajax({
 		url: url + '/add/businesssectorsummerjob.json',
@@ -262,6 +274,10 @@ function saveNewBusinessSectorJob() {
 		    if(data.status === 'success') {
 		    	var jobId = $('input[name*=jobId]').val();
 		    	if (jobId) {
+		    		$('#preview-template').hide();
+		    		$('.createJobHeadline').show();
+		    		$('form#business-sector-add-job-form').show();
+		    		$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 					$('#save-succeeded .message').html(data.message);
 					$('#save-succeeded').show();
 				} else {
@@ -284,10 +300,10 @@ function saveNewMunicipalityJob() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
-	$('#preview-template').hide();
-	$('.createJobHeadline').show();
-	$('form#municipality-job-form').show();
-	$("html, body").animate({ scrollTop: $(document).height() }, "slow");
+//	$('#preview-template').hide();
+//	$('.createJobHeadline').show();
+//	$('form#municipality-job-form').show();
+//	$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 	
 	var nonCachedURL = url + '/add/municipalitysummerjob.json?rand=' + Math.random();
 	console.log(nonCachedURL);
@@ -300,6 +316,10 @@ function saveNewMunicipalityJob() {
 			if(data.status === 'success') {
 				var jobId = $('input[name*=jobId]').val();
 				if (jobId) {
+					$('#preview-template').hide();
+					$('.createJobHeadline').show();
+					$('form#municipality-job-form').show();
+					$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 					$('#save-succeeded .message').html(data.message);
 					$('#save-succeeded').show();
 				} else {
@@ -360,9 +380,6 @@ function previewBusinessSectorJob() {
 		} else {
 			mentorId = nameArray[1];
 		}
-		
-//		var mentorId = $(this).attr('name').split("_")[1] + $(this).attr('name').split("_")[2];
-		
 		
 		var mentorFirstname = $('input[name="mentor-firstname_' + mentorId + '"]').val();
 		var mentorLastname = $('input[name="mentor-lastname_' + mentorId + '"]').val();
@@ -458,11 +475,6 @@ function previewMunicipalityJob() {
 				periodEndDate = $(currentPeriod).find('.periodEndDate').html();
 			}
 			
-			
-			console.log("periodName: " + periodName);
-			console.log("periodStartDate: " + periodStartDate);
-			console.log("periodEndDate: " + periodEndDate);
-			
 			$(periodTemplate).find('#preview-period-name').text(periodName);
 			$(periodTemplate).find('#preview-period-startdate').text(periodStartDate);
 			$(periodTemplate).find('#preview-period-enddate').text(periodEndDate);
@@ -477,10 +489,8 @@ function previewMunicipalityJob() {
 				var mentorId;
 				if (nameArray.length == 3) {
 					mentorId = nameArray[1] + "_" + nameArray[2];
-					console.log("Längden är tre: " + nameArray);
 				} else {
 					mentorId = nameArray[1];
-					console.log("Längen är INTE tre: " + nameArray);
 				}
 				
 				var mentorFirstname = $('input[name*="mentor-firstname_' + mentorId + '"]').val();
