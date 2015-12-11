@@ -136,8 +136,9 @@ $(document).ready(function(){
 	$('#business-sector-add-job-form').validator().on('submit', function (e) {
 		  if (!e.isDefaultPrevented()) {
 			  e.preventDefault();
-//			  saveNewBusinessSectorJob();
 			  previewBusinessSectorJob();
+		  } else {
+			  $('body').scrollTo($('body').find('.has-error').first().offset().top - 56, 'slow');
 		  }
 	});
 	
@@ -203,6 +204,8 @@ $(document).ready(function(){
 			} else {
 				$('#period-errors').show();
 			}
+		} else {
+			$('body').scrollTo($('body').find('.has-error').first().offset().top - 56, 'slow');
 		} 
 	});
 	
