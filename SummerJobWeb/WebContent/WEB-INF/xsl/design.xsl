@@ -70,8 +70,8 @@
 			    					</ul>
 					            </li>
 								
-<!-- 				            <xsl:if test="user"> -->
-							<xsl:if test="user/admin = 'true'">
+				            <xsl:if test="user">
+<!-- 							<xsl:if test="user/admin = 'true'"> -->
 <!-- 				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-municipality-job">Lägg till kommunalt sommarjobb</a></li> -->
 <!-- 				            	<li class=""><a href="{/document/requestinfo/contextpath}/add-business-sector-job">Lägg till sommarjobb i näringslivet</a></li> -->
 				            	<li class="dropdown">

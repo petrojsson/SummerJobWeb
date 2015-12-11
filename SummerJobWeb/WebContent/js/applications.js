@@ -22,14 +22,19 @@ $(document).ready(function() {
 		window.location.href = url;
 	});
 
-	$('#approve-application-button').click(function(e) {
+//	$('#approve-application-button').click(function(e) {
+//		e.preventDefault();
+//		manageApplication('/approveapplication.json');
+//	});
+//
+//	$('#disapprove-application-button').click(function(e) {
+//		e.preventDefault();
+//		manageApplication('/disapproveapplication.json');
+//	});
+	
+	$('#save-application-options').click(function(e) {
 		e.preventDefault();
-		manageApplication('/approveapplication.json');
-	});
-
-	$('#disapprove-application-button').click(function(e) {
-		e.preventDefault();
-		manageApplication('/disapproveapplication.json');
+		manageApplication();
 	});
 
 	// If the checkbox has an initial value, we don't want some stuff to be required.
@@ -85,7 +90,6 @@ $(document).ready(function() {
 	$('#business-job-application-form').validator().on('submit', function (e) {
 		if (!e.isDefaultPrevented()) {
 			e.preventDefault();
-//			saveBusinessJobApplication();
 			previewBusinessJobApplication();
 		} else {
 			$('body').scrollTo($('body').find('.has-error').first().offset().top - 56, 'slow');
@@ -166,20 +170,20 @@ function saveBusinessJobApplication() {
 	});
 }
 
-function manageApplication(urlPart, message) {
+function manageApplication() {
 	$('#save-succeeded').hide();
 	$('#save-failed').hide();
 	
 	$.ajax({
-		url: url + urlPart,
+		url: url + '/saveapplicationoptions.json',
 		type: "POST",
 		data: { appId : $('#appIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val(), 
-			ranking : $("select[name='ranking']").val() },
+			statusApprove : $('select[name="application-status-select"]').val(),
+			ranking : $("select[name='ranking']").val(), },
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
 				$('#save-succeeded .message').html(data.message);
 				$('#save-succeeded').show();
-				manageApplicationButtons(urlPart);
 			} else {		 
 				$('#save-failed .message').html(data.message);
 				$('#save-failed').show();
@@ -190,20 +194,6 @@ function manageApplication(urlPart, message) {
 			$('#save-failed').show();
 		}
 	});
-}
-
-function manageApplicationButtons(urlPart) {
-	switch (urlPart) {
-	case '/approveapplication.json':
-		$('#disapprove-application-button').attr("disabled", false);
-		$('#approve-application-button').attr("disabled", true);
-		break;
-
-	case '/disapproveapplication.json':
-		$('#approve-application-button').attr("disabled", false);
-		$('#disapprove-application-button').attr("disabled", true);
-		break;
-	}
 }
 
 function previewBusinessJobApplication() {
