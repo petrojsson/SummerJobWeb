@@ -174,12 +174,12 @@ table#periods-table {
     border-spacing: 4px;
 }
 
-.application-row {
+.application-row, .job-row {
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
 
-.application-row:hover {
+.application-row:hover, .job-row:hover {
 	background-color: #e8e8e8; 
 /* 	opacity: 0.8; */
 	cursor: pointer;
@@ -274,4 +274,8 @@ table#contact-person-table {
 	border-radius: 8px;
 	padding: 4px 8px 4px 8px;
 	margin: 4px 8px 4px 8px;
+}
+
+.remove-mentor:hover {
+	cursor: pointer;
 }

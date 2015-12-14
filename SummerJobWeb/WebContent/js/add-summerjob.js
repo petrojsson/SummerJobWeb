@@ -18,6 +18,11 @@ $(document).ready(function(){
 		}
 	}
 	
+	$('.job-row').click(function(e) {
+		var moreInfo = $(this).parent().find(".more-information");
+		$(moreInfo).toggleClass('hidden');
+	});
+	
 	var geoAreaId = $('select#geoArea').val();
 	$('#geoarea-description_' + geoAreaId).show();
 	
