@@ -98,11 +98,9 @@ $(document).ready(function() {
 });
 
 function saveMunicipalityJobApplication() {
-	$('#save-succeeded').hide();
-	$('#save-failed').hide();
-	console.log($('#municipality-job-application-form')[0]);
+	$('.save-succeeded').hide();
+	$('.save-failed').hide();
 	var data = new FormData($('#municipality-job-application-form')[0]);
-	console.log(data);
 	$.ajax({
 		url: url + '/save/municipalityapplication.json',
 		type: "POST",
@@ -111,34 +109,33 @@ function saveMunicipalityJobApplication() {
 		processData: false,
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
-				var appId = $('input[name*=appId]').val();
+				var appId = $('input[name*="appId"]').val();
 				if (appId) {
-					$('#save-succeeded .message').html(data.message);
-					$('#save-succeeded').show();
+					$('.save-succeeded .message').html(data.message);
+					$('.save-succeeded').show();
 					$('#preview-template').hide();
 					$('#municipality-job-application-form').show();
-					$('body').scrollTo('#save-succeeded', 'slow');
+					$('body').scrollTo('.save-succeeded', 'slow');
 				} else {
 					window.location.href = "success?municipalityJobApplication=true";
 				}
-			} else {		        		
-				$('#save-failed .message').html(data.message);
-				$('#save-failed').show();
+			} else {
+				console.log("Vi kör elsen, som tur är.");
+				$('.save-failed .message').html(data.message);
+				$('.save-failed').show();
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
-			$('#save-failed .message').html(jqXHR.responseText);
-			$('#save-failed').show();
+			$('.save-failed .message').html(jqXHR.responseText);
+			$('.save-failed').show();
 		}
 	});
 }
 
 function saveBusinessJobApplication() {
-	$('#save-succeeded').hide();
-	$('#save-failed').hide();
-	console.log($('#business-job-application-form')[0]);
+	$('.save-succeeded').hide();
+	$('.save-failed').hide();
 	var data = new FormData($('#business-job-application-form')[0]);
-	console.log(data);
 	
 	$.ajax({
 		url: url + '/save/businessapplication.json',
@@ -148,31 +145,31 @@ function saveBusinessJobApplication() {
 		processData: false,
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
-				var appId = $('input[name*=appId]').val();
+				var appId = $('input[name*="appId"]').val();
 				if (appId) {
-					$('#save-succeeded .message').html(data.message);
-					$('#save-succeeded').show();
+					$('.save-succeeded .message').html(data.message);
+					$('.save-succeeded').show();
 					$('#preview-template').hide();
 					$('#business-job-application-form').show();
-					$('body').scrollTo('#save-succeeded', 'slow');
+					$('body').scrollTo('.save-succeeded', 'slow');
 				} else {
 					window.location.href = "success?municipalityJobApplication=false";
 				}
-			} else {		        		
-				$('#save-failed .message').html(data.message);
-				$('#save-failed').show();
+			} else {
+				$('.save-failed .message').html(data.message);
+				$('.save-failed').show();
 			}
 		 },
 		 error: function(jqXHR, textStatus, errorThrown) {
-			 $('#save-failed .message').html(jqXHR.responseText);
-		     $('#save-failed').show();
+			 $('.save-failed .message').html(jqXHR.responseText);
+		     $('.save-failed').show();
 		 }
 	});
 }
 
 function manageApplication() {
-	$('#save-succeeded').hide();
-	$('#save-failed').hide();
+	$('.save-succeeded').hide();
+	$('.save-failed').hide();
 	
 	$.ajax({
 		url: url + '/saveapplicationoptions.json',
@@ -182,16 +179,16 @@ function manageApplication() {
 			ranking : $("select[name='ranking']").val(), },
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
-				$('#save-succeeded .message').html(data.message);
-				$('#save-succeeded').show();
+				$('.save-succeeded .message').html(data.message);
+				$('.save-succeeded').show();
 			} else {		 
-				$('#save-failed .message').html(data.message);
-				$('#save-failed').show();
+				$('.save-failed .message').html(data.message);
+				$('.save-failed').show();
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
-			$('#save-failed .message').html(jqXHR.responseText);
-			$('#save-failed').show();
+			$('.save-failed .message').html(jqXHR.responseText);
+			$('.save-failed').show();
 		}
 	});
 }

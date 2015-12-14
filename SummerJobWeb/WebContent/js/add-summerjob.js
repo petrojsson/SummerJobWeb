@@ -81,9 +81,8 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('keydown', 'input.numberValidation', function(e) {
-		console.log("numberValidation - keydown");
-		
-        // Allow: backspace, delete, tab, escape, enter and .
+
+		// Allow: backspace, delete, tab, escape, enter and .
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
              // Allow: Ctrl+A
             (e.keyCode == 65 && e.ctrlKey === true) ||
@@ -103,7 +102,6 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click', 'div.remove-mentor', function(e) {
-		console.log("Försöker ta bort en handledare..");
 		var mentorRow = $(this).parent();
 		mentorRow.find('#mentor-firstname').val("");
 		mentorRow.find('#mentor-lastname').val("");
@@ -111,16 +109,6 @@ $(document).ready(function(){
 		mentorRow.find('#mentor-email').val("");
 		mentorRow.hide();
 	});
-	
-//	$('div.remove-mentor').click(function (e) {
-//		console.log("Försöker ta bort en handledare..");
-//		var mentorRow = $(this).parent();
-//		mentorRow.find('#mentor-firstname').val("");
-//		mentorRow.find('#mentor-lastname').val("");
-//		mentorRow.find('#mentor-phone').val("");
-//		mentorRow.find('#mentor-email').val("");
-//		mentorRow.hide();
-//	});
 	
 	$('select#geoArea').change(function () {
 		var id = $(this).val();
@@ -258,8 +246,8 @@ function generateUUID() {
 
 function saveNewBusinessSectorJob() {
 	
-	$('#save-succeeded').hide();
-	$('#save-failed').hide();
+	$('.save-succeeded').hide();
+	$('.save-failed').hide();
 	
 //	$('#preview-template').hide();
 //	$('.createJobHeadline').show();
@@ -278,27 +266,27 @@ function saveNewBusinessSectorJob() {
 		    		$('.createJobHeadline').show();
 		    		$('form#business-sector-add-job-form').show();
 		    		$("html, body").animate({ scrollTop: $(document).height() }, "slow");
-					$('#save-succeeded .message').html(data.message);
-					$('#save-succeeded').show();
+					$('.save-succeeded .message').html(data.message);
+					$('.save-succeeded').show();
 				} else {
 					window.location.href = "success?municipalityJob=false";
 				}
 		    } else {		        		
-		    	$('#save-failed .message').html(data.message);
-		    	$('#save-failed').show();
+		    	$('.save-failed .message').html(data.message);
+		    	$('.save-failed').show();
 		    }
 		 },
 		 error: function(jqXHR, textStatus, errorThrown) {
-			 $('#save-failed .message').html(jqXHR.responseText);
-		     $('#save-failed').show();
+			 $('.save-failed .message').html(jqXHR.responseText);
+		     $('.save-failed').show();
 		 }
 	});
 }
 
 function saveNewMunicipalityJob() {
 	console.log("saveNewMunicipalityJob");
-	$('#save-succeeded').hide();
-	$('#save-failed').hide();
+	$('.save-succeeded').hide();
+	$('.save-failed').hide();
 	
 //	$('#preview-template').hide();
 //	$('.createJobHeadline').show();
@@ -320,26 +308,26 @@ function saveNewMunicipalityJob() {
 					$('.createJobHeadline').show();
 					$('form#municipality-job-form').show();
 					$("html, body").animate({ scrollTop: $(document).height() }, "slow");
-					$('#save-succeeded .message').html(data.message);
-					$('#save-succeeded').show();
+					$('.save-succeeded .message').html(data.message);
+					$('.save-succeeded').show();
 				} else {
 					window.location.href = "success?municipalityJob=true";
 				}
 			} else {		        		
-				$('#save-failed .message').html(data.message);
-				$('#save-failed').show();
+				$('.save-failed .message').html(data.message);
+				$('.save-failed').show();
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
-			$('#save-failed .message').html(jqXHR.responseText);
-			$('#save-failed').show();
+			$('.save-failed .message').html(jqXHR.responseText);
+			$('.save-failed').show();
 		}
 	});
 }
 
 function manageJob(urlPart) {
-	$('#save-succeeded').hide();
-	$('#save-failed').hide();
+	$('.save-succeeded').hide();
+	$('.save-failed').hide();
 	
 	$.ajax({
 		url: url + urlPart,
@@ -350,16 +338,16 @@ function manageJob(urlPart) {
 			statusApprove : $('select[name="job-status-select"]').val() },
 		success: function(data, textStatus, jqXHR) {
 			if(data.status === 'success') {
-				$('#save-succeeded .message').html(data.message);
-				$('#save-succeeded').show();
+				$('.save-succeeded .message').html(data.message);
+				$('.save-succeeded').show();
 			} else {		 
-				$('#save-failed .message').html(data.message);
-				$('#save-failed').show();
+				$('.save-failed .message').html(data.message);
+				$('.save-failed').show();
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
-			$('#save-failed .message').html(jqXHR.responseText);
-			$('#save-failed').show();
+			$('.save-failed .message').html(jqXHR.responseText);
+			$('.save-failed').show();
 		}
 	});
 }
