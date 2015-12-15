@@ -18,19 +18,14 @@ $(document).ready(function() {
 	});
 	 
 	$('.municipality-application-row').click(function(e) {
-		var url = $(this).find('input[type=hidden]').val();
-		window.location.href = url;
+//		var url = $(this).find('input[type=hidden]').val();
+//		window.location.href = url;
+		var moreInfo = $(this).parent().find(".more-information");
+		$(moreInfo).toggleClass('hidden');
+		$(this).find('.more-information-arrow').find('.arrow-down').toggleClass('hidden');
+		$(this).find('.more-information-arrow').find('.arrow-up').toggleClass('hidden');
 	});
 
-//	$('#approve-application-button').click(function(e) {
-//		e.preventDefault();
-//		manageApplication('/approveapplication.json');
-//	});
-//
-//	$('#disapprove-application-button').click(function(e) {
-//		e.preventDefault();
-//		manageApplication('/disapproveapplication.json');
-//	});
 	
 	$('#save-application-options').click(function(e) {
 		e.preventDefault();

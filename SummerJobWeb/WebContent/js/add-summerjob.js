@@ -184,25 +184,29 @@ $(document).ready(function(){
 	});
 	
 	$('#municipality-job-form').validator().on('submit', function (e) {
-		console.log("$('#municipality-job-form').validator()");
+		
+		var periodsChecked = 0;
+		$('#periods-group').find('input[type="checkbox"]:checked').each(function () {
+			periodsChecked++;
+		});
+		
 		if (!e.isDefaultPrevented()) {
 			e.preventDefault();
-			
-			var periodsChecked = 0;
-			$('#periods-group').find('input[type="checkbox"]:checked').each(function () {
-				periodsChecked++;
-			});
 			
 			console.log("periodsChecked: " + periodsChecked);
 			
 			if (periodsChecked > 0) {
-				$('#period-errors').hide();
-//				saveNewMunicipalityJob();
+				$('#periods-group').removeClass('has-error');
 				previewMunicipalityJob();
 			} else {
-				$('#period-errors').show();
+				$('#periods-group').addClass('has-error');
+				$('body').scrollTo($('body').find('.has-error').first().offset().top - 56, 'slow');
 			}
 		} else {
+			if (periodsChecked == 0) {
+				$('#periods-group').addClass('has-error');
+			}
+			
 			$('body').scrollTo($('body').find('.has-error').first().offset().top - 56, 'slow');
 		} 
 	});
