@@ -283,3 +283,7 @@ table#contact-person-table {
 .remove-mentor:hover {
 	cursor: pointer;
 }
+
+.navbar-toggle .icon-bar {
+  background-color: #fff;
+}
