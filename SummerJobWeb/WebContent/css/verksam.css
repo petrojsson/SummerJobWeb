@@ -287,3 +287,239 @@ table#contact-person-table {
 .navbar-toggle .icon-bar {
   background-color: #fff;
 }
+
+
+
+/**************************************************/
+/* Page Tabs (for tab specifics look for ul.tabs) */
+/**************************************************/
+#page-tabs
+{
+    margin-bottom:15px;
+}
+
+#page-tabs .content
+{
+    border:solid 1px #ececec;
+    border-radius:3px;
+    border-top-left-radius:0;
+    -moz-border-radius:0 3px 3px 3px;
+    margin-top:-6px;
+    padding:15px;
+}
+
+#page-tabs .content.dynamic-content
+{
+    padding:0;
+}
+
+/*OBS, FIX FÖR TOM P-TAG SOM LÄGGS TILL NÄR MAN ENBART HAR DYNAMISK KOMPONENT I EDITOR */
+#page-tabs .content p
+{
+    margin-top:0;
+    /*margin-bottom:0; denna rad bråkar med innehåll i flikarna, sätter stycken för nära varandra */ 
+}
+
+#page-tabs .content .rss
+{
+    padding:10px 15px 0;
+    float:right;
+    clear:both !important;
+    margin-bottom:-15px; /* instead of having no top margin on pagelist */
+}
+
+#page-tabs .content .links
+{
+    padding:5px 15px 15px 0;
+    float:right;
+    clear:both !important;
+    font-weight:bold !important;    
+}
+
+#page-tabs .content .functions a,
+#page-tabs .content .links a
+{
+    text-decoration:none;
+}
+
+#page-tabs .content .functions a:hover,
+#page-tabs .content .links a:hover
+{
+    text-decoration:underline;
+}
+
+
+/*********************************/
+/*********************************/
+/*   Dynamic Content - PageList  */
+/*********************************/
+ul.pagelist
+{
+    border-top:solid 2px #f1f1f1;
+    list-style:none;
+    padding:0 !important;
+    /* margin:0 0 15px 0; */
+}
+ul.pagelist li
+{
+    list-style:none;
+    padding:10px;
+    margin:0;
+    display:block;
+}
+ul.pagelist li.alternate
+{
+    background-color:#f1f1f1;
+}
+ul.pagelist li a
+{
+    width:auto;
+    text-decoration:none;
+    display:inline-block;
+}
+ul.pagelist li.image a
+{
+    width:320px;
+}
+ul.pagelist a:focus span.h3span,
+ul.pagelist a:hover span.h3span,
+ul.pagelist a:focus h3,
+ul.pagelist li a:hover h3
+{
+    text-decoration:underline !important;
+}
+ul.pagelist a:focus 
+{
+    text-decoration:none !important;
+}
+ul.pagelist li h3
+{
+    margin-top:0;
+}
+ul.pagelist a span.h3span
+{
+    font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
+    font-size: 18px;
+    margin-bottom: 3px;
+    display: block;
+}
+ul.pagelist li span.date
+{
+    padding-right:3px;
+}
+ul.pagelist li .image
+{
+    float:left;
+    width:85px;
+    margin-right:10px;
+}
+
+/* pagelist overrides */
+#page-tabs ul.pagelist { margin:0 !important; border:0; }
+#page-tabs ul.pagelist li { padding:15px; }
+#page-tabs ul.pagelist li:first-child { padding-top:20px; }
+#page-tabs ul.pagelist li.image a { width:310px; }
+
+/* Innehållsöversikt */
+div.subpagelist ul 
+{ 
+    margin:0;
+    padding:0; 
+}
+div.subpagelist ul ul
+{ 
+    margin-bottom:0.5em !important;
+}
+div.subpagelist li 
+{ 
+    display: block;
+    margin: 0;
+    padding: 0 0 0 5px;
+    list-style: none;
+}
+div.subpagelist a
+{
+    display:block;
+    padding-left:1em;    
+    text-decoration:none;
+}
+div.subpagelist ul ul a
+{
+    display:block;
+    padding:0.2em 0.2em 0.2em 0.7em;    
+    margin-left:1em;
+    text-decoration:none;
+}
+div.subpagelist ul ul a:hover
+{
+    background-color:#efefef;
+}
+div.subpagelist a:hover
+{
+    text-decoration:underline;
+}
+div.subpagelist h3 a
+{
+    background: url(Images/ico-arrow-small-down.png) no-repeat 0px 6px;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding-left: 10px;
+}
+div.subpagelist div.column
+{
+    width:48%;
+    float:left;
+}
+
+/********************************/
+/* VACANCY LIST/ITEM            */
+/********************************/
+#page-tabs.vacancy-list .content ul li
+{
+    padding:0 !important;
+}
+#page-tabs.vacancy-list .content ul li a
+{
+    padding:15px !important;
+    display:block;
+}
+#page-tabs.vacancy-list span.last-appliance
+{
+    display:block;
+    margin-top:10px;
+    font-size:11px;
+    color:#777;
+    font-weight:bold;
+}
+
+.quickContact.vacancy-contact
+{
+    padding-bottom:15px !important;
+}
+.quickContact.vacancy-contact span
+{
+    display:block;
+}
+
+.menu-box.about-vacancy .content h4
+{
+    margin:0 0 3px 0;
+    padding:0;
+}
+.menu-box.about-vacancy .content span.applydate
+{
+}
+.menu-box.about-vacancy .content span.applydate.alert
+{
+    color:#f00;
+}
+
+/* fix för när li ligger direkt under div, händer bla i beskrivningen av lediga jobb ibland */
+div>li
+{
+    margin-left:30px;
+}
+
+.pagelist a{
+    color: #393939;
+}
