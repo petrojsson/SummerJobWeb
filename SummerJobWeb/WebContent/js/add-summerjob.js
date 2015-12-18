@@ -38,7 +38,7 @@ $(document).ready(function(){
 		minDate: new Date(),
 		onSelect : function(selected) {
 			$(this).focus();
-			$("input[name*='unique-period-startdate']").datepicker("option", "maxDate", selected);
+//			$("input[name*='unique-period-startdate']").datepicker("option", "maxDate", selected);
 		},
 	});	
 	
@@ -223,7 +223,8 @@ function appendMunicipalityMentor(parent, periodId){
 		$(this).attr('name', newName);
 	});
 	mentorTemplate.find('.collapse').addClass('in');
-	$(parent).find('#mentors-wrapper').append($(mentorTemplate).html());
+//	$(parent).find('#mentors-wrapper').append($(mentorTemplate).html());
+	$(parent).find('.mentors-wrapper').append($(mentorTemplate).html());
 }
 
 function appendBusinessMentor(){
@@ -433,15 +434,13 @@ function previewBusinessSectorJob() {
 function previewMunicipalityJob() {
 	$('#preview-organisation').html($('#organisation').val());
 	$('#preview-administration').html($('#administration').val());
-	$('#preview-location').html($('#administration').val());
-	$('#preview-area').html($('#area').val());
+	$('#preview-location').html($('#location').val());
+	$('#preview-area').html($('#area :selected').html());
 	$('#preview-street').html($('#street').val());
 	$('#preview-zipcode').html($('#postalcode').val());
 	$('#preview-city').html($('#postalarea').val());
 	$('#preview-department').html($('#department').val());
-	$('#preview-geoarea').html($('#geoArea').val());
-	$('#preview-area').html($('#area').val());
-	$('#preview-area').html($('#area').val());
+	$('#preview-geoarea').html($('#geoArea :selected').html());
 	$('#preview-worktitle').html($('#work-title').val());
 	$('#preview-workdescription').html($('#work-description').val());
 	
@@ -451,11 +450,13 @@ function previewMunicipalityJob() {
 	$('#preview-manager-email').html($('#manager-email').val());
 	
 	
-	$('form').find('.period-div').each(function() {
+	$('form').find('.period-div').each(function(index) {
+		console.log(index);
 		var periodNr = $(this).attr('id').split("_")[1];
 		var currentPeriod = $(this);
 		
 		if ($(currentPeriod).find('input[type="checkbox"]').is(':checked')) {
+			console.log("Denna period är checkad: " + periodNr);
 			var periodTemplate = $('#preview-period-template').clone();
 			
 			var periodName;
@@ -472,14 +473,15 @@ function previewMunicipalityJob() {
 				periodEndDate = $(currentPeriod).find('.periodEndDate').html();
 			}
 			
-			$(periodTemplate).find('#preview-period-name').text(periodName);
-			$(periodTemplate).find('#preview-period-startdate').text(periodStartDate);
-			$(periodTemplate).find('#preview-period-enddate').text(periodEndDate);
-			$(periodTemplate).find('#preview-period-numberOfWorkers').html($(currentPeriod).find('.numberOfWorkersField').val());
+			$(periodTemplate).find('.preview-period-name').text(periodName);
+			$(periodTemplate).find('.preview-period-startdate').text(periodStartDate);
+			$(periodTemplate).find('.preview-period-enddate').text(periodEndDate);
+			$(periodTemplate).find('.preview-period-numberOfWorkers').html($(currentPeriod).find('.numberOfWorkersField').val());
 			
 			var numberOfMentors = 0;
 			
-			$(currentPeriod).find('[id^=mentor-firstname]').each(function() {
+			$(currentPeriod).find('[name^="mentor-firstname"]').each(function(index) {
+				console.log("Varje mentor: " + index);
 				numberOfMentors++;
 				
 				var nameArray = $(this).attr('name').split("_");
@@ -490,25 +492,31 @@ function previewMunicipalityJob() {
 					mentorId = nameArray[1];
 				}
 				
-				var mentorFirstname = $('input[name*="mentor-firstname_' + mentorId + '"]').val();
-				var mentorLastname = $('input[name*="mentor-lastname_' + mentorId + '"]').val();
-				var mentorPhone = $('input[name*="mentor-phone_' + mentorId + '"]').val();
-				var mentorEmail = $('input[name*="mentor-email_' + mentorId + '"]').val();
+				console.log("mentorId: " + mentorId);
+				
+				var mentorFirstname = $('input[name="mentor-firstname_' + mentorId + '"]').val();
+				var mentorLastname = $('input[name="mentor-lastname_' + mentorId + '"]').val();
+				var mentorPhone = $('input[name="mentor-phone_' + mentorId + '"]').val();
+				var mentorEmail = $('input[name="mentor-email_' + mentorId + '"]').val();
 		
-				var mentorRow = $(periodTemplate).find('#preview-mentor-row').clone();
-				mentorRow.find('#preview-mentor-firstname').html(mentorFirstname);
-				mentorRow.find('#preview-mentor-lastname').html(mentorLastname);
-				mentorRow.find('#preview-mentor-phonenumber').html(mentorPhone);
-				mentorRow.find('#preview-mentor-email').html(mentorEmail);
-				$(mentorRow).removeAttr('id');
+				var mentorRow = $(periodTemplate).find('.preview-mentor-row').clone();
+				mentorRow.find('.preview-mentor-firstname').html(mentorFirstname);
+				mentorRow.find('.preview-mentor-lastname').html(mentorLastname);
+				mentorRow.find('.preview-mentor-phonenumber').html(mentorPhone);
+				mentorRow.find('.preview-mentor-email').html(mentorEmail);
+				
+				console.log("mentorRow: " + mentorRow.find('.preview-mentor-firstname').html());
+				
+				$(mentorRow).removeClass('preview-mentor-row');
 				$(mentorRow).show();
-				$(mentorRow).appendTo($(periodTemplate).find('#preview-mentor-body'));
+				$(mentorRow).appendTo($(periodTemplate).find('.preview-mentor-body'));
 			});
 			
 			console.log("numberOfMentors: " + numberOfMentors);
 			
 			$(periodTemplate).addClass('preview-period-showing');
-			$(periodTemplate).show();
+			$(periodTemplate).removeAttr('id');
+//			$(periodTemplate).show();
 			$(periodTemplate).appendTo('#preview-period-div');
 		}
 	});

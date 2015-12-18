@@ -274,6 +274,10 @@ table#contact-person-table {
 
 #preview-period-template {
 	display: none;
+}
+
+.preview-period-showing {
+/* 	display: none; */
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	padding: 4px 8px 4px 8px;
