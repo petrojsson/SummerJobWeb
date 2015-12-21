@@ -214,7 +214,7 @@ $(document).ready(function(){
 });
 
 function appendMunicipalityMentor(parent, periodId){
-	var mentorTemplate = $('#mentor-template').clone();	
+	var mentorTemplate = $('.mentor-template').clone();	
 	var uuid = generateUUID();
 	mentorTemplate.find('input').each(function(){
 		var newName = $(this).attr('name');
@@ -223,12 +223,12 @@ function appendMunicipalityMentor(parent, periodId){
 		$(this).attr('name', newName);
 	});
 	mentorTemplate.find('.collapse').addClass('in');
-//	$(parent).find('#mentors-wrapper').append($(mentorTemplate).html());
+	mentorTemplate.removeClass("mentor-template");
 	$(parent).find('.mentors-wrapper').append($(mentorTemplate).html());
 }
 
 function appendBusinessMentor(){
-	var mentorTemplate = $('#mentor-template').clone();	
+	var mentorTemplate = $('.mentor-template').clone();	
 	var uuid = generateUUID();
 	mentorTemplate.find('input').each(function(){
 		var newName = $(this).attr('name');
@@ -236,6 +236,7 @@ function appendBusinessMentor(){
 		$(this).attr('name', newName);
 	});
 	mentorTemplate.find('.collapse').addClass('in');
+	mentorTemplate.removeClass('mentor-template');
 	$('#mentors-wrapper').append($(mentorTemplate).html());	
 }
 
@@ -370,7 +371,7 @@ function previewBusinessSectorJob() {
 	$('#preview-endDate').html($('#endDate').val());
 	$('#preview-lastApplicationDay').html($('#lastApplicationDay').val());
 	
-	$('form').find('[id^=mentor-firstname]').each(function() {
+	$('form').find('[name^="mentor-firstname"]').each(function() {
 		var nameArray = $(this).attr('name').split("_");
 		var mentorId;
 		if (nameArray.length == 3) {
@@ -384,13 +385,14 @@ function previewBusinessSectorJob() {
 		var mentorPhone = $('input[name="mentor-phone_' + mentorId + '"]').val();
 		var mentorEmail = $('input[name="mentor-email_' + mentorId + '"]').val();
 		
-		var mentorRow = $('#preview-mentor-row').clone();
-		mentorRow.find('#preview-mentor-firstname').html(mentorFirstname);
-		mentorRow.find('#preview-mentor-lastname').html(mentorLastname);
-		mentorRow.find('#preview-mentor-phonenumber').html(mentorPhone);
-		mentorRow.find('#preview-mentor-email').html(mentorEmail);
+		var mentorRow = $('.preview-mentor-row').clone();
+		mentorRow.find('.preview-mentor-firstname').html(mentorFirstname);
+		mentorRow.find('.preview-mentor-lastname').html(mentorLastname);
+		mentorRow.find('.preview-mentor-phonenumber').html(mentorPhone);
+		mentorRow.find('.preview-mentor-email').html(mentorEmail);
 		
 		$(mentorRow).addClass('preview-mentor-showing');
+		$(mentorRow).removeClass('preview-mentor-row');
 		$(mentorRow).show();
 		$(mentorRow).appendTo($('#preview-mentor-body'));
 	});
@@ -457,7 +459,7 @@ function previewMunicipalityJob() {
 		
 		if ($(currentPeriod).find('input[type="checkbox"]').is(':checked')) {
 			console.log("Denna period är checkad: " + periodNr);
-			var periodTemplate = $('#preview-period-template').clone();
+			var periodTemplate = $('.preview-period-template').clone();
 			
 			var periodName;
 			var periodStartDate;
@@ -515,7 +517,7 @@ function previewMunicipalityJob() {
 			console.log("numberOfMentors: " + numberOfMentors);
 			
 			$(periodTemplate).addClass('preview-period-showing');
-			$(periodTemplate).removeAttr('id');
+			$(periodTemplate).removeClass('preview-period-template');
 //			$(periodTemplate).show();
 			$(periodTemplate).appendTo('#preview-period-div');
 		}
