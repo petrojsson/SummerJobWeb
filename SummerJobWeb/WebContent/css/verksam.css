@@ -527,3 +527,7 @@ div>li
 .pagelist a{
     color: #393939;
 }
+
+#clear-search-button{
+	margin-left:1em;
+}
