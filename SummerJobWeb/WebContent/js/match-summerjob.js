@@ -133,6 +133,20 @@ $(document).ready(function(){
 		$(this).parent().find('a[name="show-more"]').show();
 	});
 	
+	$('a[name="show-more-job-info"]').click(function(){
+
+		$('.job-info').find('.collapse').collapse('show');
+		$(this).hide();
+		$(this).parent().find('a[name="show-less-job-info"]').show();
+	});
+	
+	$('a[name="show-less-job-info"]').click(function(){
+		
+		$('.job-info').find('.collapse').collapse('hide');
+		$(this).hide();
+		$(this).parent().find('a[name="show-more-job-info"]').show();
+	});
+	
 	$(document).on("click",'.remove-workers-btn',function(e){
 		event.preventDefault();
 		console.log("Removing application matched to job");

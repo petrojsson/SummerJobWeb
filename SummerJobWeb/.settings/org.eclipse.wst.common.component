@@ -44,6 +44,12 @@
         <dependent-module archiveName="Smex.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OpenETown-Smex/OpenETown-Smex">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="commons-fileupload-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CommonsFileUpload/lib/commons-fileupload-1.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Commons-IO/lib/commons-io-2.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/sommarjobb.sundsvall.se/build/classes"/>
         <property name="context-root" value="sommarjobb.sundsvall.se"/>
     </wb-module>
