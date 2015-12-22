@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="sommarjobb.sundsvall.se">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
@@ -183,3 +184,61 @@
         <property name="context-root" value="sommarjobb.sundsvall.se"/>
     </wb-module>
 </project-modules>
+=======
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sommarjobb.sundsvall.se">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="OpenHierarchy.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OpenHierarchy/OpenHierarchy">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="EmailUtils.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EmailUtils/EmailUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="StandardUtils.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/StandardUtils/StandardUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="WebUtils.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/WebUtils/WebUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Log4j.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Log4j/Log4j">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Log4JUtils.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Log4jUtils/Log4jUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="FileUploadUtils.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/FileUploadUtils/FileUploadUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CommonsFileUpload.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CommonsFileUpload/CommonsFileUpload">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="MinimalUser.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MinimalUser/MinimalUser">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="JavaMail.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/JavaMail/JavaMail">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SummerJob.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SummerJob/SummerJob">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mysql-connector-java-5.1.36-bin.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/SummerJobWeb/WebContent/WEB-INF/lib/mysql-connector-java-5.1.36-bin.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Cron4JUtils.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Cron4JUtils/Cron4JUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Smex.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/OpenETown-Smex/OpenETown-Smex">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-fileupload-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/CommonsFileUpload/lib/commons-fileupload-1.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Commons-IO/lib/commons-io-2.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/sommarjobb.sundsvall.se/build/classes"/>
+        <property name="context-root" value="sommarjobb.sundsvall.se"/>
+    </wb-module>
+</project-modules>
+>>>>>>> bf365f335cc1271c4b4e707b2c6ba5e74a634f81
