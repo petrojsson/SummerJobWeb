@@ -525,3 +525,7 @@ div.subpagelist div.column
 #clear-search-button{
 	margin-left:1em;
 }
+
+.header-match{
+	margin-bottom:1em;
+}
