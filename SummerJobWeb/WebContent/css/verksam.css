@@ -518,12 +518,6 @@ div.subpagelist div.column
     color:#f00;
 }
 
-/* fix för när li ligger direkt under div, händer bla i beskrivningen av lediga jobb ibland */
-div>li
-{
-    margin-left:30px;
-}
-
 .pagelist a{
     color: #393939;
 }
