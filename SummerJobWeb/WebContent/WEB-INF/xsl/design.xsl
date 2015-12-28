@@ -100,10 +100,10 @@
 			    							<a role="menuitem" tabindex="1" href="{/document/requestinfo/contextpath}/list-applications">Ansökningar</a>
 			    						</li>
 			    						<li role="presentation">
-			    							<a role="menuitem" tabindex="2" href="{/document/requestinfo/contextpath}/list-summerjobs?showMunicipalityJobs=true">Kommunala sommarjobb</a>
+			    							<a role="menuitem" tabindex="2" href="{/document/requestinfo/contextpath}/list-summerjobs?municipality=true">Kommunala sommarjobb</a>
 			    						</li>
 			    						<li role="presentation">
-			    							<a role="menuitem" tabindex="3" href="{/document/requestinfo/contextpath}/list-summerjobs">Sommarjobb i näringslivet</a>
+			    							<a role="menuitem" tabindex="3" href="{/document/requestinfo/contextpath}/list-summerjobs?business=true">Sommarjobb i näringslivet</a>
 			    						</li>
 			    					</ul>
 					            </li>
