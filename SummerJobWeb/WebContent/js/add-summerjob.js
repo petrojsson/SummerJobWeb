@@ -80,10 +80,10 @@ $(document).ready(function(){
 		appendMunicipalityMentor(mentorDiv, id);
 	});
 	
-	$('.add-business-mentor-btn').click(function(e){
-		e.preventDefault();
-		appendBusinessMentor();
-	});
+//	$('.add-business-mentor-btn').click(function(e){
+//		e.preventDefault();
+//		appendBusinessMentor();
+//	});
 	
 	$(document).on('keydown', 'input.numberValidation', function(e) {
 
@@ -227,18 +227,18 @@ function appendMunicipalityMentor(parent, periodId){
 	$(parent).find('.mentors-wrapper').append($(mentorTemplate).html());
 }
 
-function appendBusinessMentor(){
-	var mentorTemplate = $('.mentor-template').clone();	
-	var uuid = generateUUID();
-	mentorTemplate.find('input').each(function(){
-		var newName = $(this).attr('name');
-		newName=newName + '_' + uuid;
-		$(this).attr('name', newName);
-	});
-	mentorTemplate.find('.collapse').addClass('in');
-	mentorTemplate.removeClass('mentor-template');
-	$('#mentors-wrapper').append($(mentorTemplate).html());	
-}
+//function appendBusinessMentor(){
+//	var mentorTemplate = $('.mentor-template').clone();	
+//	var uuid = generateUUID();
+//	mentorTemplate.find('input').each(function(){
+//		var newName = $(this).attr('name');
+//		newName=newName + '_' + uuid;
+//		$(this).attr('name', newName);
+//	});
+//	mentorTemplate.find('.collapse').addClass('in');
+//	mentorTemplate.removeClass('mentor-template');
+//	$('#mentors-wrapper').append($(mentorTemplate).html());	
+//}
 
 function generateUUID() {
 	var chars = '0123456789abcdef'.split('');
@@ -371,31 +371,36 @@ function previewBusinessSectorJob() {
 	$('#preview-endDate').html($('#endDate').val());
 	$('#preview-lastApplicationDay').html($('#lastApplicationDay').val());
 	
-	$('form').find('[name^="mentor-firstname"]').each(function() {
-		var nameArray = $(this).attr('name').split("_");
-		var mentorId;
-		if (nameArray.length == 3) {
-			mentorId = nameArray[1] + "_" + nameArray[2];
-		} else {
-			mentorId = nameArray[1];
-		}
-		
-		var mentorFirstname = $('input[name="mentor-firstname_' + mentorId + '"]').val();
-		var mentorLastname = $('input[name="mentor-lastname_' + mentorId + '"]').val();
-		var mentorPhone = $('input[name="mentor-phone_' + mentorId + '"]').val();
-		var mentorEmail = $('input[name="mentor-email_' + mentorId + '"]').val();
-		
-		var mentorRow = $('.preview-mentor-row').clone();
-		mentorRow.find('.preview-mentor-firstname').html(mentorFirstname);
-		mentorRow.find('.preview-mentor-lastname').html(mentorLastname);
-		mentorRow.find('.preview-mentor-phonenumber').html(mentorPhone);
-		mentorRow.find('.preview-mentor-email').html(mentorEmail);
-		
-		$(mentorRow).addClass('preview-mentor-showing');
-		$(mentorRow).removeClass('preview-mentor-row');
-		$(mentorRow).show();
-		$(mentorRow).appendTo($('#preview-mentor-body'));
-	});
+	$('#preview-mentor-firstname').html($('#mentor-firstname').val());
+	$('#preview-mentor-lastname').html($('#mentor-lastname').val());
+	$('#preview-mentor-phone').html($('#mentor-phone').val());
+	$('#preview-mentor-email').html($('#mentor-email').val());
+	
+//	$('form').find('[name^="mentor-firstname"]').each(function() {
+//		var nameArray = $(this).attr('name').split("_");
+//		var mentorId;
+//		if (nameArray.length == 3) {
+//			mentorId = nameArray[1] + "_" + nameArray[2];
+//		} else {
+//			mentorId = nameArray[1];
+//		}
+//		
+//		var mentorFirstname = $('input[name="mentor-firstname_' + mentorId + '"]').val();
+//		var mentorLastname = $('input[name="mentor-lastname_' + mentorId + '"]').val();
+//		var mentorPhone = $('input[name="mentor-phone_' + mentorId + '"]').val();
+//		var mentorEmail = $('input[name="mentor-email_' + mentorId + '"]').val();
+//		
+//		var mentorRow = $('.preview-mentor-row').clone();
+//		mentorRow.find('.preview-mentor-firstname').html(mentorFirstname);
+//		mentorRow.find('.preview-mentor-lastname').html(mentorLastname);
+//		mentorRow.find('.preview-mentor-phonenumber').html(mentorPhone);
+//		mentorRow.find('.preview-mentor-email').html(mentorEmail);
+//		
+//		$(mentorRow).addClass('preview-mentor-showing');
+//		$(mentorRow).removeClass('preview-mentor-row');
+//		$(mentorRow).show();
+//		$(mentorRow).appendTo($('#preview-mentor-body'));
+//	});
 	
 	$('#preview-corporate-number').html($('#corporate-number').val());
 	$('#preview-company').html($('#company').val());
