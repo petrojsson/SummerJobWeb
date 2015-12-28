@@ -59,57 +59,63 @@ $(document).ready(function(){
 		generateEmployeeDocument(jobId, appId, selectValue);
 	});
 	
-	if ($('#availableSlotsToMatch').html() == '0') {
-		$('.set-matched-btn').attr('disabled', true);
-	}
-	
 	if ($('#jobIsOpenStatus').val() == 'false') {
 		$('.common-button').attr('disabled', true);
 	}
 	
-	$(document).on("submit", 'form[name="match-worker"]', function(e){
+	$('.candidates input[name="application-id"]').change(function(e){
+		 var ischecked= $(this).is(':checked');
+         if(ischecked){
+        	 var available = parseInt($("#availableToMatch").text())-1;
+        	 $("#availableToMatch").text(available);
+        	 if(available<=0){
+        		 //disable all none checked        		 
+        		 $('input[name="application-id"]').not(':checked').attr("disabled", true);
+        	 }        	 
+         }else{        	 
+        	 var available = parseInt($("#availableToMatch").text())+1;
+        	 $("#availableToMatch").text(available);
+        	 
+        	 if(available>0){
+        		 $('input[name="application-id"]').not(':checked').removeAttr("disabled");
+        	 }
+         }
+	});
+	
+	$(document).on("click", '.match-btn', function(e){
 		e.preventDefault();
 		
-		console.log("Adding application to job");
-		
+		console.log("Adding application to job");		
 		var jobId = $('#job-id').val();
-		var applicationId= $(this).find('input[name="application-id"]').val();
-		 
+		data = $('input[name="application-id"]:checked');		
 		console.log(jobId);
-		console.log(applicationId);
+		data.push($('#job-id')[0]);
+		console.log(data);
 		
-//		var candidate = $(this).closest('.candidate');
-		
-	    $.ajax(
-	    {
-	        url : url+'/match-worker.json',
-	        type: "POST",
-	        data : {"application-id":applicationId, "job-id":jobId},
-	        success:function(data, textStatus, jqXHR) 
-	        {
-	        	console.log(data);
-	        	if(data.status==='success'){
-	        		console.log('application matching was successful');	        		
-	        		
-//	        		var temp = $('#matched-application-template').find('.matched-application').clone();
-//	        		console.log($(candidate).find('.name').text());
-//	        		$(temp).find('.name').text($(candidate).find('.name').text());
-//	        		$(temp).find('.social-number').text($(candidate).find('.social-number').text());	        		
-//	        		$(temp).find('input[name="application-id"]').val(applicationId);
-//	        		$('#matched-applications-container').append(temp);
-//	        		candidate.remove();
-	        		location.reload(true);
-	        		
-	        	}else{
-	        		console.log(data);
-	        		alert(data.message);
-	        	}
-	        },
-	        error: function(jqXHR, textStatus, errorThrown) 
-	        {
-	            console.log(textStatus);  
-	        }
-	    });
+		 $.ajax(
+		    {
+		        url : url+'/match-worker.json',
+		        type: "POST",
+	
+		        data: data,
+		        success:function(data, textStatus, jqXHR) 
+		        {
+		        	console.log(data);
+		        	if(data.status==='success'){
+		        		console.log('application matching was successful');	        						        		
+		        		location.reload(true);
+		        	}else{
+		        		console.log(data);
+		        		alert(data.message);
+		        	}
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) 
+		        {
+		            console.log(textStatus);  
+		        }
+		    }
+	    );
+
 	});
 	
 	$('button.save-ranking-btn').click(function(e) {

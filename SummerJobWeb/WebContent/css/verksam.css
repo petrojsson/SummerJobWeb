@@ -526,6 +526,24 @@ div.subpagelist div.column
 	margin-left:1em;
 }
 
-.header-match{
-	margin-bottom:1em;
+.job-info{
+	margin-top:1.5em;
+}
+
+.navbar-bottom{
+	background-color: #5B1F78;
+}
+
+.navbar-info{
+	padding-top: 15px;
+    padding-bottom: 15px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color:#fff;
+}
+
+.footer-offset{
+	margin-top:7em;
 }
