@@ -551,3 +551,9 @@ div.subpagelist div.column
 .footer-offset{
 	margin-top:7em;
 }
+
+@media (max-width: 767px) {
+    .col-xs-top-margin {
+        margin-top:8px;
+    }
+}
