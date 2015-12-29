@@ -137,45 +137,13 @@
 				</div>
 			
 
-			<div class="container" style="padding: 60px 15px 0;">
+			<div class="container" style="margin-top:60px;">
 
 			<!-- banner-slot: top -->				
 				<xsl:for-each select="backgroundsModuleResponses/response[slots/slot='banner-slot']">
 					<xsl:value-of select="HTML" disable-output-escaping="yes"/>
 				</xsl:for-each>
 				
-<!-- 			 <xsl:if test="user/admin = 'true'">
-			  	<div class="dropdown">
-    				<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Admin menu
-    				<span class="caret"></span></button>
-    				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-    					<li role="presentation">
-    						<a role="menuitem" tabindex="-1" href="{/document/requestinfo/contextpath}/"><xsl:value-of select="section/name"/></a>
-    					</li>
-							<xsl:apply-templates select="menus/menu/menuitem"/>
-    				</ul>
-    			</div>	
-
-			</xsl:if> -->
-<!-- 				
-				<xsl:if test="not(user)">
-					<div class="ekorren-header-section ekorren-profile ekorren-login-btn">					
-
-						<a class="of-btn of-btn-inline of-btn-vattjom of-btn-spaced login-modal" href="/login">
-						<span>Logga in</span>
-						</a>
-					</div>
-
-				</xsl:if>
-				<xsl:if test="user">
-					<div class="ekorren-header-section ekorren-profile ekorren-login-btn">					
-						<a class="of-btn of-btn-inline of-btn-vattjom of-btn-spaced" href="{/document/requestinfo/contextpath}/logout">					
-						<span>Logga ut</span>
-						</a>
-					</div>
-				</xsl:if>
-				-->
-
 			
 			<xsl:for-each select="backgroundsModuleResponses/response[slots/slot='main-slot']">
 				<xsl:value-of select="HTML" disable-output-escaping="yes"/>
