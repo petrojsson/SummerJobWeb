@@ -588,3 +588,8 @@ div.subpagelist div.column
 #search-applications-form .form-group{
 	margin-bottom: 0px;
 }
+
+.more-information-container{
+	margin: 8px; 
+	padding: 8px;
+}
