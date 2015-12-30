@@ -125,15 +125,15 @@ $(document).ready(function(){
 		updateApplicationRanking(appId, rankingValue);
 	});
 
-	$('a[name="show-more"]').click(function(){
-
+	$('a[name="show-more"]').click(function(e){
+		e.preventDefault();
 		$(this).closest('.candidate').find('.collapse').collapse('show');
 		$(this).hide();
 		$(this).parent().find('a[name="show-less"]').show();
 	});
 	
-	$('a[name="show-less"]').click(function(){
-		
+	$('a[name="show-less"]').click(function(e){
+		e.preventDefault();
 		$(this).closest('.candidate').find('.collapse').collapse('hide');
 		$(this).hide();
 		$(this).parent().find('a[name="show-more"]').show();
