@@ -148,8 +148,8 @@
 	margin-bottom: 8px;
 }
 
-.float-rgt {
-	float: right;
+.btn-mgn-top{
+	margin-top:4px;
 }
 
 th.overview {
@@ -240,12 +240,16 @@ table#contact-person-table {
 	margin-right: 16px;
 }
 
-.period-div {
+.period-wrapper {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	padding: 8px;
 	margin-top: 4px;
 	margin-bottom: 4px;
+}
+
+.period-container{
+	margin-bottom: 0px;
 }
 
 .matched-application, #jobinfo-contact {
@@ -300,7 +304,14 @@ table#contact-person-table {
   background-color: #fff;
 }
 
+.add-mentor{
+	margin-bottom: 8px;
+}
 
+.mentor-description-text{
+	font-weight: normal; 
+	font-size: 90%;
+}
 
 /**************************************************/
 /* Page Tabs (for tab specifics look for ul.tabs) */
@@ -560,4 +571,8 @@ div.subpagelist div.column
     .col-xs-top-margin {
         margin-top:8px;
     }
+}
+
+.main-content-container{
+	margin-top:60px;
 }

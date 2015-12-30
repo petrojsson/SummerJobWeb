@@ -167,7 +167,7 @@ $(document).ready(function(){
 	$('input.period-checkbox:checked').each(function() {
 		var checkbox = $(this);
 		var row = checkbox.parent().parent();
-		$(row).parent().find('.add-mentor-div').removeClass('hidden');
+		$(row).parent().find('.add-mentor').removeClass('hidden');
 	});
 	
 	$('input.period-checkbox').click(function(e) {
@@ -180,7 +180,7 @@ $(document).ready(function(){
 			$(row).find('.numberOfWorkersField').attr("required", false);
 			$(row).find('.numberOfWorkersField').attr("disabled", true);
 		}
-		$(row).parent().find('.add-mentor-div').toggleClass('hidden');
+		$(row).parent().find('.add-mentor').toggleClass('hidden');
 	});
 	
 	$('#municipality-job-form').validator().on('submit', function (e) {
@@ -457,7 +457,7 @@ function previewMunicipalityJob() {
 	$('#preview-manager-email').html($('#manager-email').val());
 	
 	
-	$('form').find('.period-div').each(function(index) {
+	$('form').find('.period-wrapper').each(function(index) {
 		console.log(index);
 		var periodNr = $(this).attr('id').split("_")[1];
 		var currentPeriod = $(this);
@@ -524,7 +524,7 @@ function previewMunicipalityJob() {
 			$(periodTemplate).addClass('preview-period-showing');
 			$(periodTemplate).removeClass('preview-period-template');
 //			$(periodTemplate).show();
-			$(periodTemplate).appendTo('#preview-period-div');
+			$(periodTemplate).appendTo('#preview-period-wrapper');
 		}
 	});
 
