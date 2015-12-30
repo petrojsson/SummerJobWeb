@@ -169,7 +169,7 @@ function manageApplication() {
 	$.ajax({
 		url: url + '/saveapplicationoptions.json',
 		type: "POST",
-		data: { appId : $('#appIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val(), 
+		data: { appId : $('#app-id').val(), adminNotes : $("textarea[name='admin-notes']").val(), 
 			statusApprove : $('select[name="application-status-select"]').val(),
 			ranking : $("select[name='ranking']").val(), },
 		success: function(data, textStatus, jqXHR) {

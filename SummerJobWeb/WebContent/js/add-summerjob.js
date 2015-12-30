@@ -343,7 +343,7 @@ function manageJob(urlPart) {
 	$.ajax({
 		url: url + urlPart,
 		type: "POST",
-		data: { jobId : $('#jobIdDiv').html(), adminNotes : $("textarea[name='admin-notes']").val(), 
+		data: { jobId : $('#job-id').val(), adminNotes : $("textarea[name='admin-notes']").val(), 
 			descriptionForEmploymentPapers : $("textarea[name='description-employment-papers']").val(),
 			descriptionForCallPapers : $("textarea[name='description-call-papers']").val(),
 			statusApprove : $('select[name="job-status-select"]').val() },

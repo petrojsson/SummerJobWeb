@@ -63,7 +63,7 @@ $(document).ready(function(){
 		$('.common-button').attr('disabled', true);
 	}
 	
-	$('.candidates input[name="application-id"]').change(function(e){
+	$('.candidates-wrapper input[name="application-id"]').change(function(e){
 		 var ischecked= $(this).is(':checked');
          if(ischecked){
         	 var available = parseInt($("#availableToMatch").text())-1;
