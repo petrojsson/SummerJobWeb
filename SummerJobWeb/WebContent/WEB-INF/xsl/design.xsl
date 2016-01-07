@@ -31,7 +31,7 @@
 				href="{/document/requestinfo/contextpath}/css/bootstrap.min.css" />
 			<link rel="stylesheet"
 				href="{/document/requestinfo/contextpath}/css/bootstrap-theme.min.css" />
-			<link rel="stylesheet" href="{/document/requestinfo/contextpath}/css/verksam.css" />
+			<link rel="stylesheet" href="{/document/requestinfo/contextpath}/css/sommarjobb.css" />
 			<link rel="stylesheet"
 				href="{/document/requestinfo/contextpath}/css/jquery-ui-1.8.7.custom.css" />
 			<link rel="stylesheet"
@@ -116,7 +116,7 @@
 								</xsl:if>
 								<xsl:if test="user/admin = 'true'">
 
-									<li class="">
+									<li>
 										<a href="{/document/requestinfo/contextpath}/summerjobs-overview">Överblick</a>
 									</li>
 

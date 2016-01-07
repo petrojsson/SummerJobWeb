@@ -30,11 +30,6 @@
 	display:inline-block;
 }
 
-
-#view-survey{
-	margin-bottom: 5em;
-}
-
 .add-section-container,.box-wrapper{
 	border-style: solid;
 	border-width: 1px;
@@ -52,26 +47,27 @@
 }
 
 #navbar ul li.active{
-	background-color:#F08A00; 
+	background-color:#9260A0; 
 } 
 
 #navbar li a{
 	color: #fff;	
 }
 
+
 #navbar li ul{
-	background-color: #F08A00;	
+	background-color: #5B1F78;	
 }
 
 
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-    background-color: #F08A00;
+    background-color: #9260A0;
     
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
+.nav li a:focus, .nav li a:hover {
     text-decoration: none;
-    background-color: #F08A00;
+    background: #9260A0;
 }
 
 .navbar-brand{
@@ -79,8 +75,9 @@
 }
 
 .panel-default>.panel-heading{
-	background-image: linear-gradient(to bottom,#9260A0 0,#D2C5DF 100%);
-	border-color: #D2C5DF;
+	/*background-image: linear-gradient(to bottom,#9260A0 0,#D2C5DF 100%);
+	border-color: #D2C5DF;*/
+	background: #9260A0;
 }
 
 .panel-heading h3{
@@ -88,7 +85,7 @@
 }
 
 .panel-default {
-    border-color: #D2C5DF;
+    border-color: #9260A0;
 }
 .btn-default{
 	    background-image: linear-gradient(to bottom,#fff 0,#5B1F78 100%);
