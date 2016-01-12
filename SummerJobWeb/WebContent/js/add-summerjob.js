@@ -184,6 +184,7 @@ $(document).ready(function(){
 	});
 	
 	$('#municipality-job-form').validator().on('submit', function (e) {
+		$('#periods-group').removeClass('has-error');
 		
 		var periodsChecked = 0;
 		$('#periods-group').find('input[type="checkbox"]:checked').each(function () {
@@ -196,7 +197,6 @@ $(document).ready(function(){
 			console.log("periodsChecked: " + periodsChecked);
 			
 			if (periodsChecked > 0) {
-				$('#periods-group').removeClass('has-error');
 				previewMunicipalityJob();
 			} else {
 				$('#periods-group').addClass('has-error');
