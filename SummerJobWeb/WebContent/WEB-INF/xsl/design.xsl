@@ -62,7 +62,17 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="/">Sommarjobb</a>
+							<xsl:choose>
+								<xsl:when test="/document/requestinfo/contextpath!=''">
+									<a class="navbar-brand" href="{/document/requestinfo/contextpath}">Sommarjobb</a>">
+								</xsl:when>
+								<xsl:otherwise>
+									<a class="navbar-brand" href="/">Sommarjobb</a>">
+								</xsl:otherwise>
+							</xsl:choose>
+							
+							
+							
 						</div>
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
