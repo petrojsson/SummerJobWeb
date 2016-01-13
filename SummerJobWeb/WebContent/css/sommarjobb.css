@@ -647,3 +647,8 @@ button{
 	font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
     font-weight: normal;
 }
+
+a[type="button"]{
+	font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
+    font-weight: normal;
+}
