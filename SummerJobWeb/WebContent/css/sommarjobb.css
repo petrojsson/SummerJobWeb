@@ -590,3 +590,60 @@ div.subpagelist div.column
 	margin: 8px; 
 	padding: 8px;
 }
+
+
+@font-face {
+    font-family: 'RalewayRegular';
+    src: url('Fonts/Raleway-Regular.otf');    
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RalewayBold';
+    src: url('Fonts/Raleway-Bold.otf');    
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+input, select, textarea {
+    font-family: Helvetica, Arial, Sans-Serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
+    font-weight: normal;
+}
+
+h1 {
+    font-size:26px;
+}
+h2 {
+    font-size:18px;
+    margin-bottom:4px;
+}
+h3 {
+    font-size:14px; 
+    margin-bottom:4px; 
+}
+h4 {
+    font-size:13px;
+}
+p { margin-top:2px; }
+
+a[data-toggle="tab"]{
+    font-size: 16px;
+    font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
+    font-weight: normal;
+}
+
+#navBar li a, #footer-body{
+ 	font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
+    font-weight: normal;
+}
+
+button{
+	font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
+    font-weight: normal;
+}
