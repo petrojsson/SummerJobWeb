@@ -632,6 +632,11 @@ h4 {
 }
 p { margin-top:2px; }
 
+a{
+	font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
+    font-weight: normal;
+}
+
 a[data-toggle="tab"]{
     font-size: 16px;
     font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
