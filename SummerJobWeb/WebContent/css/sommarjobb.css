@@ -184,14 +184,16 @@ table#periods-table {
 	padding-bottom: 4px;
 }
 
-.application-row:hover, .job-row:hover {
-	background-color: #e8e8e8; 
-/* 	opacity: 0.8; */
+.application-list-row:hover, .job-row:hover {
+	background-color: #D2C5DF; 
+ 	opacity: 0.8; 
 	cursor: pointer;
 }
 
 .overview-row:hover {
-	background-color: #e8e8e8; 
+	background-color: #D2C5DF;
+	 opacity: 0.8; 
+	
 }
 
 table#salary-table {
@@ -619,14 +621,17 @@ h1, h2, h3, h4, h5 {
 h1 {
     font-size:26px;
 }
+
 h2 {
     font-size:18px;
     margin-bottom:4px;
 }
+
 h3 {
     font-size:14px; 
     margin-bottom:4px; 
 }
+
 h4 {
     font-size:13px;
 }
@@ -656,4 +661,14 @@ button{
 a[type="button"]{
 	font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
     font-weight: normal;
+}
+
+.application-more-info-row{
+	margin-top:1em;
+	margin-bottom:1em;
+	    margin-left: 45px;
+}
+
+.application-more-info-show{
+	color: #9260A0;
 }

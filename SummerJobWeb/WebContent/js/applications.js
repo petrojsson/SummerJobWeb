@@ -10,20 +10,14 @@ $(document).ready(function() {
 		$(form).submit();
 	});
 
-	$('.business-application-row').click(function(e) {
-		var moreInfo = $(this).parent().find(".more-information");
-		$(moreInfo).toggleClass('hidden');
-		$(this).find('.more-information-arrow').find('.arrow-down').toggleClass('hidden');
-		$(this).find('.more-information-arrow').find('.arrow-up').toggleClass('hidden');
-	});
 	 
-	$('.municipality-application-row').click(function(e) {
-//		var url = $(this).find('input[type=hidden]').val();
-//		window.location.href = url;
-		var moreInfo = $(this).parent().find(".more-information");
-		$(moreInfo).toggleClass('hidden');
-		$(this).find('.more-information-arrow').find('.arrow-down').toggleClass('hidden');
-		$(this).find('.more-information-arrow').find('.arrow-up').toggleClass('hidden');
+	$('.application-list-row').click(function(e) {
+		$(this).find('.application-info-row').toggleClass('application-more-info-show');
+		$(this).find('.application-more-info-row').toggleClass('hidden');
+		//var moreInfo = $(this).parent().find(".more-information");
+		//$(moreInfo).toggleClass('hidden');
+		$(this).find('.arrow-down').toggleClass('hidden');
+		$(this).find('.arrow-up').toggleClass('hidden');
 	});
 
 	
