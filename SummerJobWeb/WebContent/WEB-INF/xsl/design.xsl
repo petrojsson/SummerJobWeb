@@ -164,7 +164,7 @@
 											
 											<li role="presentation">
 												<a role="menuitem" tabindex="6"
-													href="{/document/requestinfo/contextpath}/add-municipality-job">Lägg till kommunal sommarjobbsansökan</a>
+													href="{/document/requestinfo/contextpath}/add-municipality-job-application">Lägg till kommunal sommarjobbsansökan</a>
 											</li>
 											
 											<li role="presentation">
