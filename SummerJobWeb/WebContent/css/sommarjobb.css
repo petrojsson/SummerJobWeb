@@ -142,7 +142,15 @@
 }
 
 .mgn-btm8px {
-	margin-bottom: 8px;
+	margin-bottom: 8px !important;
+}
+
+.mgn-top0px {
+	margin-top: 0px;
+}
+
+.mgn-rgt32px {
+	margin-right: 32px;
 }
 
 .btn-mgn-top{
