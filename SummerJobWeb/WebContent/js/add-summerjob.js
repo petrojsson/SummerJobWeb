@@ -373,34 +373,8 @@ function previewBusinessSectorJob() {
 	
 	$('#preview-mentor-firstname').html($('#mentor-firstname').val());
 	$('#preview-mentor-lastname').html($('#mentor-lastname').val());
-	$('#preview-mentor-phone').html($('#mentor-phone').val());
+	$('#preview-mentor-phonenumber').html($('#mentor-phone').val());
 	$('#preview-mentor-email').html($('#mentor-email').val());
-	
-//	$('form').find('[name^="mentor-firstname"]').each(function() {
-//		var nameArray = $(this).attr('name').split("_");
-//		var mentorId;
-//		if (nameArray.length == 3) {
-//			mentorId = nameArray[1] + "_" + nameArray[2];
-//		} else {
-//			mentorId = nameArray[1];
-//		}
-//		
-//		var mentorFirstname = $('input[name="mentor-firstname_' + mentorId + '"]').val();
-//		var mentorLastname = $('input[name="mentor-lastname_' + mentorId + '"]').val();
-//		var mentorPhone = $('input[name="mentor-phone_' + mentorId + '"]').val();
-//		var mentorEmail = $('input[name="mentor-email_' + mentorId + '"]').val();
-//		
-//		var mentorRow = $('.preview-mentor-row').clone();
-//		mentorRow.find('.preview-mentor-firstname').html(mentorFirstname);
-//		mentorRow.find('.preview-mentor-lastname').html(mentorLastname);
-//		mentorRow.find('.preview-mentor-phonenumber').html(mentorPhone);
-//		mentorRow.find('.preview-mentor-email').html(mentorEmail);
-//		
-//		$(mentorRow).addClass('preview-mentor-showing');
-//		$(mentorRow).removeClass('preview-mentor-row');
-//		$(mentorRow).show();
-//		$(mentorRow).appendTo($('#preview-mentor-body'));
-//	});
 	
 	$('#preview-corporate-number').html($('#corporate-number').val());
 	$('#preview-company').html($('#company').val());
@@ -448,7 +422,7 @@ function previewMunicipalityJob() {
 	$('#preview-city').html($('#postalarea').val());
 	$('#preview-department').html($('#department').val());
 	$('#preview-geoarea').html($('#geoArea :selected').html());
-	$('#preview-worktitle').html($('#work-title').val());
+//	$('#preview-worktitle').html($('#work-title').val());
 	$('#preview-workdescription').html($('#work-description').val());
 	
 	$('#preview-manager-firstname').html($('#manager-firstname').val());
