@@ -51,7 +51,12 @@
 
 		<body>
 			<div class="container">
-				<nav id="navBar" class="navbar navbar-fixed-top">
+				
+				<div id="HeaderArea">
+	                <a id="HomeLink" href="/"></a>
+	            </div>
+	            
+				<nav id="navBar" class="navbar navbar-fixed-top no-fixed-top">
 					<div class="container">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle collapsed"
