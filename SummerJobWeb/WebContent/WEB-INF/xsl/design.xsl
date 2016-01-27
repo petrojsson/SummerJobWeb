@@ -84,8 +84,6 @@
 											</xsl:otherwise>
 										</xsl:choose>
 										
-										
-										
 										Start
 									</a>
 								</li>
@@ -144,7 +142,7 @@
 										<a href="{/document/requestinfo/contextpath}/list-applications">Ansökningar</a>
 									</li>
 									
-									<li class="dropdown">
+									<li class="dropdown navbar-dropdown-menu">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 											role="button" aria-haspopup="true" aria-expanded="false">
 											Meny
@@ -192,7 +190,7 @@
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 											role="button" aria-haspopup="true" aria-expanded="false">
-											Admin menu
+											Admin meny
 											<span class="caret"></span>
 										</a>
 										<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">

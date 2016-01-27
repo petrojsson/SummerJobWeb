@@ -714,3 +714,7 @@ a[type="button"]{
 	top: auto;
 	position: absolute;
 }
+
+.list-application-panel {
+	margin-bottom: 0px;
+}
