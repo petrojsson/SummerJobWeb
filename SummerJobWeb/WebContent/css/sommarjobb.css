@@ -659,6 +659,7 @@ a[data-toggle="tab"]{
 #navBar li a, #footer-body{
  	font-family: RalewayBold, Helvetica, Arial, Sans-Serif;
     font-weight: normal;
+    font-size: 13px;
 }
 
 button{

@@ -67,18 +67,28 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<xsl:choose>
-								<xsl:when test="/document/requestinfo/contextpath!=''">
-									<a class="navbar-brand" href="{/document/requestinfo/contextpath}">Sommarjobb</a>
-								</xsl:when>
-								<xsl:otherwise>
-									<a class="navbar-brand" href="/">Sommarjobb</a>
-								</xsl:otherwise>
-							</xsl:choose>
 							
 						</div>
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
+								<li>
+									<a>
+										<xsl:choose>
+											<xsl:when test="/document/requestinfo/contextpath!=''">
+												<xsl:attribute name="href">
+													<xsl:value-of select="/document/requestinfo/contextpath"></xsl:value-of>
+												</xsl:attribute>
+											</xsl:when>
+											<xsl:otherwise>
+												<xsl:attribute name="href">/</xsl:attribute>
+											</xsl:otherwise>
+										</xsl:choose>
+										
+										
+										
+										Start
+									</a>
+								</li>
 
 								<xsl:if test="user/admin = 'false'">				
 									<li>
