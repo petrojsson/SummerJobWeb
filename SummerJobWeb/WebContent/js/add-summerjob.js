@@ -109,10 +109,10 @@ $(document).ready(function(){
 	
 	$(document).on('click', 'div.remove-mentor', function(e) {
 		var mentorRow = $(this).parent();
-		mentorRow.find('#mentor-firstname').val("");
-		mentorRow.find('#mentor-lastname').val("");
-		mentorRow.find('#mentor-phone').val("");
-		mentorRow.find('#mentor-email').val("");
+		mentorRow.find('.mentor-firstname').val("");
+		mentorRow.find('.mentor-lastname').val("");
+		mentorRow.find('.mentor-phone').val("");
+		mentorRow.find('.mentor-email').val("");
 		mentorRow.hide();
 	});
 	
