@@ -4,6 +4,18 @@
 
 $(document).ready(function(){
 	
+	$('.withoutGeoAreaHeader').click(function(e) {
+		$('.withoutGeoAreaContainer').toggleClass('in');
+		
+		if ($('.withoutGeoAreaContainer').hasClass('in')) {
+			$('.arrow-up').addClass('in');
+			$('.arrow-down').removeClass('in');
+		} else {
+			$('.arrow-up').removeClass('in');
+			$('.arrow-down').addClass('in');
+		}
+	});
+	
 	$('.close-job-button').click(function(e) {
 		var jobId = $('#job-id').val();
 		adjustJobStatus(jobId, false);

@@ -50,6 +50,7 @@
 		</head>
 
 		<body>
+			<div class="header-container">
 			<div class="container">
 				
 				<div id="HeaderArea">
@@ -218,6 +219,7 @@
 					</div><!-- /.container -->
 				</nav>
 			</div>
+			</div>
 
 
 			<div class="container main-content-container">
@@ -254,6 +256,8 @@
 				src="{/document/requestinfo/contextpath}/js/jquery-ui.min.js"></script>
 			<script type="text/javascript"
 				src="{/document/requestinfo/contextpath}/js/bootstrap.min.js"></script>
+			<script type="text/javascript"
+				src="{/document/requestinfo/contextpath}/js/menu-select.js"></script>
 			<script type="text/javascript"
 				src="{/document/requestinfo/contextpath}/js/add-summerjob.js"></script>
 			<script type="text/javascript"

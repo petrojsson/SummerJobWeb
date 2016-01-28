@@ -42,12 +42,14 @@
 }
 
 #navBar{
-	background-color: #5B1F78;
+/* 	background-color: #5B1F78; */
+	background-color: #9360a2;
 	
 }
 
 #navbar ul li.active{
-	background-color:#9260A0; 
+/* 	background-color:#9260A0;  */
+	background-color: #5B1F78;
 } 
 
 #navbar li a{
@@ -67,11 +69,16 @@
 
 .nav li a:focus, .nav li a:hover {
     text-decoration: none;
-    background: #9260A0;
+/*     background: #9260A0; */
+	background: #5B1F78;
 }
 
 .navbar-brand{
 	color:#fff;
+}
+
+.header-container {
+	background-color: #5b1f78;
 }
 
 .panel-default>.panel-heading{
@@ -111,6 +118,10 @@
 
 .mgn-lft4px {
 	margin-left: 4px;
+}
+
+.pdg-lft0px {
+	padding-left: 0px;
 }
 
 .mgn-lft8px {
@@ -717,4 +728,8 @@ a[type="button"]{
 
 .list-application-panel {
 	margin-bottom: 0px;
+}
+
+.withoutGeoAreaHeader:hover {
+	cursor: pointer;
 }

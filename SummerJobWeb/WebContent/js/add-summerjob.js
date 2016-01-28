@@ -8,15 +8,6 @@ var isAdmin = false;
 
 $(document).ready(function(){
 	
-	$('nav a[href="' + window.location.pathname + '"]').parent().addClass('active');
-	$('nav li ul.dropdown-menu a[href="' + window.location.pathname + '"]').parent().addClass('active');
-	$('nav li ul.dropdown-menu a[href="' + window.location.pathname + window.location.search + '"]').parent().addClass('active');
-	var parentDropdown = $('nav li ul.dropdown-menu').find('.active').parent().parent();
-	$(parentDropdown).addClass('active');
-	
-	console.log(window.location.pathname);
-	console.log(window.location.search);
-	
 //	if (isAdmin) {
 //		$('#period_unique').show();
 //	}
