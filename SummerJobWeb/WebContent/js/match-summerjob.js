@@ -4,6 +4,11 @@
 
 $(document).ready(function(){
 	
+	var availableSlots = parseInt($("#availableToMatch").text());
+	if (availableSlots <= 0) {
+		$('.match-btn').attr('disabled', true);
+	}
+	
 	$('.withoutGeoAreaHeader').click(function(e) {
 		$('.withoutGeoAreaContainer').toggleClass('in');
 		
@@ -82,14 +87,14 @@ $(document).ready(function(){
         	 $("#availableToMatch").text(available);
         	 if(available<=0){
         		 //disable all none checked        		 
-        		 $('input[name="application-id"]').not(':checked').attr("disabled", true);
-        	 }        	 
+        		 $('input[name="application-id"].notMatched').not(':checked').attr("disabled", true);
+        	 }
          }else{        	 
         	 var available = parseInt($("#availableToMatch").text())+1;
         	 $("#availableToMatch").text(available);
         	 
         	 if(available>0){
-        		 $('input[name="application-id"]').not(':checked').removeAttr("disabled");
+        		 $('input[name="application-id"].notMatched').not(':checked').removeAttr("disabled");
         	 }
          }
 	});
@@ -166,7 +171,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click",'.remove-workers-btn',function(e){
-		event.preventDefault();
+		e.preventDefault();
 		console.log("Removing application matched to job");
 		console.log(this);
 		var form = $('#matched-workers-form').serialize();
