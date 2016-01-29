@@ -124,7 +124,7 @@ $(document).ready(function(){
 		        		location.reload(true);
 		        	}else{
 		        		console.log(data);
-		        		alert(data.message);
+		        		alert("Du måste kryssa i minst en kandidat för att matcha.");
 		        	}
 		        },
 		        error: function(jqXHR, textStatus, errorThrown) 
@@ -192,7 +192,7 @@ $(document).ready(function(){
 	        		location.reload(true);
 	        	}else{
 	        		console.log(data);
-	        		alert(data.message);
+	        		alert("Du måste kryssa i minst en kandidat för att ta bort matchningar.");
 	        	}
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
@@ -223,7 +223,7 @@ $(document).ready(function(){
 	        		location.reload(true);
 	        	}else{
 	        		console.log(data);
-	        		alert(data.message);
+	        		alert('Du måste kryssa i minst en kandidat för att lägga över de till "Tackat nej"');
 	        	}
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
@@ -258,7 +258,7 @@ $(document).ready(function(){
 	        		location.reload(true);
 	        	}else{
 	        		console.log(data);
-	        		alert(data.message);
+	        		alert("Du måste kryssa i minst en kandidat för att lägga över de som matchade igen.");
 	        	}
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
