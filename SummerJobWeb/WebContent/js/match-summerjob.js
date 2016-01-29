@@ -123,8 +123,9 @@ $(document).ready(function(){
 		        		console.log('application matching was successful');	        						        		
 		        		location.reload(true);
 		        	}else{
-		        		console.log(data);
-		        		alert("Du måste kryssa i minst en kandidat för att matcha.");
+//		        		console.log(data);
+		        		$('.match-fail').addClass('in');
+		        		$('body').scrollTo($('body').find('.match-fail').first().offset().top - 56, 'slow');
 		        	}
 		        },
 		        error: function(jqXHR, textStatus, errorThrown) 
@@ -191,8 +192,10 @@ $(document).ready(function(){
 	        		console.log('application assignments was removed');
 	        		location.reload(true);
 	        	}else{
-	        		console.log(data);
-	        		alert("Du måste kryssa i minst en kandidat för att ta bort matchningar.");
+//	        		console.log(data);
+//	        		alert("You have to choose at least one candidate.");
+	        		$('.match-fail').addClass('in');
+	        		$('body').scrollTo($('body').find('.match-fail').first().offset().top - 56, 'slow');
 	        	}
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
@@ -222,8 +225,10 @@ $(document).ready(function(){
 	        		console.log('applications was changed from matched to denied.');
 	        		location.reload(true);
 	        	}else{
-	        		console.log(data);
-	        		alert('Du måste kryssa i minst en kandidat för att lägga över de till "Tackat nej"');
+//	        		console.log(data);
+//	        		alert("You have to choose at least one candidate.");
+	        		$('.match-fail').addClass('in');
+	        		$('body').scrollTo($('body').find('.match-fail').first().offset().top - 56, 'slow');
 	        	}
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
@@ -252,13 +257,15 @@ $(document).ready(function(){
 	        data : form.serialize()+'&job-id='+jobId,
 	        success:function(data, textStatus, jqXHR) 
 	        {
-	        	console.log(data);
+//	        	console.log(data);
 	        	if(data.status==='success'){
 	        		console.log('applications was changed from denied to matched.');
 	        		location.reload(true);
 	        	}else{
-	        		console.log(data);
-	        		alert("Du måste kryssa i minst en kandidat för att lägga över de som matchade igen.");
+//	        		console.log(data);
+//	        		alert("You have to choose at least one candidate.");
+	        		$('.match-fail').addClass('in');
+	        		$('body').scrollTo($('body').find('.match-fail').first().offset().top - 56, 'slow');
 	        	}
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
