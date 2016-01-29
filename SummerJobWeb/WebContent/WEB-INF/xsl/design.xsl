@@ -67,7 +67,7 @@
 									<xsl:attribute name="href">/</xsl:attribute>
 								</xsl:otherwise>
 							</xsl:choose>
-		                	<img src="css/images/sommarjobb.png" alt="sommarjobb.sundsvall.se" />
+		                	<img src="{/document/requestinfo/contextpath}/css/images/sommarjobb.png" alt="sommarjobb.sundsvall.se" />
 		                </a>
 		            </div>
 		            
@@ -87,7 +87,7 @@
 							<div id="navbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav">
 									<li>
-										<a>
+										<a class="home-link">
 											<xsl:choose>
 												<xsl:when test="/document/requestinfo/contextpath!=''">
 													<xsl:attribute name="href">
@@ -202,7 +202,7 @@
 											</ul>
 										</li>
 	
-										<li class="dropdown">
+										<li class="dropdown admin-menu">
 											<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 												role="button" aria-haspopup="true" aria-expanded="false">
 												Admin meny

@@ -42,13 +42,10 @@
 }
 
 #navBar{
-/* 	background-color: #5B1F78; */
-	background-color: #9360a2;
-	
+	background-color: #9360a2;	
 }
 
 #navbar ul li.active{
-/* 	background-color:#9260A0;  */
 	background-color: #5B1F78;
 } 
 
@@ -73,8 +70,7 @@
 
 .nav li a:focus, .nav li a:hover {
     text-decoration: none;
-/*     background: #9260A0; */
-	background: #5B1F78;
+	background: #9360a2;
 }
 
 .navbar-brand{
@@ -85,9 +81,7 @@
 	background-color: #5b1f78;
 }
 
-.panel-default>.panel-heading{
-	/*background-image: linear-gradient(to bottom,#9260A0 0,#D2C5DF 100%);
-	border-color: #D2C5DF;*/
+.panel-default>.panel-heading{	
 	background: #9260A0;
 }
 
@@ -718,13 +712,8 @@ a[type="button"]{
 }
 
 #HeaderArea {
-/*     background-image: url(images/sommarjobb.png); */
-/*     height: 132px; */
-/* 	padding: 16px 0px 16px 0px; */
 	padding: 1.5em 0;
     overflow: hidden;
-/*     width: 960px; */
-    //margin: auto;
 }
 
 .no-fixed-top{
@@ -738,4 +727,16 @@ a[type="button"]{
 
 .withoutGeoAreaHeader:hover {
 	cursor: pointer;
+}
+
+.nav-tabs>li>a{
+	color: #555;
+}
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+	background-image:none;	
+}
+
+#navbar .nav li a:focus, #navbar .nav li a:hover{
+	background-color: #5B1F78;
 }
