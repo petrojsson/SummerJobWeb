@@ -8,7 +8,7 @@ $(document).ready(function() {
 		console.log(pathname);
 	}
 	
-	$('nav a[href="' + pathname + '"]').parent().addClass('active');
+	$('nav a[href="' + pathname + window.location.search +'"]').parent().addClass('active');
 	
 	if($('ul.nav.navbar-nav > li.active').length<1){
 		
