@@ -7,6 +7,7 @@ $(document).ready(function(){
 	var availableSlots = parseInt($("#availableToMatch").text());
 	if (availableSlots <= 0) {
 		$('.match-btn').attr('disabled', true);
+		$('input[name="application-id"].notMatched').not(':checked').attr("disabled", true);
 	}
 	
 	$('.withoutGeoAreaHeader').click(function(e) {
