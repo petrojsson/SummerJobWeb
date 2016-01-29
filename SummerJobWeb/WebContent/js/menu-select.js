@@ -1,6 +1,18 @@
 $(document).ready(function() {
-	$('nav a[href="' + window.location.pathname + '"]').parent().addClass('active');
-	$('nav li.navbar-dropdown-menu ul.dropdown-menu a[href="' + window.location.pathname + window.location.search + '"]').parent().addClass('active');
-	var parentDropdown = $('nav li.navbar-dropdown-menu ul.dropdown-menu').find('.active').parent().parent();
-	$(parentDropdown).addClass('active');
+	var pathname = window.location.pathname;
+	var lastChar =pathname.substr(pathname.length-1);
+	
+	if(pathname.length >1 && lastChar.lastIndexOf('/')>=0){
+		console.log('last char is /');
+		pathname = pathname.slice(0,-1);
+		console.log(pathname);
+	}
+	
+	$('nav a[href="' + pathname + '"]').parent().addClass('active');
+	
+	if($('ul.nav.navbar-nav > li.active').length<1){
+		
+		$('nav ul.dropdown-menu li.active').parent().parent().addClass('active');
+	}
+	
 });
