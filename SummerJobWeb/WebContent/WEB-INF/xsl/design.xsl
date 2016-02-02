@@ -122,7 +122,7 @@
 												</li>
 												<li role="presentation">
 													<a role="menuitem" tabindex="2"
-														href="{/document/requestinfo/contextpath}/add-business-sector-job">Inom näringslivet</a>
+														href="{/document/requestinfo/contextpath}/add-business-sector-job">Hos privat företag</a>
 												</li>
 											</ul>
 										</li>
@@ -140,7 +140,7 @@
 												</li>
 												<li role="presentation">
 													<a role="menuitem" tabindex="3"
-														href="{/document/requestinfo/contextpath}/list-summerjobs?business=true">Sommarjobb i näringslivet</a>
+														href="{/document/requestinfo/contextpath}/list-summerjobs?business=true">Sommarjobb hos privata företag</a>
 												</li>
 											</ul>
 										</li>									
@@ -164,18 +164,20 @@
 												<span class="caret"></span>
 											</a>
 											<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-												
 												<li role="presentation">
 													<a role="menuitem" tabindex="1"
+														href="{/document/requestinfo/contextpath}/admin-manage">Administrera</a>
+												</li>
+												
+												<li class="divider"/>
+												
+												<li role="presentation">
+													<a role="menuitem" tabindex="2"
 														href="{/document/requestinfo/contextpath}/list-summerjobs?municipality=true">Alla kommunala sommarjobb</a>
 												</li>
 												<li role="presentation">
-													<a role="menuitem" tabindex="2"
-														href="{/document/requestinfo/contextpath}/list-summerjobs?business=true">Alla Sommarjobb i näringslivet</a>
-												</li>
-												<li role="presentation">
 													<a role="menuitem" tabindex="3"
-														href="{/document/requestinfo/contextpath}/admin-manage">Administrera</a>
+														href="{/document/requestinfo/contextpath}/list-summerjobs?business=true">Alla sommarjobb hos privata företag</a>
 												</li>
 												
 												<li class="divider"/>
@@ -185,7 +187,7 @@
 												</li>
 												<li role="presentation">
 													<a role="menuitem" tabindex="5"
-														href="{/document/requestinfo/contextpath}/add-business-sector-job">Lägg till näringslivsjobb</a>
+														href="{/document/requestinfo/contextpath}/add-business-sector-job">Lägg till sommarjobb hos privat företag</a>
 												</li>
 												
 												<li class="divider"/>
@@ -197,7 +199,7 @@
 												
 												<li role="presentation">
 													<a role="menuitem" tabindex="7"
-														href="{/document/requestinfo/contextpath}/business-sector-job">Lägg till sommarjobbsansökan i näringsliv</a>
+														href="{/document/requestinfo/contextpath}/business-sector-job">Lägg till sommarjobbsansökan hos privat företag</a>
 												</li>
 											</ul>
 										</li>
