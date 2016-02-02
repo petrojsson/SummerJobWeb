@@ -183,7 +183,7 @@
 												<li class="divider"/>
 												<li role="presentation">
 													<a role="menuitem" tabindex="4"
-														href="{/document/requestinfo/contextpath}/add-municipality-job">Lägg till kommunalt jobb</a>
+														href="{/document/requestinfo/contextpath}/add-municipality-job">Lägg till kommunalt sommarjobb</a>
 												</li>
 												<li role="presentation">
 													<a role="menuitem" tabindex="5"
