@@ -744,3 +744,12 @@ a[type="button"]{
 #navbar .nav li a:focus, #navbar .nav li a:hover{
 	background-color: #5B1F78;
 }
+
+.disabled {
+	color: #999999;
+}
+
+.disabled:hover {
+	cursor: not-allowed;
+	color: #ccc;
+}
