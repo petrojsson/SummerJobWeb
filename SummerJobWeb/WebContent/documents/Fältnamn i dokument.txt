@@ -1,0 +1,120 @@
+Skattebefrielse:
+Namnfält - tax-name
+Personnummerfält - tax-socialsecuritynumber
+Gatuadressfält - tax-streetaddress
+Postnummer- och stadfält - tax-zipandcity
+
+Polisblankett (PM-442-5-forskoleverksamhet):
+Personnummer - 
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr01[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr02[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr03[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr04[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr05[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr06[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr07[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr08[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr09[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr10[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr11[0]
+polisen[0].frm_innehall[0].frm_personuppgifter[0].frm_personnummer[0].flt_txtPnr12[0]
+
+Förnamn - polisen[0].frm_innehall[0].frm_personuppgifter[0].txt_fornamn[0]
+Efternamn - polisen[0].frm_innehall[0].frm_personuppgifter[0].txt_efternamn[0]
+Mobilnummer - polisen[0].frm_innehall[0].frm_personuppgifter[0].txt_mobilNr[0]
+Telefonnummer, dagtid - polisen[0].frm_innehall[0].frm_personuppgifter[0].txt_telefonDagtid[0]
+Adress - polisen[0].frm_innehall[0].frm_personuppgifter[0].txt_adress[0]
+Postnr - polisen[0].frm_innehall[0].frm_personuppgifter[0].txt_postNr[0]
+Ort - polisen[0].frm_innehall[0].frm_personuppgifter[0].txt_ort[0]
+Underskriftsort - polisen[0].frm_innehall[0].frm_underskrift[0].frm_underskriftDatumOrt[0].txt_4rt[0]
+
+
+Kallelse:
+Kallelsespecifik information - kallelse-specifikinformation
+
+Tilldelning:
+tilldelning-periodbox
+tilldelning-candidatebox
+
+
+Arbetsmiljö:
+arbetsmiljo-candidatebox
+
+Bekräftelse:
+bekraftelse-ansvar
+bekraftelse-verksamhet
+bekraftelse-aktivitet
+bekraftelse-socialsecuritynumber
+bekraftelse-name
+bekraftelse-streetaddress
+bekraftelse-zipandcity
+bekraftelse-phone
+bekraftelse-school
+bekraftelse-workdate
+bekraftelse-workplace
+bekraftelse-workaddress
+bekraftelse-workmanager
+bekraftelse-salary
+
+Kallelse:
+kallelse-name
+kallelse-streetaddress
+kallelse-zipandcity
+kallelse-specificinfo (max 255 tecken!)
+kallelse-timeforinfo
+kallelse-placeforinfo
+
+Information_anstallningsbevis:
+anstallning-name
+anstallning-socialsecuritynumber
+anstallning-phone
+anstallning-streetaddress
+anstallning-zipandcity
+anstallning-workplace
+anstallning-workstreetaddress
+anstallning-workzipandcity
+anstallning-workmanager
+anstallning-workmentor
+anstallning-fromdate
+anstallning-todate
+anstallning-specificinfo
+
+Overforingsuppdrag:
+overforing-contactname
+overforing-contactphone
+overforing-socialsecuritynumber
+overforing-lastname
+overforing-firstname
+overforing-streetaddress
+overforing-zipandcity
+overforing-phone
+overforing-name
+
+Tjanstgoringsrapport:
+tjanstgoring-year
+tjanstgoring-socialsecuritynumber
+tjanstgoring-lastnamefirstname
+tjanstgoring-streetaddress
+tjanstgoring-zipcode
+tjanstgoring-city
+tjanstgoring-workplace
+tjanstgoring-phone
+tjanstgoring-ansvar
+tjanstgoring-verksamhet
+tjanstgoring-aktivitet
+
+overenskommelse-naringslivet:
+naringslivet-corporatenumber
+naringslivet-company
+naringslivet-address
+naringslivet-zipcity
+naringslivet-managername
+naringslivet-managerphone
+naringslivet-manageremail
+naringslivet-contactname
+naringslivet-contactphone
+naringslivet-contactemail
+naringslivet-numberofworkers
+naringslivet-dates
+naringslivet-inchargeofinterviews
+naringslivet-favicontact
