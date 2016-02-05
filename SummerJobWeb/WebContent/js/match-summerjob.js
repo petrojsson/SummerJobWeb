@@ -206,7 +206,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click",'.deny-btn',function(e){
-		event.preventDefault();
+		e.preventDefault();
 		console.log("Denying applications");
 		console.log(this);
 		var form = $('#matched-workers-form').serialize();
@@ -240,7 +240,7 @@ $(document).ready(function(){
 	
 	
 	$(document).on("click",'.from-denied-to-matched-btn',function(e){
-		event.preventDefault();
+		e.preventDefault();
 		console.log("Denying applications");
 		
 		var jobId = $('#job-id').val();		
