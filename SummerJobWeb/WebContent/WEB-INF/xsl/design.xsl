@@ -221,14 +221,10 @@
 											</ul>
 										</li>
 									</xsl:if>
-									<xsl:if test="not(user)">
-										<li>
-											<a href="{/document/requestinfo/contextpath}/saml">Logga in - Kommunalanställd</a>
-										</li>
-									</xsl:if>
 									<li>
 										<xsl:if test="not(user)">
-											<a href="{/document/requestinfo/contextpath}/login">Logga in</a>
+											<a href="{/document/requestinfo/contextpath}/saml">Logga in</a>
+<!-- 											<a href="{/document/requestinfo/contextpath}/login">Logga in</a> -->
 										</xsl:if>
 										<xsl:if test="user">
 											<a href="{/document/requestinfo/contextpath}/logout">Logga ut</a>
