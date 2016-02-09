@@ -753,3 +753,8 @@ a[type="button"]{
 	cursor: not-allowed;
 	color: #ccc;
 }
+
+#noPreferedArea {
+	cursor: pointer;
+}
+

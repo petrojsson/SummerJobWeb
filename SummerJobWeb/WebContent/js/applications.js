@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	
 	$('button#clear-search-button').click(function(e) {
 		e.preventDefault();
 		var form = $(this).parents('form:first');
@@ -27,21 +26,21 @@ $(document).ready(function() {
 	});
 
 	// If the checkbox has an initial value, we don't want some stuff to be required.
-	if ($('input[name*=noPreferedArea').is(':checked')) {
-		$('[id^=preferedArea]').attr("required", false);
-		$('[id^=preferedArea]').attr("disabled", true);
+	if ($('input[name="noPreferedArea"]').is(':checked')) {
+		$('select[id^="preferedArea"]').attr('required', false);
+		$('select[id^="preferedArea"]').attr('disabled', true);
 	} else {
-		$('[id^=preferedArea]').attr("required", true);
-		$('[id^=preferedArea]').attr("disabled", false);
+		$('select[id^="preferedArea"]').attr('required', true);
+		$('select[id^="preferedArea"]').attr('disabled', false);
 	}
 
-	$('input[name*=noPreferedArea').click(function(e) {
+	$('#noPreferedArea').click(function(e) {
 		if ($(this).is(':checked')) {
-			$('[id^=preferedArea]').attr("required", false);
-			$('[id^=preferedArea]').attr("disabled", true);
+			$('select[id^="preferedArea"]').attr('required', false);
+			$('select[id^="preferedArea"]').attr('disabled', true);
 		} else {
-			$('[id^=preferedArea]').attr("required", true);
-			$('[id^=preferedArea]').attr("disabled", false);
+			$('select[id^="preferedArea"]').attr('required', true);
+			$('select[id^="preferedArea"]').attr('disabled', false);
 		}
 	});
 	
@@ -250,7 +249,7 @@ function previewMunicipalityJobApplication() {
 	$('#preview-geoarea2').html($('#geoArea2 :selected').html());
 	$('#preview-geoarea3').html($('#geoArea3 :selected').html());
 	
-	$('#preview-driverslicense').html( $('#driversLicenseType :selected').html());
+	$('#preview-driverslicense').html($('#driversLicenseType :selected').html());
 
 	$('#municipality-job-application-form').hide();
 	$('.createJobHeadline').hide();
