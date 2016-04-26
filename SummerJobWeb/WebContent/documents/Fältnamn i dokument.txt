@@ -71,6 +71,7 @@ anstallning-phone
 anstallning-streetaddress
 anstallning-zipandcity
 anstallning-workplace
+anstallning-department
 anstallning-workstreetaddress
 anstallning-workzipandcity
 anstallning-workmanager
